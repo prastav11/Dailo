@@ -47,6 +47,29 @@
             cursor: pointer;
             margin-top: 10px;
         }
+        .shopping-cart {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            text-align: center;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -58,26 +81,87 @@
             <img src="rice.jpg" alt="Rice">
             <h3>Rice</h3>
             <p>Price: ₹500</p>
-            <button class="cart-btn">Add to Cart</button>
+            <button class="cart-btn" onclick="addToCart('Rice', 500)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="biscuit.jpeg" alt="Biscuits">
             <h3>Biscuits</h3>
             <p>Price: ₹50</p>
-            <button class="cart-btn">Add to Cart</button>
+            <button class="cart-btn" onclick="addToCart('Biscuits', 50)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="pepsi.jpeg" alt="Pepsi">
             <h3>Pepsi</h3>
             <p>Price: ₹60</p>
-            <button class="cart-btn">Add to Cart</button>
+            <button class="cart-btn" onclick="addToCart('Pepsi', 60)">Add to Cart</button>
         </div>
         <div class="product-card">
             <img src="coke.jpeg" alt="Coke">
             <h3>Coke</h3>
             <p>Price: ₹60</p>
-            <button class="cart-btn">Add to Cart</button>
+            <button class="cart-btn" onclick="addToCart('Coke', 60)">Add to Cart</button>
         </div>
     </div>
+
+    <div class="shopping-cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-amount">Total: ₹0</div>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, price) {
+            let existingItem = cart.find(item => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: itemName, price: price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartContainer = document.getElementById("cart-items");
+            let totalAmount = 0;
+            cartContainer.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                totalAmount += item.price * item.quantity;
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</span>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total-amount").innerText = `Total: ₹${totalAmount}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                alert("Thank you for your purchase! Order placed successfully.");
+                clearCart();
+            }
+        }
+    </script>
 </body>
 </html>

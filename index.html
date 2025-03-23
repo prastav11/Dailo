@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookMandu</title>
+    <title>DailoDelivery</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,6 +37,10 @@
             padding: 10px;
             font-family: monospace;
         }
+        .shop-selector {
+            text-align: center;
+            margin-top: 10px;
+        }
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -44,7 +48,7 @@
             gap: 20px;
             padding: 20px;
         }
-        .book-card {
+        .product-card {
             width: 250px;
             padding: 15px;
             border: 1px solid #ddd;
@@ -52,7 +56,7 @@
             background-color: #f9f9f9;
             text-align: center;
         }
-        .book-card img {
+        .product-card img {
             width: 200px;
             height: 300px;
             border-radius: 10px;
@@ -69,15 +73,6 @@
             text-align: center;
             padding: 10px;
             background: rgb(240, 207, 43);
-        }
-        #login-section {
-            text-align: center;
-            margin-top: 10px;
-        }
-        #login-form {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
         }
         .cart-item {
             display: flex;
@@ -98,48 +93,55 @@
 </head>
 <body>
     <header>
-        <h1>BookMandu</h1>
+        <h1>DailoDelivery</h1>
         <div id="welcome-message"></div>
     </header>
+
     <div class="search-bar">
-        <input type="text" id="search" placeholder="Search for books...">
+        <input type="text" id="search" placeholder="Search for groceries...">
     </div>
+
+    <div class="shop-selector">
+        <label for="shop">Shop from:</label>
+        <select id="shop">
+            <option value="KarkiStore">Karki Store</option>
+            <option value="GhimireDairy">Ghimire Dairy</option>
+            <option value="BinduFruitShop">Bindu Fruit Shop</option>
+        </select>
+    </div>
+
     <div class="nav">
-        <a href="index.html">Home</a>
+        <a href="home.html">Home</a>
         <a href="#" onclick="showLogin()">Login</a>
-        <a href="book.html">Books</a>
-        <a href="genres.html">Genres</a>
+        <a href="karki.html">Karki Store</a>
+        <a href="ghimire.html">Ghimire Dairy</a>
+        <a href="bindu.html">Bindu Fruit Shop</a>
     </div>
-    <div id="login-section">
-        <div id="login-form">
-            <input type="text" id="username" placeholder="Username">
-            <input type="password" id="password" placeholder="Password">
-            <button onclick="checkLogin()">Submit</button>
-        </div>
-    </div>
+
     <div class="container">
-        <div class="book-card">
-            <img src="image1.jpg" alt="Book Cover">
-            <h3>SIX EASY PIECES</h3>
-            <p>Author: Richard P. Feynman</p>
-            <p>Price: ₹899</p>
-            <button onclick="addToCart('SIX EASY PIECES', 899)">Add to Cart</button>
+        <div class="product-card">
+            <img src="rice.jpg" alt="Rice">
+            <h3>Rice</h3>
+            <p>Shop: Karki Store</p>
+            <p>Price: ₹499 per 5kg</p>
+            <button onclick="addToCart('Rice', 499)">Add to Cart</button>
         </div>
-        <div class="book-card">
-            <img src="image2.jpg" alt="Book Cover">
-            <h3>SIX NOT SO EASY PIECES</h3>
-            <p>Author: Richard P. Feynman</p>
-            <p>Price: ₹1099</p>
-            <button onclick="addToCart('SIX NOT SO EASY PIECES', 1099)">Add to Cart</button>
+        <div class="product-card">
+            <img src="curd.jpeg" alt="Curd">
+            <h3>Curd</h3>
+            <p>Shop: Ghimire Dairy</p>
+            <p>Price: ₹79 per liter</p>
+            <button onclick="addToCart('Curd', 79)">Add to Cart</button>
         </div>
-        <div class="book-card">
-            <img src="image3.jpg" alt="Book Cover">
-            <h3>BRIEF HISTORY OF TIME</h3>
-            <p>Author: Stephen Hawking</p>
-            <p>Price: ₹1199</p>
-            <button onclick="addToCart('BRIEF HISTORY OF TIME', 1199)">Add to Cart</button>
+        <div class="product-card">
+            <img src="mango.jpeg" alt="Mango">
+            <h3>Mango</h3>
+            <p>Shop: Bindu Fruit Shop</p>
+            <p>Price: ₹199 per kg</p>
+            <button onclick="addToCart('Mango', 199)">Add to Cart</button>
         </div>
     </div>
+
     <div class="shopping-cart">
         <h2>Shopping Cart</h2>
         <div id="cart-items"></div>
@@ -147,8 +149,62 @@
         <button onclick="clearCart()">Clear Cart</button>
         <button onclick="checkout()">Checkout</button>
     </div>
+
     <footer>
-        <p>&copy; 22BCE3865 PRASTAV KOIRALA. All rights reserved.</p>
+        <p>&copy;PRASTAV KOIRALA. All rights reserved.</p>
     </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, price) {
+            let existingItem = cart.find(item => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: itemName, price: price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartContainer = document.getElementById("cart-items");
+            let totalAmount = 0;
+            cartContainer.innerHTML = ""; // Clear previous cart
+
+            cart.forEach((item, index) => {
+                totalAmount += item.price * item.quantity;
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</span>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total-amount").innerText = `Total: ₹${totalAmount}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                alert("Thank you for your purchase! Order placed successfully.");
+                clearCart();
+            }
+        }
+    </script>
 </body>
 </html>

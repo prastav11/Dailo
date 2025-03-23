@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghimire Dairy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: rgb(240, 207, 43);
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .product-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .cart-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ghimire Dairy</h1>
+    </header>
+    <div class="container">
+        <div class="product-card">
+            <img src="milk.jpg" alt="Milk">
+            <h3>Milk</h3>
+            <p>Price: ₹60/Ltr</p>
+            <button class="cart-button">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="curd.jpeg" alt="Curd">
+            <h3>Curd</h3>
+            <p>Price: ₹50/Ltr</p>
+            <button class="cart-button">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="icecream.jpg" alt="Ice Cream">
+            <h3>Ice Cream</h3>
+            <p>Price: ₹100</p>
+            <button class="cart-button">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="kulfi.jpeg" alt="Kulfi">
+            <h3>Kulfi</h3>
+            <p>Price: ₹80</p>
+            <button class="cart-button">Add to Cart</button>
+        </div>
+    </div>
+</body>
+</html>

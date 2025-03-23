@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bindu Fruit Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: rgb(240, 207, 43);
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .item-card {
+            width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .item-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .add-to-cart {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bindu Fruit Shop</h1>
+    </header>
+    <div class="container">
+        <div class="item-card">
+            <img src="apple.jpeg" alt="Apple">
+            <h3>Apple</h3>
+            <p>Price: ₹150/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="item-card">
+            <img src="banana.jpg" alt="Banana">
+            <h3>Banana</h3>
+            <p>Price: ₹60/dozen</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="item-card">
+            <img src="mango.jpeg" alt="Mango">
+            <h3>Mango</h3>
+            <p>Price: ₹120/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="item-card">
+            <img src="grape.jpeg" alt="Grapes">
+            <h3>Grapes</h3>
+            <p>Price: ₹180/kg</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+</body>
+</html>

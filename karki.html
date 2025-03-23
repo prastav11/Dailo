@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karki Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: rgb(240, 207, 43);
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .product-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .cart-btn {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Karki Store</h1>
+    </header>
+    <div class="container">
+        <div class="product-card">
+            <img src="rice.jpg" alt="Rice">
+            <h3>Rice</h3>
+            <p>Price: ₹500</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="biscuit.jpeg" alt="Biscuits">
+            <h3>Biscuits</h3>
+            <p>Price: ₹50</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="pepsi.jpeg" alt="Pepsi">
+            <h3>Pepsi</h3>
+            <p>Price: ₹60</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="coke.jpeg" alt="Coke">
+            <h3>Coke</h3>
+            <p>Price: ₹60</p>
+            <button class="cart-btn">Add to Cart</button>
+        </div>
+    </div>
+</body>
+</html>

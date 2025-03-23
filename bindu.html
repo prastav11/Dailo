@@ -7,6 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
         }
         header {
@@ -24,7 +26,7 @@
             gap: 20px;
             padding: 20px;
         }
-        .item-card {
+        .product-card {
             width: 250px;
             padding: 15px;
             border: 1px solid #ddd;
@@ -32,18 +34,41 @@
             background-color: #f9f9f9;
             text-align: center;
         }
-        .item-card img {
+        .product-card img {
             width: 200px;
             height: 200px;
             border-radius: 10px;
         }
-        .add-to-cart {
+        .cart-btn {
             background-color: green;
             color: white;
-            border: none;
             padding: 10px;
+            border: none;
             cursor: pointer;
-            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .shopping-cart {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px;
+            text-align: center;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .remove-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -52,30 +77,91 @@
         <h1>Bindu Fruit Shop</h1>
     </header>
     <div class="container">
-        <div class="item-card">
+        <div class="product-card">
             <img src="apple.jpeg" alt="Apple">
             <h3>Apple</h3>
-            <p>Price: ₹150/kg</p>
-            <button class="add-to-cart">Add to Cart</button>
+            <p>Price: ₹120/kg</p>
+            <button class="cart-btn" onclick="addToCart('Apple', 120)">Add to Cart</button>
         </div>
-        <div class="item-card">
+        <div class="product-card">
             <img src="banana.jpg" alt="Banana">
             <h3>Banana</h3>
-            <p>Price: ₹60/dozen</p>
-            <button class="add-to-cart">Add to Cart</button>
+            <p>Price: ₹50/dozen</p>
+            <button class="cart-btn" onclick="addToCart('Banana', 50)">Add to Cart</button>
         </div>
-        <div class="item-card">
-            <img src="mango.jpeg" alt="Mango">
-            <h3>Mango</h3>
-            <p>Price: ₹120/kg</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        <div class="item-card">
+        <div class="product-card">
             <img src="grape.jpeg" alt="Grapes">
             <h3>Grapes</h3>
-            <p>Price: ₹180/kg</p>
-            <button class="add-to-cart">Add to Cart</button>
+            <p>Price: ₹90/kg</p>
+            <button class="cart-btn" onclick="addToCart('Grapes', 90)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="mango.jpeg" alt="Mango">
+            <h3>Mango</h3>
+            <p>Price: ₹150/kg</p>
+            <button class="cart-btn" onclick="addToCart('Mango', 150)">Add to Cart</button>
         </div>
     </div>
+    
+    <div class="shopping-cart">
+        <h2>Shopping Cart</h2>
+        <div id="cart-items"></div>
+        <div id="total-amount">Total: ₹0</div>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+    
+    <script>
+        let cart = [];
+
+        function addToCart(itemName, price) {
+            let existingItem = cart.find(item => item.name === itemName);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name: itemName, price: price, quantity: 1 });
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            let cartContainer = document.getElementById("cart-items");
+            let totalAmount = 0;
+            cartContainer.innerHTML = "";
+
+            cart.forEach((item, index) => {
+                totalAmount += item.price * item.quantity;
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</span>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById("total-amount").innerText = `Total: ₹${totalAmount}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                alert("Thank you for your purchase! Order placed successfully.");
+                clearCart();
+            }
+        }
+    </script>
 </body>
 </html>

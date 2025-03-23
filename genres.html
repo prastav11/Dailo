@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: rgb(240, 207, 43);
+            color: black;
+            padding: 20px;
+            text-align: center;
+            font-family: fantasy;
+            font-size: xx-large;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            font-family: monospace;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .book-card {
+            width: 250px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .book-card img {
+            width: 200px;
+            height: 300px;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgb(240, 207, 43);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Genres</h1>
+    </header>
+    <div class="nav">
+        <a href="bookstore.html">Home</a>
+        <a href="book.html">Books</a>
+        <a href="genres.html">Genres</a>
+    </div>
+    <div class="container">
+        <div class="book-card">
+            <img src="image1.jpg" alt="Book Cover">
+            <h3>SIX EASY PIECES</h3>
+            <p>Author: Richard P. Feynman</p>
+            <p>Genre: Physics, Science</p>
+        </div>
+        <div class="book-card">
+            <img src="image2.jpg" alt="Book Cover">
+            <h3>SIX NOT SO EASY PIECES</h3>
+            <p>Author: Richard P. Feynman</p>
+            <p>Genre: Physics, Quantum Mechanics</p>
+        </div>
+        <div class="book-card">
+            <img src="image3.jpg" alt="Book Cover">
+            <h3>BRIEF HISTORY OF TIME</h3>
+            <p>Author: Stephen Hawking</p>
+            <p>Genre: Astronomy, Cosmology</p>
+        </div>
+        <div class="book-card">
+            <img src="image4.jpg" alt="Book Cover">
+            <h3>THE THEORY OF EVERYTHING</h3>
+            <p>Author: Stephen Hawking</p>
+            <p>Genre: Science, Theoretical Physics</p>
+        </div>
+        <div class="book-card">
+            <img src="image5.jpg" alt="Book Cover">
+            <h3>PRINCIPIA MATHEMATICA</h3>
+            <p>Author: Isaac Newton</p>
+            <p>Genre: Mathematics, Physics</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Online Bookstore. All rights reserved.</p>
+    </footer>
+</body>
+</html>

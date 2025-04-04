@@ -1,210 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailoDelivery</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: rgb(240, 207, 43);
-            color: black;
-            padding: 20px;
-            text-align: center;
-            font-family: fantasy;
-            font-size: xx-large;
-            position: relative;
-        }
-        .search-bar {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .search-bar input {
-            padding: 8px;
-            width: 60%;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-            font-family: monospace;
-        }
-        .shop-selector {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .product-card {
-            width: 250px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            text-align: center;
-        }
-        .product-card img {
-            width: 200px;
-            height: 300px;
-            border-radius: 10px;
-        }
-        .shopping-cart {
-            padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin: 20px;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: rgb(240, 207, 43);
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 5px 0;
-            padding: 5px;
-            border-bottom: 1px solid #ddd;
-        }
-        .remove-btn {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 5px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prastav Koirala | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff8e1;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #fdd835, #fbc02d);
+      color: #212121;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .section {
+      padding: 60px 20px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer {
+      background-color: #f9a825;
+      color: white;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: #fbc02d;
+      border: none;
+      color: #212121;
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        padding: 60px 15px;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .lead {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>DailoDelivery</h1>
-        <div id="welcome-message"></div>
-    </header>
+  <section class="hero">
+    <h1>Prastav Koirala</h1>
+    <p class="lead">Dreamer | Curious Mind | Inspired by the Greats | And Is Greatest OF All</p>
+    <a href="#about" class="btn btn-light mt-3">Know My Story</a>
+  </section>
 
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="Search for groceries...">
+  <section id="about" class="section container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="prastav.jpg" class="img-fluid rounded" alt="Prastav">
+      </div>
+      <div class="col-md-6">
+        <h2>About Me</h2>
+        <p>Hello! I’m Prastav Koirala. I'm deeply inspired by minds like Albert Einstein, Isaac Newton, Richard Feynman, and the courageous Stephen Hawking. I love thinking about the universe, time, and the mysteries of life.</p>
+        <p>One day, a teacher asked me, “Why would you like to be like Kalpana Chawla?” That one question changed my whole perspective. I answered, “So that someday, a teacher like you will ask, why would you like to be like Prastav Koirala?”</p>
+        <p>And I'm working every day, waiting for that day to come.</p>
+        <p>I believe that being born human gives us the gift of thought and curiosity. We're not just here to survive—we're here to explore, to learn, and to leave something meaningful behind. As Stephen Hawking said, “It surprises me how disinterested we are today about things like physics, space, the universe and philosophy of our existence, our purpose, our final destination. It’s a crazy world out there. Be curious.”</p>
+      </div>
     </div>
+  </section>
 
-    <div class="shop-selector">
-        <label for="shop">Shop from:</label>
-        <select id="shop">
-            <option value="KarkiStore">Karki Store</option>
-            <option value="GhimireDairy">Ghimire Dairy</option>
-            <option value="BinduFruitShop">Bindu Fruit Shop</option>
-        </select>
-    </div>
-
-    <div class="nav">
-        <a href="home.html">Home</a>
-        <a href="#" onclick="showLogin()">Login</a>
-        <a href="karki.html">Karki Store</a>
-        <a href="ghimire.html">Ghimire Dairy</a>
-        <a href="bindu.html">Bindu Fruit Shop</a>
-    </div>
-
+  <section id="projects" class="section bg-light">
     <div class="container">
-        <div class="product-card">
-            <img src="rice.jpg" alt="Rice">
-            <h3>Rice</h3>
-            <p>Shop: Karki Store</p>
-            <p>Price: ₹499 per 5kg</p>
-            <button onclick="addToCart('Rice', 499)">Add to Cart</button>
+      <h2 class="text-center mb-5">What I'm Building</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-3 h-100">
+            <h5>DailoDelivery - Quick Grocery Delivery App</h5>
+            <p>A smart app idea for Nepal, to help people get groceries from local shops quickly. I want tech to help real people in everyday life. WORKONPROGRESS!</p>
+          </div>
         </div>
-        <div class="product-card">
-            <img src="curd.jpeg" alt="Curd">
-            <h3>Curd</h3>
-            <p>Shop: Ghimire Dairy</p>
-            <p>Price: ₹79 per liter</p>
-            <button onclick="addToCart('Curd', 79)">Add to Cart</button>
+        <div class="col-md-4">
+          <div class="card p-3 h-100">
+            <h5>Ease Prastav - YouTube Channel</h5>
+            <p>On my channel, I share what I learn, what I wonder, and sometimes just have fun with creativity and storytelling.</p>
+            <a href="https://www.youtube.com/c/EasePrastav" target="_blank">Visit My YouTube</a>
+          </div>
         </div>
-        <div class="product-card">
-            <img src="mango.jpeg" alt="Mango">
-            <h3>Mango</h3>
-            <p>Shop: Bindu Fruit Shop</p>
-            <p>Price: ₹199 per kg</p>
-            <button onclick="addToCart('Mango', 199)">Add to Cart</button>
+        <div class="col-md-4">
+          <div class="card p-3 h-100">
+            <h5>Learning from Science & the Universe</h5>
+            <p>I'm always learning — from physics, coding, or great thinkers of history. It's not just about work; it's about passion and purpose.</p>
+          </div>
         </div>
+      </div>
     </div>
+  </section>
 
-    <div class="shopping-cart">
-        <h2>Shopping Cart</h2>
-        <div id="cart-items"></div>
-        <div id="total-amount">Total: ₹0</div>
-        <button onclick="clearCart()">Clear Cart</button>
-        <button onclick="checkout()">Checkout</button>
+  <section id="quotes" class="section container">
+    <h2 class="text-center mb-5">Words That Inspire Me</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <blockquote>“Imagination is more important than knowledge.” – Albert Einstein</blockquote>
+        <blockquote>“If I have seen further it is by standing on the shoulders of Giants.” – Isaac Newton</blockquote>
+        <blockquote>“The first principle is that you must not fool yourself—and you are the easiest person to fool.” – Richard Feynman</blockquote>
+        <blockquote>“However difficult life may seem, there is always something you can do and succeed at.” – Stephen Hawking</blockquote>
+      </div>
+      <div class="col-md-6">
+        <blockquote>“Development does not come from money alone, but from ideas and leadership.” – Girija Prasad Koirala</blockquote>
+        <blockquote>“Politics is not a game, it's a serious responsibility.” – B.P. Koirala</blockquote>
+        <blockquote>“Science is a way to understand the world around us, and Nepal needs curious minds more than ever.” – Uday Raj Khanal</blockquote>
+        <blockquote>“Technology can lift rural communities. It is not a luxury, it is a tool for survival and progress.” – Mahabir Pun</blockquote>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy;PRASTAV KOIRALA. All rights reserved.</p>
-    </footer>
+  <footer class="footer">
+    <p>Built with heart and hope ~ WHILE THERE IS LIFE THERE IS HOPE</p>
+  </footer>
 
-    <script>
-        let cart = [];
-
-        function addToCart(itemName, price) {
-            let existingItem = cart.find(item => item.name === itemName);
-
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ name: itemName, price: price, quantity: 1 });
-            }
-
-            updateCart();
-        }
-
-        function updateCart() {
-            let cartContainer = document.getElementById("cart-items");
-            let totalAmount = 0;
-            cartContainer.innerHTML = ""; // Clear previous cart
-
-            cart.forEach((item, index) => {
-                totalAmount += item.price * item.quantity;
-                cartContainer.innerHTML += `
-                    <div class="cart-item">
-                        <span>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</span>
-                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-                    </div>
-                `;
-            });
-
-            document.getElementById("total-amount").innerText = `Total: ₹${totalAmount}`;
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCart();
-        }
-
-        function clearCart() {
-            cart = [];
-            updateCart();
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert("Your cart is empty!");
-            } else {
-                alert("Thank you for your purchase! Order placed successfully.");
-                clearCart();
-            }
-        }
-    </script>
 </body>
+
 </html>

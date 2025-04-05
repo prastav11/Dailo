@@ -94,6 +94,15 @@
     transform: translateY(0px);
   }
 }
+#gallery-draggable {
+  position: relative;
+  min-height: 600px; /* adjust based on your layout */
+}
+#gallery-draggable .img-fluid {
+  transition: transform 0.2s ease;
+  cursor: grab;
+  position: absolute; /* will be set via JS after load */
+}
 
 
   </style>
@@ -122,7 +131,7 @@
   <section id="gallery" class="section bg-light">
     <div class="container">
       <h2 class="text-center mb-5">Gallery</h2>
-      <div class="row g-4">
+      <div class="row g-4" id="gallery-draggable">
         <div class="col-md-3 col-6">
           <img src="prastav1.jpg" class="img-fluid rounded" alt="Prastav 1">
         </div>
@@ -136,18 +145,20 @@
           <img src="prastav4.jpeg" class="img-fluid rounded" alt="Prastav 4">
         </div>
         <div class="col-md-3 col-6">
-          <img src="prastav3.jpg" class="img-fluid rounded" alt="Prastav 4">
+          <img src="prastav3.jpg" class="img-fluid rounded" alt="Prastav 5">
         </div>
         <div class="col-md-3 col-6">
-          <img src="prastav7.jpg" class="img-fluid rounded" alt="Prastav 4">
+          <img src="prastav7.jpg" class="img-fluid rounded" alt="Prastav 6">
         </div>
         <div class="col-md-3 col-6">
-          <img src="prastav5.jpeg" class="img-fluid rounded" alt="Prastav 4">
+          <img src="prastav5.jpeg" class="img-fluid rounded" alt="Prastav 7">
         </div>
         <div class="col-md-3 col-6">
-          <img src="prastav6.jpg" class="img-fluid rounded" alt="Prastav 4">
+          <img src="prastav6.jpg" class="img-fluid rounded" alt="Prastav 8">
         </div>
       </div>
+    </div>
+    
     </div>
   </section>
   <section id="projects" class="section bg-light">
@@ -290,6 +301,115 @@
   <footer class="footer">
     <p>While There Is Life There Is Hope!  Built with heart and hope</p>
   </footer>
+  <script>
+  window.addEventListener("load", () => {
+    const images = document.querySelectorAll(".gallery-images img");
+    const container = document.querySelector(".gallery-images");
+
+    // Capture initial layout positions
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+
+      // Store initial position relative to container
+      const left = rect.left - containerRect.left;
+      const top = rect.top - containerRect.top;
+
+      // Set fixed width/height to prevent shrinkage when becoming absolute
+      img.style.width = rect.width + "px";
+      img.style.height = rect.height + "px";
+
+      // Set to absolute to allow dragging
+      img.style.position = "absolute";
+      img.style.left = left + "px";
+      img.style.top = top + "px";
+    });
+
+    // Enable dragging
+    images.forEach(img => {
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      img.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - img.offsetLeft;
+        offsetY = e.clientY - img.offsetTop;
+        img.style.zIndex = 1000;
+        img.style.cursor = "grabbing";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          img.style.left = (e.clientX - offsetX) + "px";
+          img.style.top = (e.clientY - offsetY) + "px";
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          img.style.zIndex = "";
+          img.style.cursor = "grab";
+        }
+      });
+    });
+  });
+</script>
+<script>
+  window.addEventListener("load", () => {
+    const container = document.getElementById("gallery-draggable");
+    const images = container.querySelectorAll("img");
+
+    // Step 1: Capture positions and convert to absolute
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+
+      const left = rect.left - containerRect.left + window.scrollX;
+      const top = rect.top - containerRect.top + window.scrollY;
+
+      // Set fixed width/height to avoid collapse
+      img.style.width = rect.width + "px";
+      img.style.height = rect.height + "px";
+
+      // Make draggable
+      img.style.position = "absolute";
+      img.style.left = left + "px";
+      img.style.top = top + "px";
+    });
+
+    // Step 2: Enable dragging
+    images.forEach(img => {
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      img.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        offsetX = e.clientX - img.offsetLeft;
+        offsetY = e.clientY - img.offsetTop;
+        img.style.zIndex = 1000;
+        img.style.cursor = "grabbing";
+      });
+
+      document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+          img.style.left = (e.clientX - offsetX) + "px";
+          img.style.top = (e.clientY - offsetY) + "px";
+        }
+      });
+
+      document.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          img.style.zIndex = "";
+          img.style.cursor = "grab";
+        }
+      });
+    });
+  });
+  
+</script>
+
 </body>
 
 </html>

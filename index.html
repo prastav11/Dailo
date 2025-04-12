@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,114 +12,133 @@
       font-family: 'Poppins', sans-serif;
       background: #fff8e1;
     }
-
     .hero {
       background: linear-gradient(120deg, #fdd835, #fbc02d);
       color: #212121;
       padding: 100px 20px;
       text-align: center;
     }
-
     .section {
       padding: 60px 20px;
     }
-
     .card {
       border: none;
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
-
     .footer {
       background-color: #f9a825;
       color: white;
       padding: 30px 0;
       text-align: center;
     }
-
     .btn-primary {
       background-color: #fbc02d;
       border: none;
       color: #212121;
     }
-
     @media (min-width: 1200px) {
       .container {
         max-width: 1140px;
       }
     }
-
     @media (min-width: 1400px) {
       .container {
         max-width: 1320px;
       }
     }
-
     @media (max-width: 767px) {
       .hero {
         padding: 60px 15px;
       }
-
       .section {
         padding: 40px 15px;
       }
-
       h1 {
         font-size: 2rem;
       }
-
       .lead {
         font-size: 1rem;
       }
     }
     .img-fluid.rounded {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  animation: float 4s ease-in-out infinite;
-  display: block;
-  margin: auto;
-}
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: float 4s ease-in-out infinite;
+      display: block;
+      margin: auto;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      margin-right: 30px;
+    }
 
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-.hero-logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  margin-right: 30px;
-}
+    /* Memory Game Styles */
+    .memory-game {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .memory-card {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      transform: scale(1);
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      cursor: pointer;
+    }
+    .memory-card.flip {
+      transform: rotateY(180deg);
+    }
+    .front-face,
+    .back-face {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 10px;
+      backface-visibility: hidden;
+      object-fit: cover;
+    }
+    .front-face {
+      transform: rotateY(180deg);
+    }
+    .back-face {
+      background-color: #fbc02d;
+      border: 2px solid #212121;
+    }
   </style>
 </head>
-
 <body>
   <section class="hero">
-    
-        <div class="col-md-9 text-center">
-          <h1>Prastav Koirala</h1>
-          <p class="lead">Dreamer | Curious Mind | Inspired by the Greats & The Greatest of Greats</p>
-          <a href="#about" class="btn btn-light mt-3">Know My Story</a>
-          <a href="#gallery" class="btn btn-light mt-3">Gallery</a>
-          <a href="#videos" class="btn btn-light mt-3">Videos</a>
-          <a href="#quotes" class="btn btn-light mt-3">Quotes</a>
-        </div>
-      </div>
+    <div class="col-md-9 text-center">
+      <h1>Prastav Koirala</h1>
+      <p class="lead">Dreamer | Curious Mind | Inspired by the Greats & The Greatest of Greats</p>
+      <a href="#about" class="btn btn-light mt-3">Know My Story</a>
+      <a href="#gallery" class="btn btn-light mt-3">Gallery</a>
+      <a href="#videos" class="btn btn-light mt-3">Videos</a>
+      <a href="#quotes" class="btn btn-light mt-3">Quotes</a>
     </div>
   </section>
-  
 
   <section id="about" class="section container">
     <div class="row align-items-center">
@@ -135,37 +153,79 @@
       </div>
     </div>
   </section>
+
   <section id="gallery" class="section bg-light">
     <div class="container">
       <h2 class="text-center mb-5">Gallery</h2>
-      <div class="row g-4">
-        <div class="col-md-3 col-6">
-          <img src="prastav1.jpg" class="img-fluid rounded" alt="Prastav 1">
+      <p class="text-center lead mb-5">Match the pairs of images to win the game!</p>
+      <div class="memory-game">
+        <!-- Duplicate each image to create pairs -->
+        <div class="memory-card" data-image="prastav1.jpg">
+          <img class="front-face" src="prastav1.jpg" alt="Prastav 1">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav2.jpeg" class="img-fluid rounded" alt="Prastav 2">
+        <div class="memory-card" data-image="prastav1.jpg">
+          <img class="front-face" src="prastav1.jpg" alt="Prastav 1">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav4.jpg" class="img-fluid rounded" alt="Prastav 3">
+
+        <div class="memory-card" data-image="prastav2.jpeg">
+          <img class="front-face" src="prastav2.jpeg" alt="Prastav 2">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav4.jpeg" class="img-fluid rounded" alt="Prastav 4">
+        <div class="memory-card" data-image="prastav2.jpeg">
+          <img class="front-face" src="prastav2.jpeg" alt="Prastav 2">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav3.jpg" class="img-fluid rounded" alt="Prastav 4">
+
+        <div class="memory-card" data-image="prastav3.jpg">
+          <img class="front-face" src="prastav3.jpg" alt="Prastav 3">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav7.jpg" class="img-fluid rounded" alt="Prastav 4">
+        <div class="memory-card" data-image="prastav3.jpg">
+          <img class="front-face" src="prastav3.jpg" alt="Prastav 3">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav5.jpeg" class="img-fluid rounded" alt="Prastav 4">
+
+        <div class="memory-card" data-image="prastav4.jpg">
+          <img class="front-face" src="prastav4.jpg" alt="Prastav 4">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
-        <div class="col-md-3 col-6">
-          <img src="prastav6.jpg" class="img-fluid rounded" alt="Prastav 4">
+        <div class="memory-card" data-image="prastav4.jpg">
+          <img class="front-face" src="prastav4.jpg" alt="Prastav 4">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+
+        <div class="memory-card" data-image="prastav5.jpeg">
+          <img class="front-face" src="prastav5.jpeg" alt="Prastav 5">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+        <div class="memory-card" data-image="prastav5.jpeg">
+          <img class="front-face" src="prastav5.jpeg" alt="Prastav 5">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+
+        <div class="memory-card" data-image="prastav6.jpg">
+          <img class="front-face" src="prastav6.jpg" alt="Prastav 6">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+        <div class="memory-card" data-image="prastav6.jpg">
+          <img class="front-face" src="prastav6.jpg" alt="Prastav 6">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+
+        <div class="memory-card" data-image="prastav7.jpg">
+          <img class="front-face" src="prastav7.jpg" alt="Prastav 7">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
+        </div>
+        <div class="memory-card" data-image="prastav7.jpg">
+          <img class="front-face" src="prastav7.jpg" alt="Prastav 7">
+          <img class="back-face" src="genius.jpg" alt="Card Back">
         </div>
       </div>
     </div>
   </section>
+
   <section id="projects" class="section bg-light">
     <div class="container">
       <h2 class="text-center mb-5">What I'm Building</h2>
@@ -231,6 +291,7 @@
       </div>
     </div>
   </section>
+
   <section id="quotes" class="section bg-light">
     <div class="container">
       <h2 class="text-center mb-5">Quotes That Inspire Me</h2>
@@ -302,6 +363,7 @@
       </div>
     </div>
   </section>
+
   <section id="contact" class="section text-center">
     <div class="container">
       <h2>Contact Me</h2>
@@ -309,12 +371,74 @@
       <a href="mailto:prastavkoirala@gmal.com" class="btn btn-primary">Email Me</a>
     </div>
   </section>
-  
 
   <footer class="footer">
-    <p>While There Is Life There Is Hope!  Built with heart and hope</p>
+    <p>While There Is Life There Is Hope! Built with heart and hope</p>
   </footer>
-  
-</body>
 
+  <script>
+    const cards = document.querySelectorAll('.memory-card');
+    let hasFlippedCard = false;
+    let lockBoard = false;
+    let firstCard, secondCard;
+
+    function flipCard() {
+      if (lockBoard) return;
+      if (this === firstCard) return;
+
+      this.classList.add('flip');
+
+      if (!hasFlippedCard) {
+        // First click
+        hasFlippedCard = true;
+        firstCard = this;
+        return;
+      }
+
+      // Second click
+      secondCard = this;
+
+      checkForMatch();
+    }
+
+    function checkForMatch() {
+      let isMatch = firstCard.dataset.image === secondCard.dataset.image;
+
+      isMatch ? disableCards() : unflipCards();
+    }
+
+    function disableCards() {
+      firstCard.removeEventListener('click', flipCard);
+      secondCard.removeEventListener('click', flipCard);
+
+      resetBoard();
+    }
+
+    function unflipCards() {
+      lockBoard = true;
+
+      setTimeout(() => {
+        firstCard.classList.remove('flip');
+        secondCard.classList.remove('flip');
+
+        resetBoard();
+      }, 1000);
+    }
+
+    function resetBoard() {
+      [hasFlippedCard, lockBoard] = [false, false];
+      [firstCard, secondCard] = [null, null];
+    }
+
+    // Shuffle cards on page load
+    (function shuffle() {
+      cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * cards.length);
+        card.style.order = randomPos;
+      });
+    })();
+
+    cards.forEach(card => card.addEventListener('click', flipCard));
+  </script>
+</body>
 </html>

@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #fbc02d;
-      --primary-dark: #e69b00;
+      --primary: #c62828; /* Vibrant red inspired by Nepali kumkum */
+      --primary-dark: #8e0000; /* Deep red for contrast */
       --secondary: #1a1a1a;
-      --light-bg: #fff9e6;
-      --dark-bg: #0d0d0d;
-      --text-light: #f7f7f7;
+      --light-bg: #fff5e1; /* Warm off-white inspired by traditional Nepali textiles */
+      --dark-bg: #121212;
+      --text-light: #f5f5f5;
       --text-dark: #1a1a1a;
-      --card-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-      --accent: #ff6f61;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      --accent: #f9a825; /* Gold inspired by Nepali jewelry and art */
     }
     
     body {
@@ -58,6 +58,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
+      border-bottom: 10px solid var(--accent);
     }
     
     .hero::before {
@@ -67,15 +68,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-      opacity: 0.5;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,20 A30,30 0 0,1 80,50 A30,30 0 0,1 50,80 A30,30 0 0,1 20,50 A30,30 0 0,1 50,20 Z" fill="none" stroke="%23f9a825" stroke-width="2" opacity="0.3"/></svg>') repeat;
+      opacity: 0.4;
     }
     
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 3.5rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
     
     .section-title {
@@ -95,34 +96,53 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
+      width: 120px;
+      height: 5px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 5"><path d="M0,2.5 L30,0 L60,2.5 L90,5 L120,2.5" fill="none" stroke="%23f9a825" stroke-width="2"/></svg>');
+      background-size: cover;
     }
     
     .product-card {
       border: none;
-      border-radius: 20px;
-      padding: 25px;
+      border-radius: 15px;
+      padding: 20px;
       margin-bottom: 30px;
       box-shadow: var(--card-shadow);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       background-color: white;
       overflow: hidden;
+      position: relative;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,10 L40,40 L10,40 Z" fill="none" stroke="%23f9a825" stroke-width="1" opacity="0.2"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+    
+    .product-card > * {
+      position: relative;
+      z-index: 1;
     }
     
     .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
     
     .product-card img {
       transition: transform 0.3s ease;
+      border-radius: 10px;
     }
     
     .product-card:hover img {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
     
     .old-price {
@@ -145,11 +165,12 @@
       width: 400px;
       height: 100%;
       background-color: white;
-      box-shadow: -5px 0 20px rgba(0,0,0,0.12);
+      box-shadow: -5px 0 25px rgba(0,0,0,0.15);
       padding: 30px;
       transition: right 0.4s ease;
       z-index: 1050;
       overflow-y: auto;
+      border-left: 5px solid var(--accent);
     }
     
     .cart-sidebar.open {
@@ -162,7 +183,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.7);
       z-index: 1040;
       display: none;
     }
@@ -178,53 +199,71 @@
     }
     
     .cart-item:hover {
-      background-color: rgba(0,0,0,0.02);
+      background-color: rgba(249, 168, 37, 0.05);
     }
     
     .theme-toggle {
       cursor: pointer;
       border: none;
       background: none;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       transition: transform 0.3s ease;
     }
     
     .theme-toggle:hover {
-      transform: scale(1.2);
+      transform: rotate(20deg);
     }
     
     .form-control {
-      border-radius: 10px;
+      border-radius: 12px;
       border: 2px solid var(--secondary);
       transition: all 0.3s ease;
     }
     
     .form-control:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.3);
+      box-shadow: 0 0 0 0.25rem rgba(249, 168, 37, 0.3);
     }
     
     .btn-primary {
       background: var(--accent);
       border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
+      border-radius: 30px;
+      padding: 12px 24px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
       background: var(--primary-dark);
     }
     
     .btn-success {
-      border-radius: 25px;
-      padding: 10px 20px;
+      border-radius: 30px;
+      padding: 12px 24px;
+      background: #2e7d32;
     }
     
     footer {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q50,20 80,50 Q50,80 20,50 Z" fill="none" stroke="%23f9a825" stroke-width="2" opacity="0.3"/></svg>') repeat;
+      opacity: 0.4;
+    }
+    
+    footer > * {
+      position: relative;
+      z-index: 1;
     }
     
     .toast {
@@ -234,7 +273,8 @@
       z-index: 1000;
       background: var(--secondary);
       color: var(--text-light);
-      border-left: 4px solid var(--accent);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
     }
     
     @media (max-width: 768px) {
@@ -433,7 +473,7 @@
           <h5>Classic Black Frame</h5>
           <p><span class="old-price">Rs. 2500</span> <span class="new-price">Rs. 1999</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Classic Black Frame', price: 1999 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Classic Black Frame', 1999)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Classic Black Frame', price: 1999 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -442,7 +482,7 @@
           <h5>Modern Square Frame</h5>
           <p><span class="old-price">Rs. 2800</span> <span class="new-price">Rs. 2200</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Modern Square Frame', price: 2200 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Modern Square Frame', 2200)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Modern Square Frame', price: 2200 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -451,7 +491,7 @@
           <h5>Aviator Sunglasses</h5>
           <p><span class="old-price">Rs. 3200</span> <span class="new-price">Rs. 2500</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Aviator Sunglasses', price: 2500 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Aviator Sunglasses', 2500)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Aviator Sunglasses', price: 2500 })">Buy Now</button>
         </div>
       </div>
     </div>
@@ -466,7 +506,7 @@
           <h5>Elegant Cat-Eye Frame</h5>
           <p><span class="old-price">Rs. 2700</span> <span class="new-price">Rs. 2100</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Elegant Cat-Eye Frame', price: 2100 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Elegant Cat-Eye Frame', 2100)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Elegant Cat-Eye Frame', price: 2100 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -475,7 +515,7 @@
           <h5>Round Vintage Frame</h5>
           <p><span class="old-price">Rs. 2300</span> <span class="new-price">Rs. 1800</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Round Vintage Frame', price: 1800 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Round Vintage Frame', 1800)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Round Vintage Frame', price: 1800 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -484,7 +524,7 @@
           <h5>Oversized Sunglasses</h5>
           <p><span class="old-price">Rs. 3000</span> <span class="new-price">Rs. 2400</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Oversized Sunglasses', price: 2400 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Oversized Sunglasses', 2400)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Oversized Sunglasses', price: 2400 })">Buy Now</button>
         </div>
       </div>
     </div>
@@ -499,7 +539,7 @@
           <h5>Colorful Kids Frame</h5>
           <p><span class="old-price">Rs. 1500</span> <span class="new-price">Rs. 999</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Colorful Kids Frame', price: 999 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Colorful Kids Frame', 999)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Colorful Kids Frame', price: 999 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -508,7 +548,7 @@
           <h5>Flexible Rubber Frame</h5>
           <p><span class="old-price">Rs. 1800</span> <span class="new-price">Rs. 1400</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Flexible Rubber Frame', price: 1400 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Flexible Rubber Frame', 1400)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Flexible Rubber Frame', price: 1400 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -517,7 +557,7 @@
           <h5>Sports Goggles</h5>
           <p><span class="old-price">Rs. 2200</span> <span class="new-price">Rs. 1800</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Sports Goggles', price: 1800 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Sports Goggles', 1800)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Sports Goggles', price: 1800 })">Buy Now</button>
         </div>
       </div>
     </div>
@@ -532,7 +572,7 @@
           <h5>Retro Round Frame</h5>
           <p><span class="old-price">Rs. 2000</span> <span class="new-price">Rs. 1500</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Retro Round Frame', price: 1500 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Retro Round Frame', 1500)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Retro Round Frame', price: 1500 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -541,7 +581,7 @@
           <h5>Wayfarer Sunglasses</h5>
           <p><span class="old-price">Rs. 2500</span> <span class="new-price">Rs. 2000</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Wayfarer Sunglasses', price: 2000 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Wayfarer Sunglasses', 2000)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Wayfarer Sunglasses', price: 2000 })">Buy Now</button>
         </div>
       </div>
       <div class="col-md-4">
@@ -550,7 +590,7 @@
           <h5>Rectangle Metal Frame</h5>
           <p><span class="old-price">Rs. 3000</span> <span class="new-price">Rs. 2400</span></p>
           <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Rectangle Metal Frame', price: 2400 })">Add to Cart</button>
-          <button class="btn btn-success btn-sm" onclick="buyNow('Rectangle Metal Frame', 2400)">Buy Now</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow({ name: 'Rectangle Metal Frame', price: 2400 })">Buy Now</button>
         </div>
       </div>
     </div>
@@ -585,7 +625,7 @@
 
   <footer class="py-4 text-white" style="background-color: var(--primary);">
     <div class="container text-center">
-      <p class="mb-0">© 2025 New Deep Optical. All rights reserved. | Made By Ease Prastav</p>
+      <p class="mb-0">© 2025 New Deep Optical. All rights reserved. | Made By Prastav</p>
     </div>
   </footer>
 
@@ -724,10 +764,12 @@
       }
     }
     
-    function buyNow(itemName, itemPrice) {
-      const phoneNumber = '9779812345678';
-      const message = encodeURIComponent(`Namaste New Deep Optical, ma yo item order garna chahanchu: ${itemName} - Rs.${itemPrice}`);
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    function buyNow(item) {
+      // Clear the cart and add the selected item
+      cart.length = 0;
+      cart.push(item);
+      updateCart();
+      toggleCart();
     }
     
     // Theme toggle

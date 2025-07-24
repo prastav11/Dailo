@@ -6,33 +6,36 @@
   <title>Nyayverse – Legal Consultation</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="logo1.png">
   <style>
     :root {
-      --primary-color: #fbc02d; /* Vibrant yellow */
-      --secondary-color: #212121; /* Deep charcoal */
-      --background-color: #fff8e1; /* Warm off-white */
-      --accent-color: #f9a825; /* Richer yellow */
-      --neutral-color: #ffffff; /* Clean white */
-      --nepal-red: #b91c1c; /* For subtle cultural accents */
+      --primary: #c62828; /* Vibrant red inspired by Nepali kumkum */
+      --primary-dark: #8e0000; /* Deep red for contrast */
+      --secondary: #1a1a1a;
+      --light-bg: #fff5e1; /* Warm off-white inspired by traditional Nepali textiles */
+      --dark-bg: #121212;
+      --text-light: #f5f5f5;
+      --text-dark: #1a1a1a;
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      --accent: #f9a825; /* Gold inspired by Nepali jewelry and art */
     }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--background-color);
-      color: var(--secondary-color);
+      background-color: var(--light-bg);
+      color: var(--text-dark);
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
 
     .nepali-font {
-      font-family: 'Noto Serif Devanagari', serif;
+      font-family: 'Playfair Display', serif;
     }
 
     /* Navbar */
     .navbar {
-      background: var(--primary-color);
+      background: var(--primary);
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
@@ -40,10 +43,10 @@
     }
 
     .navbar-brand {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
       font-size: 1.8rem;
-      color: var(--secondary-color);
+      color: var(--text-light);
       display: flex;
       align-items: center;
       transition: transform 0.3s ease;
@@ -54,13 +57,13 @@
     }
 
     .navbar-brand i {
-      color: var(--nepal-red);
+      color: var(--accent);
       margin-right: 8px;
     }
 
     .nav-link {
       font-weight: 600;
-      color: var(--secondary-color);
+      color: var(--text-light);
       position: relative;
       margin: 0 10px;
       transition: color 0.3s ease;
@@ -71,7 +74,7 @@
       position: absolute;
       width: 0;
       height: 2px;
-      background: var(--accent-color);
+      background: var(--accent);
       bottom: -5px;
       left: 0;
       transition: width 0.3s ease;
@@ -83,21 +86,36 @@
     }
 
     .nav-link:hover {
-      color: var(--accent-color);
+      color: var(--accent);
     }
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
-      color: var(--secondary-color);
-      padding: 100px 20px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 120px 20px;
       text-align: center;
       position: relative;
+      overflow: hidden;
+      border-bottom: 10px solid var(--accent);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M50,20 A30,30 0 0,1 80,50 A30,30 0 0,1 50,80 A30,30 0 0,1 20,50 A30,30 0 0,1 50,20 Z" fill="none" stroke="%23f9a825" stroke-width="2" opacity="0.3"/></svg>') repeat;
+      opacity: 0.4;
     }
 
     .hero h1 {
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
       font-size: 3.5rem;
+      color: var(--text-light);
+      text-shadow: 0 3px 6px rgba(0,0,0,0.15);
       margin-bottom: 20px;
       animation: float 4s ease-in-out infinite;
     }
@@ -107,36 +125,37 @@
       font-weight: 300;
       max-width: 700px;
       margin: 0 auto 30px;
+      color: var(--text-light);
     }
 
     .btn-primary {
-      background: var(--accent-color);
+      background: var(--accent);
       border: none;
-      color: var(--secondary-color);
+      color: var(--text-dark);
       font-weight: 600;
-      padding: 10px 25px;
+      padding: 12px 24px;
       border-radius: 30px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      background: var(--primary-color);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      background: var(--primary-dark);
     }
 
     .btn-outline-dark {
-      border-color: var(--secondary-color);
-      color: var(--secondary-color);
+      border-color: var(--secondary);
+      color: var(--text-dark);
       border-radius: 30px;
       font-weight: 600;
       transition: all 0.3s ease;
     }
 
     .btn-outline-dark:hover {
-      background: var(--accent-color);
-      color: var(--secondary-color);
-      border-color: var(--accent-color);
+      background: var(--accent);
+      color: var(--text-dark);
+      border-color: var(--accent);
     }
 
     /* Section Styling */
@@ -145,21 +164,26 @@
     }
 
     .section-title {
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      position: relative;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
       font-size: 2.5rem;
       text-align: center;
-      margin-bottom: 40px;
-      color: var(--secondary-color);
+      color: var(--text-dark);
     }
 
     .section-title::after {
       content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: var(--accent-color);
-      margin: 10px auto;
-      border-radius: 4px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 5"><path d="M0,2.5 L30,0 L60,2.5 L90,5 L120,2.5" fill="none" stroke="%23f9a825" stroke-width="2"/></svg>');
+      background-size: cover;
     }
 
     /* Services Card */
@@ -167,21 +191,40 @@
       border: none;
       border-radius: 15px;
       padding: 30px;
-      background: var(--neutral-color);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: white;
+      box-shadow: var(--card-shadow);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,10 L40,40 L10,40 Z" fill="none" stroke="%23f9a825" stroke-width="1" opacity="0.2"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .services-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .services-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
     .services-card i {
       font-size: 2.5rem;
-      color: var(--nepal-red);
+      color: var(--primary);
       margin-bottom: 20px;
       transition: transform 0.3s ease;
     }
@@ -192,21 +235,39 @@
 
     .services-card h5 {
       font-weight: 600;
-      color: var(--secondary-color);
+      color: var(--text-dark);
     }
 
     /* Footer */
     footer {
-      background: var(--accent-color);
-      color: var(--secondary-color);
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--text-light);
       padding: 30px 0;
       text-align: center;
       font-weight: 300;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,50 Q50,20 80,50 Q50,80 20,50 Z" fill="none" stroke="%23f9a825" stroke-width="2" opacity="0.3"/></svg>') repeat;
+      opacity: 0.4;
+    }
+
+    footer > * {
+      position: relative;
+      z-index: 1;
     }
 
     .footer-links h5 {
       font-weight: 600;
       margin-bottom: 20px;
+      color: var(--text-light);
     }
 
     .footer-links ul {
@@ -219,17 +280,17 @@
     }
 
     .footer-links a {
-      color: var(--secondary-color);
+      color: var(--text-light);
       text-decoration: none;
       transition: color 0.3s ease;
     }
 
     .footer-links a:hover {
-      color: var(--primary-color);
+      color: var(--accent);
     }
 
     .social-icons a {
-      color: var(--secondary-color);
+      color: var(--text-light);
       font-size: 1.2rem;
       margin-right: 15px;
       transition: transform 0.3s ease;
@@ -244,16 +305,35 @@
       border: none;
       border-radius: 15px;
       padding: 20px;
-      background: var(--neutral-color);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: white;
+      box-shadow: var(--card-shadow);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lawyer-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,10 L40,40 L10,40 Z" fill="none" stroke="%23f9a825" stroke-width="1" opacity="0.2"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .lawyer-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .lawyer-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     }
 
     .lawyer-img {
@@ -262,17 +342,17 @@
       border-radius: 50%;
       object-fit: cover;
       margin: 0 auto 15px;
-      border: 3px solid var(--accent-color);
+      border: 3px solid var(--accent);
       animation: float 4s ease-in-out infinite;
     }
 
     .lawyer-card h5 {
       font-weight: 600;
-      color: var(--secondary-color);
+      color: var(--text-dark);
     }
 
     .lawyer-card .specialty {
-      color: var(--nepal-red);
+      color: var(--primary);
       font-weight: 500;
       font-size: 0.9rem;
     }
@@ -282,9 +362,28 @@
       border: none;
       border-radius: 15px;
       padding: 20px;
-      background: var(--neutral-color);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      background: white;
+      box-shadow: var(--card-shadow);
       margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M25,10 L40,40 L10,40 Z" fill="none" stroke="%23f9a825" stroke-width="1" opacity="0.2"/></svg>') repeat;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .testimonial-card > * {
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial-img {
@@ -292,23 +391,23 @@
       height: 60px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--accent-color);
+      border: 2px solid var(--accent);
       animation: float 4s ease-in-out infinite;
     }
 
     /* Accordion */
     .accordion-button:not(.collapsed) {
-      background: var(--primary-color);
-      color: var(--secondary-color);
+      background: var(--primary);
+      color: var(--text-light);
     }
 
     .accordion-button:focus {
       box-shadow: none;
-      border-color: var(--accent-color);
+      border-color: var(--accent);
     }
 
     .accordion-button:not(.collapsed)::after {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212121'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f5f5f5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
     }
 
     /* Toast */
@@ -317,27 +416,28 @@
       bottom: 20px;
       right: 20px;
       z-index: 1000;
-      background: var(--secondary-color);
-      color: var(--neutral-color);
-      border-left: 4px solid var(--accent-color);
+      background: var(--secondary);
+      color: var(--text-light);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
     }
 
     /* Lawyer Navigation */
     .lawyer-nav-btn {
       border: none;
-      background: var(--neutral-color);
+      background: white;
       padding: 8px 20px;
       margin: 5px;
       border-radius: 20px;
       font-weight: 600;
-      color: var(--secondary-color);
+      color: var(--text-dark);
       transition: all 0.3s ease;
     }
 
     .lawyer-nav-btn:hover,
     .lawyer-nav-btn.active {
-      background: var(--accent-color);
-      color: var(--secondary-color);
+      background: var(--accent);
+      color: var(--text-dark);
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -354,16 +454,16 @@
     /* Form Styling */
     .form-control,
     .form-select {
-      border-radius: 10px;
-      border: 2px solid var(--secondary-color);
+      border-radius: 12px;
+      border: 2px solid var(--secondary);
       font-weight: 300;
       transition: all 0.3s ease;
     }
 
     .form-control:focus,
     .form-select:focus {
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 0.2rem rgba(249, 168, 37, 0.3);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.25rem rgba(249, 168, 37, 0.3);
     }
 
     /* Animations */
@@ -393,7 +493,7 @@
 
     @media (max-width: 767px) {
       .hero {
-        padding: 60px 15px;
+        padding: 80px 15px;
       }
 
       .hero h1 {
@@ -424,7 +524,7 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container">
     <a class="navbar-brand" href="#">
       <i class="fas fa-balance-scale me-2"></i>Nyayverse
@@ -448,7 +548,7 @@
 
 <!-- Hero Section -->
 <section class="hero text-center">
-  <div class="container">
+  <div class="container position-relative">
     <h1>Your Trusted Legal Partner <span class="nepali-font">(तपाईंको विश्वसनीय कानूनी साथी)</span></h1>
     <p class="lead">Connecting you with Nepal's top legal professionals for all your legal needs</p>
     <a href="#lawyers" class="btn btn-primary btn-lg mt-3 me-2">
@@ -1069,14 +1169,14 @@
         </ul>
       </div>
     </div>
-    <hr class="my-4" style="border-color: rgba(0,0,0,0.1);">
+    <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
     <div class="row">
       <div class="col-md-6 text-center text-md-start">
         <p class="mb-0">© 2025 Nyayverse. All rights reserved.</p>
       </div>
       <div class="col-md-6 text-center text-md-end">
-        <a href="#" class="text-dark me-3">Privacy Policy</a>
-        <a href="#" class="text-dark">Terms of Service</a>
+        <a href="#" class="text-light me-3">Privacy Policy</a>
+        <a href="#" class="text-light">Terms of Service</a>
       </div>
     </div>
   </div>

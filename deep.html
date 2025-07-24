@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeepOptical - Premium Eyewear in Nepal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #fbc02d;
+      --primary-dark: #e69b00;
+      --secondary: #1a1a1a;
+      --light-bg: #fff9e6;
+      --dark-bg: #0d0d0d;
+      --text-light: #f7f7f7;
+      --text-dark: #1a1a1a;
+      --card-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      --accent: #ff6f61;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      transition: all 0.4s ease-in-out;
+    }
+    
+    body.dark-theme {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+    
+    .dark-theme .navbar,
+    .dark-theme footer {
+      background-color: var(--secondary) !important;
+    }
+    
+    .dark-theme .card,
+    .dark-theme .product-card,
+    .dark-theme .cart-sidebar {
+      background-color: #1e1e1e;
+      color: var(--text-light);
+    }
+    
+    .dark-theme .section-title {
+      color: var(--text-light);
+    }
+    
+    .dark-theme .bg-light {
+      background-color: #1e1e1e !important;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      opacity: 0.5;
+    }
+    
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 3.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      position: relative;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      font-size: 2.5rem;
+      text-align: center;
+      color: var(--text-dark);
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    .product-card {
+      border: none;
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background-color: white;
+      overflow: hidden;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+    
+    .product-card img {
+      transition: transform 0.3s ease;
+    }
+    
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .old-price {
+      text-decoration: line-through;
+      color: #6c757d;
+      margin-right: 12px;
+      font-size: 0.9rem;
+    }
+    
+    .new-price {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 20px rgba(0,0,0,0.12);
+      padding: 30px;
+      transition: right 0.4s ease;
+      z-index: 1050;
+      overflow-y: auto;
+    }
+    
+    .cart-sidebar.open {
+      right: 0;
+    }
+    
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 1040;
+      display: none;
+    }
+    
+    .cart-overlay.show {
+      display: block;
+    }
+    
+    .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    .cart-item:hover {
+      background-color: rgba(0,0,0,0.02);
+    }
+    
+    .theme-toggle {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 1.6rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.2);
+    }
+    
+    .form-control {
+      border-radius: 10px;
+      border: 2px solid var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.2rem rgba(255, 111, 97, 0.3);
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      background: var(--primary-dark);
+    }
+    
+    .btn-success {
+      border-radius: 25px;
+      padding: 10px 20px;
+    }
+    
+    footer {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--secondary);
+      color: var(--text-light);
+      border-left: 4px solid var(--accent);
+    }
+    
+    @media (max-width: 768px) {
+      .cart-sidebar {
+        width: 100%;
+      }
+      
+      .hero {
+        padding: 80px 0;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--primary);">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">DeepOptical</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#men">Men</a></li>
+              <li><a class="dropdown-item" href="#women">Women</a></li>
+              <li><a class="dropdown-item" href="#kids">Kids</a></li>
+              <li><a class="dropdown-item" href="#unisex">Unisex</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <button class="theme-toggle me-3" onclick="toggleTheme()">
+            <span id="themeIcon">🌙</span>
+          </button>
+          <button class="btn btn-light position-relative" onclick="toggleCart()">
+            🛒 Cart
+            <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero text-white">
+    <div class="container position-relative">
+      <h1 class="display-4 fw-bold mb-4">Premium Eyewear in Nepal</h1>
+      <p class="lead mb-5">Discover stylish glasses and sunglasses for every occasion</p>
+      <a href="#men" class="btn btn-primary btn-lg px-4 me-2">Shop Now</a>
+      <a href="#services" class="btn btn-outline-light btn-lg px-4">Our Services</a>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="" class="img-fluid rounded shadow-lg" alt="Optical Shop">
+      </div>
+      <div class="col-lg-6">
+        <h2 class="section-title">About DeepOptical</h2>
+        <p>Welcome to DeepOptical, your premier destination for high-quality eyewear in Nepal. With over 10 years of experience, we provide the latest trends in glasses and sunglasses combined with expert optical services.</p>
+        <p>Our mission is to help you see better and look your best with our carefully curated collection of frames from top international and local brands.</p>
+        <div class="row mt-4">
+          <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+              </div>
+              <div>
+                <h5 class="mb-0">Expert Advice</h5>
+                <small>Professional fitting and styling</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                </svg>
+              </div>
+              <div>
+                <h5 class="mb-0">Quality Assurance</h5>
+                <small>Premium materials and craftsmanship</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg>
+              </div>
+              <div>
+                <h5 class="mb-0">Fast Service</h5>
+                <small>Same-day repairs available</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="d-flex align-items-center">
+              <div class="me-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                </svg>
+              </div>
+              <div>
+                <h5 class="mb-0">Support</h5>
+                <small>24/7 After-sales service</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Our Services</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                </svg>
+              </div>
+              <h4>Eye Examination</h4>
+              <p>Comprehensive eye tests using state-of-the-art equipment to determine your precise prescription needs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm-3.5-5.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V10.5z"/>
+                </svg>
+              </div>
+              <h4>Lens Replacement</h4>
+              <p>High-quality lens replacement with various options including anti-glare, blue light filter, and transitions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="var(--primary)" viewBox="0 0 16 16">
+                  <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                </svg>
+              </div>
+              <h4>Frame Repair</h4>
+              <p>Expert frame repairs and adjustments to extend the life of your favorite glasses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5" id="men">
+    <h2 class="section-title">Men's Eyewear</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Men's Frame">
+          <h5>Classic Black Frame</h5>
+          <p><span class="old-price">Rs. 2500</span> <span class="new-price">Rs. 1999</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Classic Black Frame', price: 1999 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Classic Black Frame', 1999)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Men's Frame">
+          <h5>Modern Square Frame</h5>
+          <p><span class="old-price">Rs. 2800</span> <span class="new-price">Rs. 2200</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Modern Square Frame', price: 2200 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Modern Square Frame', 2200)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Men's Frame">
+          <h5>Aviator Sunglasses</h5>
+          <p><span class="old-price">Rs. 3200</span> <span class="new-price">Rs. 2500</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Aviator Sunglasses', price: 2500 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Aviator Sunglasses', 2500)">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5" id="women">
+    <h2 class="section-title">Women's Eyewear</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Women's Frame">
+          <h5>Elegant Cat-Eye Frame</h5>
+          <p><span class="old-price">Rs. 2700</span> <span class="new-price">Rs. 2100</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Elegant Cat-Eye Frame', price: 2100 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Elegant Cat-Eye Frame', 2100)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Women's Frame">
+          <h5>Round Vintage Frame</h5>
+          <p><span class="old-price">Rs. 2300</span> <span class="new-price">Rs. 1800</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Round Vintage Frame', price: 1800 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Round Vintage Frame', 1800)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Women's Frame">
+          <h5>Oversized Sunglasses</h5>
+          <p><span class="old-price">Rs. 3000</span> <span class="new-price">Rs. 2400</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Oversized Sunglasses', price: 2400 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Oversized Sunglasses', 2400)">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5" id="kids">
+    <h2 class="section-title">Kids' Eyewear</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Kids Frame">
+          <h5>Colorful Kids Frame</h5>
+          <p><span class="old-price">Rs. 1500</span> <span class="new-price">Rs. 999</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Colorful Kids Frame', price: 999 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Colorful Kids Frame', 999)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Kids Frame">
+          <h5>Flexible Rubber Frame</h5>
+          <p><span class="old-price">Rs. 1800</span> <span class="new-price">Rs. 1400</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Flexible Rubber Frame', price: 1400 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Flexible Rubber Frame', 1400)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Kids Frame">
+          <h5>Sports Goggles</h5>
+          <p><span class="old-price">Rs. 2200</span> <span class="new-price">Rs. 1800</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Sports Goggles', price: 1800 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Sports Goggles', 1800)">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container py-5" id="unisex">
+    <h2 class="section-title">Unisex Eyewear</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Unisex Frame">
+          <h5>Retro Round Frame</h5>
+          <p><span class="old-price">Rs. 2000</span> <span class="new-price">Rs. 1500</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Retro Round Frame', price: 1500 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Retro Round Frame', 1500)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Unisex Frame">
+          <h5>Wayfarer Sunglasses</h5>
+          <p><span class="old-price">Rs. 2500</span> <span class="new-price">Rs. 2000</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Wayfarer Sunglasses', price: 2000 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Wayfarer Sunglasses', 2000)">Buy Now</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="" class="img-fluid rounded mb-3" alt="Unisex Frame">
+          <h5>Rectangle Metal Frame</h5>
+          <p><span class="old-price">Rs. 3000</span> <span class="new-price">Rs. 2400</span></p>
+          <button class="btn btn-primary btn-sm" onclick="addToCart({ name: 'Rectangle Metal Frame', price: 2400 })">Add to Cart</button>
+          <button class="btn btn-success btn-sm" onclick="buyNow('Rectangle Metal Frame', 2400)">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4">Visit Our Store</h4>
+              <p><strong>Address:</strong> Kathmandu, Nepal</p>
+              <p><strong>Phone:</strong> +977-9812345678</p>
+              <p><strong>Email:</strong> deepopticalchitwan@gmail.com</p>
+              <p><strong>Hours:</strong> 10:00 AM - 7:00 PM (Sun-Fri)</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm">
+            <div class="card-body">
+              <h4 class="mb-4">Send Us a Message</h4>
+              <a href="mailto:deepopticalchitwan@gmail.com" class="btn btn-primary">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 text-white" style="background-color: var(--primary);">
+    <div class="container text-center">
+      <p class="mb-0">© 2025 DeepOpticals. All rights reserved. | Made By Ease Prastav</p>
+    </div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h4>Your Cart</h4>
+      <button class="btn btn-sm btn-outline-danger" onclick="toggleCart()">×</button>
+    </div>
+    <div id="cartItems">
+      <p class="text-center">Your cart is empty</p>
+    </div>
+    <div class="mt-3 pt-3 border-top">
+      <h5 class="mb-0">Total: <span id="cartTotal">Rs. 0</span></h5>
+    </div>
+    <div class="mt-4">
+      <form id="checkoutForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="fcbcbeae-63b8-4c56-a1a2-a2021cdacf6d">
+        <input type="hidden" name="subject" value="New Order from DeepOptical">
+        <input type="hidden" name="from_name" value="DeepOptical">
+        <input type="hidden" name="recipient_email" value="deepopticalchitwan@gmail.com">
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <input type="hidden" name="cart_items" id="cartItemsInput">
+        
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name *</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address *</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number *</label>
+          <input type="tel" class="form-control" id="phone" name="phone" required>
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Delivery Address *</label>
+          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" id="successToast">
+    <div class="d-flex">
+      <div class="toast-body">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+        </svg>
+        <span id="toastMessage">Thank You for Ordering!</span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <div class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" id="cartToast">
+    <div class="d-flex">
+      <div class="toast-body">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle me-2" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+        </svg>
+        <span id="cartToastMessage">Item added to cart!</span>
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Cart functionality
+    const cart = [];
+    let cartOpen = false;
+    
+    function toggleCart() {
+      cartOpen = !cartOpen;
+      document.getElementById('cartSidebar').classList.toggle('open');
+      document.getElementById('cartOverlay').classList.toggle('show');
+    }
+    
+    function addToCart(item) {
+      cart.push(item);
+      updateCart();
+      const cartToastMessage = document.getElementById('cartToastMessage');
+      cartToastMessage.textContent = `Item ${item.name} added to cart!`;
+      const cartToast = new bootstrap.Toast(document.getElementById('cartToast'));
+      cartToast.show();
+    }
+    
+    function updateCart() {
+      const cartItemsEl = document.getElementById('cartItems');
+      const cartCountEl = document.getElementById('cartCount');
+      const cartTotalEl = document.getElementById('cartTotal');
+      const cartItemsInput = document.getElementById('cartItemsInput');
+      
+      let totalAmount = 0;
+
+      if (cart.length === 0) {
+        cartItemsEl.innerHTML = '<p class="text-center">Your cart is empty</p>';
+        cartCountEl.textContent = '0';
+        cartTotalEl.textContent = 'Rs. 0';
+        cartItemsInput.value = '';
+        return;
+      }
+      
+      cartCountEl.textContent = cart.length;
+      
+      let html = '';
+      let itemsText = '';
+      cart.forEach(item => {
+        html += `
+          <div class="cart-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <span>${item.name} - Rs.${item.price}</span>
+              <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart('${item.name}', ${item.price})">×</button>
+            </div>
+          </div>
+        `;
+        itemsText += `${item.name} - Rs.${item.price}\n`;
+        totalAmount += item.price;
+      });
+      
+      cartItemsEl.innerHTML = html;
+      cartTotalEl.textContent = `Rs. ${totalAmount}`;
+      cartItemsInput.value = itemsText + `Total: Rs.${totalAmount}`;
+    }
+    
+    function removeFromCart(itemName, itemPrice) {
+      const index = cart.findIndex(item => item.name === itemName && item.price === itemPrice);
+      if (index > -1) {
+        cart.splice(index, 1);
+        updateCart();
+      }
+    }
+    
+    function buyNow(itemName, itemPrice) {
+      const phoneNumber = '9779812345678';
+      const message = encodeURIComponent(`Namaste DeepOptical, ma yo item order garna chahanchu: ${itemName} - Rs.${itemPrice}`);
+      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    }
+    
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const themeIcon = document.getElementById('themeIcon');
+      themeIcon.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+    }
+    
+    // Close cart when clicking overlay
+    document.getElementById('cartOverlay').addEventListener('click', toggleCart);
+    
+    // Initialize Toasts
+    const successToast = new bootstrap.Toast(document.getElementById('successToast'));
+    const cartToast = new bootstrap.Toast(document.getElementById('cartToast'));
+    
+    // Form Submission Handling
+    document.getElementById('checkoutForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (cart.length === 0) {
+        const cartToastMessage = document.getElementById('cartToastMessage');
+        cartToastMessage.textContent = 'Your cart is empty!';
+        const cartToast = new bootstrap.Toast(document.getElementById('cartToast'));
+        cartToast.show();
+        return;
+      }
+      
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        const result = await response.json();
+        if (result.success) {
+          successToast.show();
+          cart.length = 0;
+          updateCart();
+          toggleCart();
+          form.reset();
+        } else {
+          const cartToastMessage = document.getElementById('cartToastMessage');
+          cartToastMessage.textContent = 'Error submitting order. Please try again.';
+          const cartToast = new bootstrap.Toast(document.getElementById('cartToast'));
+          cartToast.show();
+        }
+      } catch (error) {
+        const cartToastMessage = document.getElementById('cartToastMessage');
+        cartToastMessage.textContent = 'Error submitting order. Please try again.';
+        const cartToast = new bootstrap.Toast(document.getElementById('cartToast'));
+        cartToast.show();
+      }
+    });
+  </script>
+</body>
+</html>

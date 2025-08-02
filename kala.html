@@ -234,6 +234,19 @@
       transform: scale(1.1);
     }
 
+    .services-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .services-card:hover img {
+      transform: scale(1.1);
+    }
+
     .services-card h5 {
       font-weight: 600;
       color: var(--text-dark);
@@ -452,6 +465,16 @@
       animation: fadeIn 0.5s ease;
     }
 
+    /* Art Services Section */
+    .art-services-section {
+      display: none;
+    }
+
+    .art-services-section.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
     /* Form Styling */
     .form-control,
     .form-select {
@@ -628,7 +651,7 @@ We look forward to launching soon.</strong>
           <li><strong>Enter Your Details</strong><br>
             Provide your full name, email address, and contact number in the form.</li>
           <li><strong>Choose Your Preferred Artist or Service, Date, and Time</strong><br>
-            - Select a specific artist or choose “No Preference” if you’re open to any available artist.<br>
+            - Select a specific artist or choose “No preference” if you’re open to any available artist.<br>
             - Pick a convenient date and time for your collaboration.</li>
           <li><strong>Write a Specific Message</strong><br>
             Briefly explain your creative needs (e.g., “I need a voiceover for my advertisement” or “I want to book a studio for song recording”).</li>
@@ -842,7 +865,7 @@ We look forward to launching soon.</strong>
         </div>
         <div class="col-md-4 col-lg-3" data-categories="video">
           <div class="artist-card">
-            <img src="prastav2.jpeg" alt="Artist 10" class="artist-img">
+            <img src="https://ui-avatars.com/api/?name=Artist+10&background=1e40af&color=fff" alt="Artist 10" class="artist-img">
             <h5>Prastav Koirala</h5>
             <p class="specialty">Video Editor</p>
             <p>Specialized in video editing and post-production for films and ads.</p>
@@ -963,7 +986,7 @@ We look forward to launching soon.</strong>
         <div class="col-md-4 col-lg-3">
           <div class="artist-card">
             <img src="https://ui-avatars.com/api/?name=Artist+10&background=1e40af&color=fff" alt="Artist 10" class="artist-img">
-            <h5>Artist 10</h5>
+            <h5>Prastav Koirala</h5>
             <p class="specialty">Video Editor</p>
             <p>Specialized in video editing and post-production for films and ads.</p>
             <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 10">Book Now</button>
@@ -974,6 +997,111 @@ We look forward to launching soon.</strong>
     
     <div class="text-center mt-4">
       <a href="#contact" class="btn btn-outline-dark">Hire Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Our Art Services -->
+<section id="art-services" class="section bg-light">
+  <div class="container">
+    <h2 class="text-center section-title">Our Art Services <span class="nepali-font">(हाम्रा कला सेवाहरू)</span></h2>
+    <p class="text-center mb-5">Discover the vibrant art creations by our talented artists</p>
+    <div class="row justify-content-center">
+      <div class="col-md-4 col-lg-3">
+        <div class="artist-card">
+          <img src="https://ui-avatars.com/api/?name=Aditi+Jha&background=9333ea&color=fff" alt="Aditi Jha" class="artist-img">
+          <h5>Aditi Jha</h5>
+          <p class="specialty">Visual Artist</p>
+          <p>Specialized in Acrylic, Watercolor, and Digital Art creations.</p>
+          <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="aditi-services">View Her Services</button>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <div class="artist-card">
+          <img src="https://ui-avatars.com/api/?name=Artist+1&background=10b981&color=fff" alt="Artist 1" class="artist-img">
+          <h5>Artist 1</h5>
+          <p class="specialty">Visual Artist</p>
+          <p>Expert in Oil Painting and Mixed Media artworks.</p>
+          <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="artist1-services">View Services</button>
+        </div>
+      </div>
+      <div class="col-md-4 col-lg-3">
+        <div class="artist-card">
+          <img src="https://ui-avatars.com/api/?name=Artist+2&background=3b82f6&color=fff" alt="Artist 2" class="artist-img">
+          <h5>Artist 2</h5>
+          <p class="specialty">Visual Artist</p>
+          <p>Specialized in Charcoal Sketches and Digital Illustrations.</p>
+          <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="artist2-services">View Services</button>
+        </div>
+      </div>
+    </div>
+    <div class="art-services-section" id="aditi-services">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image1.jpg" alt="Acrylic Painting">
+            <h5>Acrylic Painting</h5>
+            <p>Vivid and expressive acrylic artworks for personal or commercial projects.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image2.jpg" alt="Watercolor Painting">
+            <h5>Watercolor Painting</h5>
+            <p>Delicate and vibrant watercolor pieces inspired by Nepali culture and nature.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image3.jpg" alt="Digital Art">
+            <h5>Digital Art</h5>
+            <p>Modern digital illustrations for branding, media, and personal use.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="art-services-section" id="artist1-services">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image1.jpg" alt="Oil Painting">
+            <h5>Oil Painting</h5>
+            <p>Rich and textured oil paintings for galleries or personal collections.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image2.jpg" alt="Mixed Media">
+            <h5>Mixed Media</h5>
+            <p>Innovative artworks combining various materials and techniques.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="art-services-section" id="artist2-services">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image1.jpg" alt="Charcoal Sketches">
+            <h5>Charcoal Sketches</h5>
+            <p>Detailed and expressive charcoal drawings for various projects.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services-card">
+            <img src="image2.jpg" alt="Digital Illustrations">
+            <h5>Digital Illustrations</h5>
+            <p>Creative digital illustrations for media and commercial use.</p>
+            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1171,6 +1299,13 @@ We look forward to launching soon.</strong>
               <option value="Video Services">Video Services</option>
               <option value="Studio Recording Services">Studio Recording Services</option>
               <option value="Studio Booking">Studio Booking</option>
+              <option value="Acrylic Painting">Acrylic Painting</option>
+              <option value="Watercolor Painting">Watercolor Painting</option>
+              <option value="Digital Art">Digital Art</option>
+              <option value="Oil Painting">Oil Painting</option>
+              <option value="Mixed Media">Mixed Media</option>
+              <option value="Charcoal Sketches">Charcoal Sketches</option>
+              <option value="Digital Illustrations">Digital Illustrations</option>
               <option value="Other">Other Creative Service</option>
             </select>
           </div>
@@ -1187,6 +1322,9 @@ We look forward to launching soon.</strong>
               <option value="Artist 5">Artist 5 - Instrumentalist</option>
               <option value="Artist 7">Artist 7 - Cinematographer</option>
               <option value="Artist 10">Artist 10 - Video Editor</option>
+              <option value="Aditi Jha">Aditi Jha - Visual Artist</option>
+              <option value="Artist 1">Artist 1 - Visual Artist</option>
+              <option value="Artist 2">Artist 2 - Visual Artist</option>
             </select>
           </div>
           <div class="mb-3">
@@ -1352,6 +1490,35 @@ We look forward to launching soon.</strong>
       document.getElementById('contact').scrollIntoView({
         behavior: 'smooth'
       });
+    });
+  });
+
+  // View Services Button Functionality
+  const viewServicesButtons = document.querySelectorAll('.view-services-btn');
+  const artServicesSections = document.querySelectorAll('.art-services-section');
+  
+  viewServicesButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const targetSection = document.getElementById(targetId);
+      
+      // Toggle visibility of the target section
+      if (targetSection.classList.contains('active')) {
+        targetSection.classList.remove('active');
+        this.textContent = 'View Services';
+      } else {
+        // Hide all sections and remove active class
+        artServicesSections.forEach(section => {
+          section.classList.remove('active');
+        });
+        viewServicesButtons.forEach(btn => {
+          btn.textContent = 'View Services';
+        });
+        
+        // Show the target section
+        targetSection.classList.add('active');
+        this.textContent = 'Hide Services';
+      }
     });
   });
 

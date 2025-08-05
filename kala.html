@@ -468,6 +468,7 @@
     /* Art Services Section */
     .art-services-section {
       display: none;
+      margin-top: 20px;
     }
 
     .art-services-section.active {
@@ -782,22 +783,57 @@ We look forward to launching soon.</strong>
     <!-- All Artists -->
     <div class="artist-section active" id="all-artists">
       <div class="row">
-        <div class="col-md-4 col-lg-3" data-categories="music">
+        <div class="col-md-4 col-lg-3" data-categories="music,script,voiceover">
           <div class="artist-card">
             <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
             <h5>Mandira Dhungel</h5>
-            <p class="specialty">Music Composer</p>
-            <p>12+ years composing for films and Nepali folk music.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+            <p class="specialty">Voiceover Artist</p>
+            <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+            <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
           </div>
-        </div>
-        <div class="col-md-4 col-lg-3" data-categories="script">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Script Writer</p>
-            <p>Specialized in scripts for films and short-form content.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+          <div class="art-services-section" id="mandira-services">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Composition</h5>
+                  <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-pen-fancy"></i>
+                  <h5>Script Writing</h5>
+                  <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-microphone"></i>
+                  <h5>Voiceover Services</h5>
+                  <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-edit"></i>
+                  <h5>Lyric Writing</h5>
+                  <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Production</h5>
+                  <p>Professional music production and arrangement for modern and traditional music.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-lg-3" data-categories="cinematography">
@@ -809,15 +845,6 @@ We look forward to launching soon.</strong>
             <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 3">Book Now</button>
           </div>
         </div>
-        <div class="col-md-4 col-lg-3" data-categories="voiceover">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Voiceover Artist</p>
-            <p>Provides voiceovers for ads, animations, and audiobooks.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
-          </div>
-        </div>
         <div class="col-md-4 col-lg-3" data-categories="music">
           <div class="artist-card">
             <img src="https://ui-avatars.com/api/?name=Artist+5&background=dc2626&color=fff" alt="Artist 5" class="artist-img">
@@ -825,15 +852,6 @@ We look forward to launching soon.</strong>
             <p class="specialty">Instrumentalist</p>
             <p>Specialized in traditional Nepali instruments like tabla.</p>
             <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 5">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-3" data-categories="script">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Lyricist</p>
-            <p>Expert in writing lyrics for songs and jingles.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
           </div>
         </div>
         <div class="col-md-4 col-lg-3" data-categories="cinematography">
@@ -845,31 +863,22 @@ We look forward to launching soon.</strong>
             <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 7">Book Now</button>
           </div>
         </div>
-        <div class="col-md-4 col-lg-3" data-categories="voiceover">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Voiceover Artist</p>
-            <p>Expert in multilingual voiceovers for animations.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-3" data-categories="music">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Music Arranger</p>
-            <p>Creates arrangements for modern and traditional music.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
-          </div>
-        </div>
         <div class="col-md-4 col-lg-3" data-categories="video">
           <div class="artist-card">
-            <img src="prastav2.jpeg" alt="Artist 10" class="artist-img">
+            <img src="prastav2.jpeg" alt="Prastav Koirala" class="artist-img">
             <h5>Prastav Koirala</h5>
             <p class="specialty">Video Editor</p>
             <p>Specialized in video editing and post-production for films and ads.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 10">Book Now</button>
+            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3" data-categories="voiceover">
+          <div class="artist-card">
+            <img src="shas.jpg" alt="Shashanka Ghimire" class="artist-img">
+            <h5>Shashanka Ghimire</h5>
+            <p class="specialty">Voiceover Artist</p>
+            <p>3 years of experience providing voiceovers for YouTube videos.</p>
+            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
           </div>
         </div>
       </div>
@@ -882,9 +891,53 @@ We look forward to launching soon.</strong>
           <div class="artist-card">
             <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
             <h5>Mandira Dhungel</h5>
-            <p class="specialty">Music Composer</p>
-            <p>12+ years composing for films and Nepali folk music.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+            <p class="specialty">Creative Head</p>
+            <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+            <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+          </div>
+          <div class="art-services-section" id="mandira-services">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Composition</h5>
+                  <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-pen-fancy"></i>
+                  <h5>Script Writing</h5>
+                  <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-microphone"></i>
+                  <h5>Voiceover Services</h5>
+                  <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-edit"></i>
+                  <h5>Lyric Writing</h5>
+                  <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Production</h5>
+                  <p>Professional music production and arrangement for modern and traditional music.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-lg-3">
@@ -894,15 +947,6 @@ We look forward to launching soon.</strong>
             <p class="specialty">Instrumentalist</p>
             <p>Specialized in traditional Nepali instruments like tabla.</p>
             <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 5">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-3">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Music Arranger</p>
-            <p>Creates arrangements for modern and traditional music.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
           </div>
         </div>
       </div>
@@ -915,18 +959,53 @@ We look forward to launching soon.</strong>
           <div class="artist-card">
             <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
             <h5>Mandira Dhungel</h5>
-            <p class="specialty">Script Writer</p>
-            <p>Specialized in scripts for films and short-form content.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+            <p class="specialty">Creative Head</p>
+            <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+            <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
           </div>
-        </div>
-        <div class="col-md-4 col-lg-3">
-          <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
-            <p class="specialty">Lyricist</p>
-            <p>Expert in writing lyrics for songs and jingles.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+          <div class="art-services-section" id="mandira-services">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Composition</h5>
+                  <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-pen-fancy"></i>
+                  <h5>Script Writing</h5>
+                  <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-microphone"></i>
+                  <h5>Voiceover Services</h5>
+                  <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-edit"></i>
+                  <h5>Lyric Writing</h5>
+                  <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Production</h5>
+                  <p>Professional music production and arrangement for modern and traditional music.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -963,18 +1042,62 @@ We look forward to launching soon.</strong>
           <div class="artist-card">
             <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
             <h5>Mandira Dhungel</h5>
-            <p class="specialty">Voiceover Artist</p>
-            <p>Provides voiceovers for ads, animations, and audiobooks.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+            <p class="specialty">Creative Head</p>
+            <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+            <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+          </div>
+          <div class="art-services-section" id="mandira-services">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Composition</h5>
+                  <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-pen-fancy"></i>
+                  <h5>Script Writing</h5>
+                  <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-microphone"></i>
+                  <h5>Voiceover Services</h5>
+                  <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-edit"></i>
+                  <h5>Lyric Writing</h5>
+                  <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="services-card">
+                  <i class="fas fa-music"></i>
+                  <h5>Music Production</h5>
+                  <p>Professional music production and arrangement for modern and traditional music.</p>
+                  <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-4 col-lg-3">
           <div class="artist-card">
-            <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
-            <h5>Mandira Dhungel</h5>
+            <img src="https://ui-avatars.com/api/?name=Shashanka+Ghimire&background=1e40af&color=fff" alt="Shashanka Ghimire" class="artist-img">
+            <h5>Shashanka Ghimire</h5>
             <p class="specialty">Voiceover Artist</p>
-            <p>Expert in multilingual voiceovers for animations.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Mandira Dhungel">Book Now</button>
+            <p>3 years of experience providing voiceovers for YouTube videos.</p>
+            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
           </div>
         </div>
       </div>
@@ -985,11 +1108,11 @@ We look forward to launching soon.</strong>
       <div class="row">
         <div class="col-md-4 col-lg-3">
           <div class="artist-card">
-            <img src="https://ui-avatars.com/api/?name=Artist+10&background=1e40af&color=fff" alt="Artist 10" class="artist-img">
+            <img src="prastav2.jpeg" alt="Prastav Koirala" class="artist-img">
             <h5>Prastav Koirala</h5>
             <p class="specialty">Video Editor</p>
             <p>Specialized in video editing and post-production for films and ads.</p>
-            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 10">Book Now</button>
+            <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
           </div>
         </div>
       </div>
@@ -1015,6 +1138,34 @@ We look forward to launching soon.</strong>
           <p>Specialized in Acrylic, Watercolor, and Digital Art creations.</p>
           <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="aditi-services">View Her Services</button>
         </div>
+        <div class="art-services-section" id="aditi-services">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image1.jpg" alt="Acrylic Painting">
+                <h5>Acrylic Painting</h5>
+                <p>Vivid and expressive acrylic artworks for personal or commercial projects.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image2.jpg" alt="Watercolor Painting">
+                <h5>Watercolor Painting</h5>
+                <p>Delicate and vibrant watercolor pieces inspired by Nepali culture and nature.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image3.jpg" alt="Digital Art">
+                <h5>Digital Art</h5>
+                <p>Modern digital illustrations for branding, media, and personal use.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-4 col-lg-3">
         <div class="artist-card">
@@ -1023,6 +1174,26 @@ We look forward to launching soon.</strong>
           <p class="specialty">Visual Artist</p>
           <p>Expert in Oil Painting and Mixed Media artworks.</p>
           <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="artist1-services">View Services</button>
+        </div>
+        <div class="art-services-section" id="artist1-services">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image1.jpg" alt="Oil Painting">
+                <h5>Oil Painting</h5>
+                <p>Rich and textured oil paintings for galleries or personal collections.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image2.jpg" alt="Mixed Media">
+                <h5>Mixed Media</h5>
+                <p>Innovative artworks combining various materials and techniques.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-4 col-lg-3">
@@ -1033,72 +1204,24 @@ We look forward to launching soon.</strong>
           <p>Specialized in Charcoal Sketches and Digital Illustrations.</p>
           <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="artist2-services">View Services</button>
         </div>
-      </div>
-    </div>
-    <div class="art-services-section" id="aditi-services">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image1.jpg" alt="Acrylic Painting">
-            <h5>Acrylic Painting</h5>
-            <p>Vivid and expressive acrylic artworks for personal or commercial projects.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image2.jpg" alt="Watercolor Painting">
-            <h5>Watercolor Painting</h5>
-            <p>Delicate and vibrant watercolor pieces inspired by Nepali culture and nature.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image3.jpg" alt="Digital Art">
-            <h5>Digital Art</h5>
-            <p>Modern digital illustrations for branding, media, and personal use.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="art-services-section" id="artist1-services">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image1.jpg" alt="Oil Painting">
-            <h5>Oil Painting</h5>
-            <p>Rich and textured oil paintings for galleries or personal collections.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image2.jpg" alt="Mixed Media">
-            <h5>Mixed Media</h5>
-            <p>Innovative artworks combining various materials and techniques.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 1">Book Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="art-services-section" id="artist2-services">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image1.jpg" alt="Charcoal Sketches">
-            <h5>Charcoal Sketches</h5>
-            <p>Detailed and expressive charcoal drawings for various projects.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="services-card">
-            <img src="image2.jpg" alt="Digital Illustrations">
-            <h5>Digital Illustrations</h5>
-            <p>Creative digital illustrations for media and commercial use.</p>
-            <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
+        <div class="art-services-section" id="artist2-services">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image1.jpg" alt="Charcoal Sketches">
+                <h5>Charcoal Sketches</h5>
+                <p>Detailed and expressive charcoal drawings for various projects.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="services-card">
+                <img src="image2.jpg" alt="Digital Illustrations">
+                <h5>Digital Illustrations</h5>
+                <p>Creative digital illustrations for media and commercial use.</p>
+                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1306,6 +1429,7 @@ We look forward to launching soon.</strong>
               <option value="Mixed Media">Mixed Media</option>
               <option value="Charcoal Sketches">Charcoal Sketches</option>
               <option value="Digital Illustrations">Digital Illustrations</option>
+              <option value="Music Production">Music Production</option>
               <option value="Other">Other Creative Service</option>
             </select>
           </div>
@@ -1313,15 +1437,12 @@ We look forward to launching soon.</strong>
             <label for="artist" class="form-label">Preferred Artist (Optional)</label>
             <select class="form-select" id="artist" name="artist">
               <option value="">No preference</option>
-              <option value="Mandira Dhungel">Mandira Dhungel - Music Composer</option>
-              <option value="Mandira Dhungel">Mandira Dhungel - Script Writer</option>
-              <option value="Mandira Dhungel">Mandira Dhungel - Voiceover Artist</option>
-              <option value="Mandira Dhungel">Mandira Dhungel - Lyricist</option>
-              <option value="Mandira Dhungel">Mandira Dhungel - Music Arranger</option>
+              <option value="Mandira Dhungel">Mandira Dhungel - Creative Head</option>
               <option value="Artist 3">Artist 3 - Cinematographer</option>
               <option value="Artist 5">Artist 5 - Instrumentalist</option>
               <option value="Artist 7">Artist 7 - Cinematographer</option>
-              <option value="Artist 10">Artist 10 - Video Editor</option>
+              <option value="Prastav Koirala">Prastav Koirala - Video Editor</option>
+              <option value="Shashanka Ghimire">Shashanka Ghimire - Voiceover Artist</option>
               <option value="Aditi Jha">Aditi Jha - Visual Artist</option>
               <option value="Artist 1">Artist 1 - Visual Artist</option>
               <option value="Artist 2">Artist 2 - Visual Artist</option>
@@ -1485,46 +1606,28 @@ We look forward to launching soon.</strong>
       const artistName = this.getAttribute('data-artist');
       window.location.hash = '#contact';
       artistSelect.value = artistName;
-      
-      // Smooth scroll to contact section
-      document.getElementById('contact').scrollIntoView({
-        behavior: 'smooth'
-      });
     });
   });
 
   // View Services Button Functionality
   const viewServicesButtons = document.querySelectorAll('.view-services-btn');
-  const artServicesSections = document.querySelectorAll('.art-services-section');
   
   viewServicesButtons.forEach(button => {
     button.addEventListener('click', function() {
       const targetId = this.getAttribute('data-target');
-      const targetSection = document.getElementById(targetId);
+      const servicesSection = document.getElementById(targetId);
       
-      // Toggle visibility of the target section
-      if (targetSection.classList.contains('active')) {
-        targetSection.classList.remove('active');
-        this.textContent = 'View Services';
-      } else {
-        // Hide all sections and remove active class
-        artServicesSections.forEach(section => {
+      // Close all other services sections
+      document.querySelectorAll('.art-services-section').forEach(section => {
+        if (section !== servicesSection) {
           section.classList.remove('active');
-        });
-        viewServicesButtons.forEach(btn => {
-          btn.textContent = 'View Services';
-        });
-        
-        // Show the target section
-        targetSection.classList.add('active');
-        this.textContent = 'Hide Services';
-      }
+        }
+      });
+      
+      // Toggle the clicked services section
+      servicesSection.classList.toggle('active');
     });
   });
-
-  // Set minimum date for booking (today)
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('bookingDate').setAttribute('min', today);
 </script>
 </body>
 </html>

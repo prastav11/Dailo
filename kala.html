@@ -1,723 +1,843 @@
 <!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
 <html lang="en">
+<!-- Sets the document language to English -->
 <head>
+  <!-- Contains metadata and links to external resources -->
   <meta charset="UTF-8" />
+  <!-- Specifies the character encoding as UTF-8 for proper text rendering -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Ensures responsive design by setting viewport width to device width and initial zoom to 1 -->
   <title>Kalaverse – Creative Services</title>
+  <!-- Sets the page title displayed in the browser tab -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Links to Bootstrap 5.3.3 CSS for styling and layout -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <!-- Links to Font Awesome 6.4.0 for icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Imports Montserrat and Playfair Display fonts from Google Fonts for typography -->
   <link rel="icon" type="image/png" href="logo2.png">
+  <!-- Sets the favicon (browser tab icon) to logo2.png -->
   <style>
+    /* Defines CSS styles for the webpage */
     :root {
-      --primary: #ff9e00;
-      --primary-dark: #6a4dcc;
-      --secondary: #1a1a1a;
-      --dark-bg: #121212;
-      --darker-bg: #0a0a0a;
-      --card-bg: #1e1e1e;
-      --text-light: #f5f5f5;
-      --text-muted: #e0e0e0;
-      --text-dark: #1a1a1a;
-      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      --accent: #ff9e00;
-      --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      /* Defines CSS custom properties (variables) for consistent theming */
+      --primary: #ff9e00; /* Primary color (orange) for buttons and accents */
+      --primary-dark: #6a4dcc; /* Darker primary color (purple) for hover effects */
+      --secondary: #1a1a1a; /* Secondary dark color for backgrounds */
+      --dark-bg: #121212; /* Dark background color for the body */
+      --darker-bg: #0a0a0a; /* Darker background for footer */
+      --card-bg: #1e1e1e; /* Background color for cards */
+      --text-light: #f5f5f5; /* Light text color for readability on dark backgrounds */
+      --text-muted: #e0e0e0; /* Muted text color for secondary text */
+      --text-dark: #1a1a1a; /* Dark text color for light backgrounds */
+      --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Shadow effect for cards */
+      --accent: #ff9e00; /* Accent color (same as primary) for emphasis */
+      --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* Gradient for backgrounds */
     }
 
     body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-light);
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      position: relative;
+      /* Styles the body element */
+      font-family: 'Montserrat', sans-serif; /* Sets default font to Montserrat */
+      background-color: var(--dark-bg); /* Sets dark background color */
+      color: var(--text-light); /* Sets light text color for contrast */
+      scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+      overflow-x: hidden; /* Prevents horizontal scrolling */
+      position: relative; /* Allows positioning of absolute elements like stars */
     }
 
     .nepali-font {
-      font-family: 'Playfair Display', serif;
+      /* Styles text with Nepali font */
+      font-family: 'Playfair Display', serif; /* Uses Playfair Display for Nepali text */
     }
 
     /* Twinkling Stars */
     .star {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 2s infinite alternate;
-      z-index: 1;
+      /* Styles for twinkling star effect */
+      position: absolute; /* Positions stars absolutely on the page */
+      width: 3px; /* Sets star width */
+      height: 3px; /* Sets star height */
+      background: #fff; /* Sets star color to white */
+      border-radius: 50%; /* Makes stars circular */
+      animation: twinkle 2s infinite alternate; /* Applies twinkling animation */
+      z-index: 1; /* Places stars behind other content */
     }
 
     .star1 {
-      top: 20%;
-      left: 15%;
+      /* Positions first star */
+      top: 20%; /* Places star 20% from the top */
+      left: 15%; /* Places star 15% from the left */
     }
 
     .star2 {
-      top: 60%;
-      right: 10%;
+      /* Positions second star */
+      top: 60%; /* Places star 60% from the top */
+      right: 10%; /* Places star 10% from the right */
     }
 
     /* Shooting Star */
     .shooting-star {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #fff;
-      border-radius: 50%;
-      animation: shoot 3s infinite;
-      z-index: 1;
+      /* Styles for shooting star effect */
+      position: absolute; /* Positions star absolutely */
+      width: 4px; /* Sets star width */
+      height: 4px; /* Sets star height */
+      background: #fff; /* Sets star color to white */
+      border-radius: 50%; /* Makes star circular */
+      animation: shoot 3s infinite; /* Applies shooting animation */
+      z-index: 1; /* Places star behind other content */
     }
 
     @keyframes twinkle {
-      0% { opacity: 0.2; }
-      100% { opacity: 1; }
+      /* Defines twinkling animation for stars */
+      0% { opacity: 0.2; } /* Starts with low opacity */
+      100% { opacity: 1; } /* Ends with full opacity */
     }
 
     @keyframes shoot {
+      /* Defines shooting star animation */
       0% {
-        transform: translateX(100vw) translateY(0);
-        opacity: 1;
+        transform: translateX(100vw) translateY(0); /* Starts off-screen to the right */
+        opacity: 1; /* Fully visible */
       }
       50% {
-        opacity: 0.8;
+        opacity: 0.8; /* Slightly fades */
       }
       100% {
-        transform: translateX(-100vw) translateY(100vh);
-        opacity: 0;
+        transform: translateX(-100vw) translateY(100vh); /* Moves to bottom-left off-screen */
+        opacity: 0; /* Fades out */
       }
     }
 
     /* Navbar */
     .navbar {
-      background: rgba(18, 18, 18, 0.9);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      /* Styles the navigation bar */
+      background: rgba(18, 18, 18, 0.9); /* Semi-transparent dark background */
+      backdrop-filter: blur(10px); /* Adds blur effect for modern look */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
+      position: sticky; /* Keeps navbar fixed at the top */
+      top: 0; /* Aligns navbar to the top */
+      z-index: 1000; /* Ensures navbar stays above other content */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Adds subtle bottom border */
     }
 
     .navbar-brand {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--text-light);
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      letter-spacing: 1px;
+      /* Styles the navbar brand (logo/text) */
+      font-family: 'Playfair Display', serif; /* Uses elegant font for brand */
+      font-weight: 700; /* Makes text bold */
+      font-size: 1.8rem; /* Sets font size */
+      color: var(--text-light); /* Light text color */
+      display: flex; /* Aligns icon and text horizontally */
+      align-items: center; /* Centers items vertically */
+      transition: all 0.3s ease; /* Smooth transition for hover effects */
+      letter-spacing: 1px; /* Adds spacing between letters */
     }
 
     .navbar-brand:hover {
-      color: var(--primary);
+      /* Hover effect for navbar brand */
+      color: var(--primary); /* Changes color to primary on hover */
     }
 
     .navbar-brand i {
-      color: var(--accent);
-      margin-right: 8px;
-      animation: pulse 2s ease-in-out infinite;
+      /* Styles the icon in navbar brand */
+      color: var(--accent); /* Sets icon color to accent */
+      margin-right: 8px; /* Adds space between icon and text */
+      animation: pulse 2s ease-in-out infinite; /* Applies pulsing animation */
     }
 
     .nav-link {
-      font-weight: 500;
-      color: var(--text-light);
-      position: relative;
-      margin: 0 10px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
+      /* Styles navigation links */
+      font-weight: 500; /* Medium font weight */
+      color: var(--text-light); /* Light text color */
+      position: relative; /* Allows positioning of pseudo-elements */
+      margin: 0 10px; /* Adds horizontal spacing between links */
+      transition: all 0.3s ease; /* Smooth transition for hover effects */
+      letter-spacing: 0.5px; /* Slight letter spacing for readability */
     }
 
     .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s ease;
+      /* Creates underline effect for nav links */
+      content: ''; /* Empty content for pseudo-element */
+      position: absolute; /* Positions underline below link */
+      width: 0; /* Starts with zero width */
+      height: 2px; /* Sets underline thickness */
+      background: var(--primary); /* Uses primary color for underline */
+      bottom: -5px; /* Positions below text */
+      left: 0; /* Aligns to the left */
+      transition: width 0.3s ease; /* Smoothly animates width */
     }
 
     .nav-link:hover::after,
     .nav-link.active::after {
-      width: 100%;
+      /* Expands underline on hover or active state */
+      width: 100%; /* Full width for underline */
     }
 
     .nav-link:hover {
-      color: var(--primary);
+      /* Hover effect for nav links */
+      color: var(--primary); /* Changes text color to primary */
     }
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('back.jpg') no-repeat center center/cover;
-      padding: 150px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(255, 158, 0, 0.3);
+      /* Styles the hero section */
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('back.jpg') no-repeat center center/cover; /* Dark overlay with background image */
+      padding: 150px 20px; /* Adds padding for content */
+      text-align: center; /* Centers text */
+      position: relative; /* Allows positioning of child elements */
+      overflow: hidden; /* Prevents content overflow */
+      border-bottom: 1px solid rgba(255, 158, 0, 0.3); /* Subtle bottom border */
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: 3.5rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
-      animation: float 4s ease-in-out infinite;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      /* Styles hero section heading */
+      font-family: 'Playfair Display', serif; /* Elegant font */
+      font-weight: 700; /* Bold text */
+      font-size: 3.5rem; /* Large font size */
+      color: var(--text-light); /* Light text color */
+      margin-bottom: 20px; /* Space below heading */
+      animation: float 4s ease-in-out infinite; /* Floating animation */
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Adds shadow for depth */
     }
 
     .hero .lead {
-      font-size: 1.2rem;
-      font-weight: 300;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      color: var(--text-muted);
+      /* Styles hero section subheading */
+      font-size: 1.2rem; /* Moderate font size */
+      font-weight: 300; /* Light font weight */
+      max-width: 700px; /* Limits width for readability */
+      margin: 0 auto 30px; /* Centers and adds spacing */
+      color: var(--text-muted); /* Muted text color */
     }
 
     .btn-primary {
-      background: var(--primary);
-      border: none;
-      color: var(--text-light);
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 30px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
+      /* Styles primary buttons */
+      background: var(--primary); /* Primary color background */
+      border: none; /* Removes border */
+      color: var(--text-light); /* Light text color */
+      font-weight: 600; /* Bold text */
+      padding: 12px 24px; /* Padding for size */
+      border-radius: 30px; /* Rounded corners */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      letter-spacing: 0.5px; /* Slight letter spacing */
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(142, 108, 255, 0.3);
-      background: var(--primary-dark);
+      /* Hover effect for primary buttons */
+      transform: translateY(-3px); /* Slight lift effect */
+      box-shadow: 0 10px 20px rgba(142, 108, 255, 0.3); /* Adds shadow */
+      background: var(--primary-dark); /* Darker background on hover */
     }
 
     .btn-outline-light {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--text-light);
-      border-radius: 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+      /* Styles outline buttons */
+      border-color: rgba(255, 255, 255, 0.2); /* Light transparent border */
+      color: var(--text-light); /* Light text color */
+      border-radius: 30px; /* Rounded corners */
+      font-weight: 600; /* Bold text */
+      transition: all 0.3s ease; /* Smooth transition for hover */
     }
 
     .btn-outline-light:hover {
-      background: var(--primary);
-      color: var(--text-light);
-      border-color: var(--primary);
+      /* Hover effect for outline buttons */
+      background: var(--primary); /* Primary color background */
+      color: var(--text-light); /* Light text color */
+      border-color: var(--primary); /* Primary color border */
     }
 
     .btn-outline-dark {
-      border-color: rgba(255, 255, 255, 0.3);
-      color: var(--text-light);
-      transition: all 0.3s ease;
+      /* Styles dark outline buttons */
+      border-color: rgba(255, 255, 255, 0.3); /* Light transparent border */
+      color: var(--text-light); /* Light text color */
+      transition: all 0.3s ease; /* Smooth transition for hover */
     }
 
     .btn-outline-dark:hover {
-      background: var(--primary);
-      color: var(--text-light);
-      border-color: var(--primary);
+      /* Hover effect for dark outline buttons */
+      background: var(--primary); /* Primary color background */
+      color: var(--text-light); /* Light text color */
+      border-color: var(--primary); /* Primary color border */
     }
 
     .section {
-      padding: 80px 20px;
+      /* Styles all sections */
+      padding: 80px 20px; /* Adds padding for content */
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      position: relative;
-      margin-bottom: 50px;
-      padding-bottom: 20px;
-      font-size: 2.5rem;
-      text-align: center;
-      color: var(--text-light);
+      /* Styles section titles */
+      font-family: 'Playfair Display', serif; /* Elegant font */
+      font-weight: 700; /* Bold text */
+      position: relative; /* Allows positioning of pseudo-elements */
+      margin-bottom: 50px; /* Space below title */
+      padding-bottom: 20px; /* Space for underline */
+      font-size: 2.5rem; /* Large font size */
+      text-align: center; /* Centers text */
+      color: var(--text-light); /* Light text color */
     }
 
     .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
+      /* Creates underline for section titles */
+      content: ''; /* Empty content for pseudo-element */
+      position: absolute; /* Positions below title */
+      bottom: 0; /* Aligns to bottom */
+      left: 50%; /* Centers horizontally */
+      transform: translateX(-50%); /* Adjusts for centering */
+      width: 80px; /* Underline width */
+      height: 4px; /* Underline thickness */
+      background: var(--primary); /* Primary color underline */
+      border-radius: 2px; /* Slightly rounded edges */
     }
 
     .services-card {
-      border: none;
-      border-radius: 12px;
-      padding: 20px;
-      background: var(--card-bg);
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: all 0.4s ease;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      min-height: 350px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      /* Styles service cards */
+      border: none; /* Removes default border */
+      border-radius: 12px; /* Rounded corners */
+      padding: 20px; /* Internal padding */
+      background: var(--card-bg); /* Card background color */
+      box-shadow: var(--card-shadow); /* Adds shadow for depth */
+      text-align: center; /* Centers content */
+      transition: all 0.4s ease; /* Smooth transition for hover */
+      margin-bottom: 20px; /* Space below card */
+      position: relative; /* Allows positioning of child elements */
+      overflow: hidden; /* Prevents content overflow */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+      min-height: 350px; /* Minimum height for consistency */
+      display: flex; /* Enables flexbox layout */
+      flex-direction: column; /* Stacks content vertically */
+      justify-content: space-between; /* Distributes content evenly */
     }
 
     .services-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      border-color: rgba(142, 108, 255, 0.3);
+      /* Hover effect for service cards */
+      transform: translateY(-10px); /* Lifts card */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4); /* Stronger shadow */
+      border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
     }
 
     .services-card i {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-      transition: all 0.3s ease;
-      animation: bounce 2s ease-in-out infinite;
+      /* Styles icons in service cards */
+      font-size: 2.5rem; /* Large icon size */
+      color: var(--primary); /* Primary color */
+      margin-bottom: 20px; /* Space below icon */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      animation: bounce 2s ease-in-out infinite; /* Bouncing animation */
     }
 
     .services-card:hover i {
-      transform: scale(1.1);
-      color: var(--accent);
+      /* Hover effect for service card icons */
+      transform: scale(1.1); /* Slightly enlarges icon */
+      color: var(--accent); /* Changes to accent color */
     }
 
     .services-card h5 {
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 15px;
+      /* Styles service card headings */
+      font-weight: 600; /* Bold text */
+      color: var(--text-light); /* Light text color */
+      margin-bottom: 15px; /* Space below heading */
     }
 
     .services-card p {
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-bottom: 20px;
+      /* Styles service card paragraphs */
+      color: var(--text-muted); /* Muted text color */
+      font-weight: 300; /* Light font weight */
+      margin-bottom: 20px; /* Space below paragraph */
     }
 
     .services-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      /* Styles images in service cards */
+      width: 100%; /* Full width */
+      height: 150px; /* Fixed height */
+      object-fit: cover; /* Ensures image covers area without distortion */
+      border-radius: 8px; /* Rounded corners */
+      margin-bottom: 15px; /* Space below image */
     }
 
     footer {
-      background: var(--darker-bg);
-      color: var(--text-light);
-      padding: 50px 0 20px;
-      text-align: center;
-      font-weight: 300;
-      position: relative;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      /* Styles the footer */
+      background: var(--darker-bg); /* Darker background */
+      color: var(--text-light); /* Light text color */
+      padding: 50px 0 20px; /* Padding for content */
+      text-align: center; /* Centers content */
+      font-weight: 300; /* Light font weight */
+      position: relative; /* Allows positioning of child elements */
+      border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top border */
     }
 
     .footer-links h5 {
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: var(--text-light);
-      letter-spacing: 1px;
+      /* Styles footer link headings */
+      font-weight: 600; /* Bold text */
+      margin-bottom: 20px; /* Space below heading */
+      color: var(--text-light); /* Light text color */
+      letter-spacing: 1px; /* Slight letter spacing */
     }
 
     .footer-links ul {
-      list-style: none;
-      padding-left: 0;
+      /* Styles footer link lists */
+      list-style: none; /* Removes default bullets */
+      padding-left: 0; /* Removes default padding */
     }
 
     .footer-links li {
-      margin-bottom: 10px;
+      /* Styles footer list items */
+      margin-bottom: 10px; /* Space below each item */
     }
 
     .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-weight: 300;
+      /* Styles footer links */
+      color: var(--text-muted); /* Muted text color */
+      text-decoration: none; /* Removes underline */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      font-weight: 300; /* Light font weight */
     }
 
     .footer-links a:hover {
-      color: var(--primary);
-      padding-left: 5px;
+      /* Hover effect for footer links */
+      color: var(--primary); /* Primary color */
+      padding-left: 5px; /* Slight shift for effect */
     }
 
     .social-icons a {
-      color: var(--text-muted);
-      font-size: 1.2rem;
-      margin-right: 15px;
-      transition: all 0.3s ease;
+      /* Styles social media icons */
+      color: var(--text-muted); /* Muted color */
+      font-size: 1.2rem; /* Moderate size */
+      margin-right: 15px; /* Space between icons */
+      transition: all 0.3s ease; /* Smooth transition for hover */
     }
 
     .social-icons a:hover {
-      color: var(--primary);
-      transform: translateY(-3px);
+      /* Hover effect for social icons */
+      color: var(--primary); /* Primary color */
+      transform: translateY(-3px); /* Slight lift effect */
     }
 
     .artist-card {
-      border: none;
-      border-radius: 12px;
-      padding: 25px;
-      background: var(--card-bg);
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: all 0.4s ease;
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      /* Styles artist cards */
+      border: none; /* Removes default border */
+      border-radius: 12px; /* Rounded corners */
+      padding: 25px; /* Internal padding */
+      background: var(--card-bg); /* Card background */
+      box-shadow: var(--card-shadow); /* Adds shadow */
+      text-align: center; /* Centers content */
+      transition: all 0.4s ease; /* Smooth transition for hover */
+      margin-bottom: 20px; /* Space below card */
+      position: relative; /* Allows positioning of child elements */
+      overflow: hidden; /* Prevents content overflow */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+      min-height: 400px; /* Minimum height for consistency */
+      display: flex; /* Enables flexbox layout */
+      flex-direction: column; /* Stacks content vertically */
+      justify-content: space-between; /* Distributes content evenly */
     }
 
     .artist-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-      border-color: rgba(142, 108, 255, 0.3);
+      /* Hover effect for artist cards */
+      transform: translateY(-10px); /* Lifts card */
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4); /* Stronger shadow */
+      border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
     }
 
     .artist-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin: 0 auto 15px;
-      border: 3px solid var(--primary);
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      /* Styles artist profile images */
+      width: 120px; /* Fixed width */
+      height: 120px; /* Fixed height */
+      border-radius: 50%; /* Circular shape */
+      object-fit: cover; /* Ensures image covers area */
+      margin: 0 auto 15px; /* Centers and adds space below */
+      border: 3px solid var(--primary); /* Primary color border */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds shadow */
     }
 
     .artist-card:hover .artist-img {
-      border-color: var(--accent);
-      transform: scale(1.05);
+      /* Hover effect for artist images */
+      border-color: var(--accent); /* Changes border to accent color */
+      transform: scale(1.05); /* Slightly enlarges image */
     }
 
     .artist-card h5 {
-      font-weight: 600;
-      color: var(--text-light);
-      margin-bottom: 5px;
+      /* Styles artist card headings */
+      font-weight: 600; /* Bold text */
+      color: var(--text-light); /* Light text color */
+      margin-bottom: 5px; /* Minimal space below */
     }
 
     .artist-card .specialty {
-      color: var(--primary);
-      font-weight: 500;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-      display: block;
+      /* Styles artist specialty text */
+      color: var(--primary); /* Primary color */
+      font-weight: 500; /* Medium font weight */
+      font-size: 0.9rem; /* Smaller font size */
+      margin-bottom: 15px; /* Space below */
+      display: block; /* Ensures block-level display */
     }
 
     .artist-card p {
-      color: var(--text-muted);
-      font-weight: 300;
-      font-size: 0.9rem;
+      /* Styles artist card paragraphs */
+      color: var(--text-muted); /* Muted text color */
+      font-weight: 300; /* Light font weight */
+      font-size: 0.9rem; /* Smaller font size */
     }
 
     .testimonial-card {
-      border: none;
-      border-radius: 12px;
-      padding: 25px;
-      background: var(--card-bg);
-      box-shadow: var(--card-shadow);
-      margin-bottom: 20px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Styles testimonial cards */
+      border: none; /* Removes default border */
+      border-radius: 12px; /* Rounded corners */
+      padding: 25px; /* Internal padding */
+      background: var(--card-bg); /* Card background */
+      box-shadow: var(--card-shadow); /* Adds shadow */
+      margin-bottom: 20px; /* Space below card */
+      position: relative; /* Allows positioning of child elements */
+      overflow: hidden; /* Prevents content overflow */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
     }
 
     .testimonial-card:hover {
-      border-color: rgba(142, 108, 255, 0.3);
+      /* Hover effect for testimonial cards */
+      border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
     }
 
     .testimonial-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--primary);
-      transition: all 0.3s ease;
+      /* Styles testimonial profile images */
+      width: 60px; /* Fixed width */
+      height: 60px; /* Fixed height */
+      border-radius: 50%; /* Circular shape */
+      object-fit: cover; /* Ensures image covers area */
+      border: 2px solid var(--primary); /* Primary color border */
+      transition: all 0.3s ease; /* Smooth transition for hover */
     }
 
     .testimonial-card:hover .testimonial-img {
-      border-color: var(--accent);
+      /* Hover effect for testimonial images */
+      border-color: var(--accent); /* Changes border to accent color */
     }
 
     .accordion {
-      --bs-accordion-bg: var(--card-bg);
-      --bs-accordion-border-color: rgba(255, 255, 255, 0.05);
-      --bs-accordion-btn-color: var(--text-light);
-      --bs-accordion-btn-bg: var(--card-bg);
-      --bs-accordion-active-color: var(--text-light);
-      --bs-accordion-active-bg: rgba(142, 108, 255, 0.1);
-      --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25);
+      /* Styles Bootstrap accordion */
+      --bs-accordion-bg: var(--card-bg); /* Sets accordion background */
+      --bs-accordion-border-color: rgba(255, 255, 255, 0.05); /* Subtle border */
+      --bs-accordion-btn-color: var(--text-light); /* Light text for buttons */
+      --bs-accordion-btn-bg: var(--card-bg); /* Button background */
+      --bs-accordion-active-color: var(--text-light); /* Active text color */
+      --bs-accordion-active-bg: rgba(142, 108, 255, 0.1); /* Active background */
+      --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25); /* Focus shadow */
     }
 
     .accordion-button:not(.collapsed) {
-      color: var(--primary);
-      background-color: rgba(142, 108, 255, 0.1);
+      /* Styles expanded accordion buttons */
+      color: var(--primary); /* Primary color text */
+      background-color: rgba(142, 108, 255, 0.1); /* Light purple background */
     }
 
     .accordion-button::after {
+      /* Styles accordion button arrow (collapsed) */
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238e6cff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      /* Custom arrow icon */
     }
 
     .accordion-button:not(.collapsed)::after {
+      /* Styles accordion button arrow (expanded) */
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238e6cff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+      /* Same arrow icon for consistency */
     }
 
     .accordion-body {
-      color: var(--text-muted);
+      /* Styles accordion content */
+      color: var(--text-muted); /* Muted text color */
     }
 
     .toast {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: var(--card-bg);
-      color: var(--text-light);
-      border-left: 4px solid var(--primary);
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Styles toast notification */
+      position: fixed; /* Fixed position at bottom-right */
+      bottom: 20px; /* 20px from bottom */
+      right: 20px; /* 20px from right */
+      z-index: 1000; /* High z-index to stay on top */
+      background: var(--card-bg); /* Card background color */
+      color: var(--text-light); /* Light text color */
+      border-left: 4px solid var(--primary); /* Primary color left border */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds shadow */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
     }
 
     .artist-nav-btn {
-      border: none;
-      background: var(--card-bg);
-      padding: 8px 20px;
-      margin: 5px;
-      border-radius: 20px;
-      font-weight: 500;
-      color: var(--text-muted);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      /* Styles artist navigation buttons */
+      border: none; /* Removes default border */
+      background: var(--card-bg); /* Card background */
+      padding: 8px 20px; /* Padding for size */
+      margin: 5px; /* Space between buttons */
+      border-radius: 20px; /* Rounded corners */
+      font-weight: 500; /* Medium font weight */
+      color: var(--text-muted); /* Muted text color */
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
     }
 
     .artist-nav-btn:hover,
     .artist-nav-btn.active {
-      background: var(--primary);
-      color: var(--text-light);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(142, 108, 255, 0.2);
+      /* Hover and active styles for artist nav buttons */
+      background: var(--primary); /* Primary color background */
+      color: var(--text-light); /* Light text color */
+      transform: translateY(-2px); /* Slight lift effect */
+      box-shadow: 0 5px 15px rgba(142, 108, 255, 0.2); /* Adds shadow */
     }
 
     .artist-section {
-      display: none;
+      /* Styles artist sections */
+      display: none; /* Hidden by default */
     }
 
     .artist-section.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
+      /* Styles active artist section */
+      display: block; /* Shows section */
+      animation: fadeIn 0.5s ease; /* Fade-in animation */
     }
 
     #mandira-services.active {
-      display: block;
-      animation: slideInLeft 0.5s ease forwards;
+      /* Styles Mandira's services section when active */
+      display: block; /* Shows section */
+      animation: slideInLeft 0.5s ease forwards; /* Slide-in animation */
     }
 
     @keyframes slideInLeft {
+      /* Defines slide-in animation for Mandira's services */
       from {
-        opacity: 0;
-        transform: translateX(-20px);
+        opacity: 0; /* Starts invisible */
+        transform: translateX(-20px); /* Starts off to the left */
       }
       to {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 1; /* Fully visible */
+        transform: translateX(0); /* Moves to original position */
       }
     }
 
     .art-services-section {
-      display: none;
-      margin-top: 20px;
+      /* Styles art services sections */
+      display: none; /* Hidden by default */
+      margin-top: 20px; /* Space above section */
     }
 
     .art-services-section .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      /* Styles rows in art services */
+      display: flex; /* Enables flexbox */
+      flex-wrap: wrap; /* Allows wrapping */
+      gap: 20px; /* Space between cards */
     }
 
     .art-services-section .col-md-12 {
-      flex: 1 1 100%;
+      /* Styles full-width columns in art services */
+      flex: 1 1 100%; /* Takes full width */
     }
 
     .art-services-section.active {
-      display: block;
-      animation: fadeIn 0.5s ease;
+      /* Styles active art services section */
+      display: block; /* Shows section */
+      animation: fadeIn 0.5s ease; /* Fade-in animation */
     }
 
     .view-services-btn {
-      border-color: var(--text-light);
-      color: var(--text-light);
+      /* Styles view services buttons */
+      border-color: var(--text-light); /* Light border */
+      color: var(--text-light); /* Light text */
     }
 
     .view-services-btn:hover {
-      background: var(--primary);
-      color: var(--text-light);
-      border-color: var(--primary);
+      /* Hover effect for view services buttons */
+      background: var(--primary); /* Primary background */
+      color: var(--text-light); /* Light text */
+      border-color: var(--primary); /* Primary border */
     }
 
     .form-control,
     .form-select {
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background-color: var(--card-bg);
-      color: var(--text-light);
-      font-weight: 300;
-      transition: all 0.3s ease;
+      /* Styles form inputs and selects */
+      border-radius: 8px; /* Rounded corners */
+      border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+      background-color: var(--card-bg); /* Card background */
+      color: var(--text-light); /* Light text */
+      font-weight: 300; /* Light font weight */
+      transition: all 0.3s ease; /* Smooth transition for focus */
     }
 
     .form-control:focus,
     .form-select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25);
-      background-color: var(--card-bg);
-      color: var(--text-light);
+      /* Styles focused form inputs and selects */
+      border-color: var(--primary); /* Primary border */
+      box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25); /* Focus shadow */
+      background-color: var(--card-bg); /* Maintains background */
+      color: var(--text-light); /* Light text */
     }
 
     .form-label {
-      color: var(--text-light);
-      font-weight: 400;
-      margin-bottom: 8px;
+      /* Styles form labels */
+      color: var(--text-light); /* Light text */
+      font-weight: 400; /* Regular font weight */
+      margin-bottom: 8px; /* Space below label */
     }
 
     .ratio-9x16 {
-      --bs-aspect-ratio: 177.78%;
+      /* Defines custom aspect ratio for iframes */
+      --bs-aspect-ratio: 177.78%; /* 9:16 aspect ratio */
     }
 
     @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0px); }
+      /* Defines floating animation for hero text */
+      0% { transform: translateY(0px); } /* Starting position */
+      50% { transform: translateY(-5px); } /* Moves up */
+      100% { transform: translateY(0px); } /* Returns to start */
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      /* Defines fade-in animation */
+      from { opacity: 0; transform: translateY(10px); } /* Starts invisible and shifted */
+      to { opacity: 1; transform: translateY(0); } /* Fully visible and in place */
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      /* Defines pulsing animation for icons */
+      0% { transform: scale(1); } /* Normal size */
+      50% { transform: scale(1.1); } /* Slightly larger */
+      100% { transform: scale(1); } /* Back to normal */
     }
 
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      /* Defines bouncing animation for icons */
+      0%, 100% { transform: translateY(0); } /* Normal position */
+      50% { transform: translateY(-10px); } /* Moves up */
     }
 
     .wave-divider {
-      position: relative;
-      height: 50px;
-      overflow: hidden;
-      margin: 40px 0;
+      /* Styles wave divider between sections */
+      position: relative; /* Allows positioning of SVG */
+      height: 50px; /* Fixed height */
+      overflow: hidden; /* Hides overflow */
+      margin: 40px 0; /* Vertical spacing */
     }
 
     .wave-divider svg {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 100%;
+      /* Styles SVG in wave divider */
+      position: absolute; /* Positions absolutely */
+      bottom: 0; /* Aligns to bottom */
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
     }
 
     .bg-light {
-      background-color: #2a2a2a !important;
-      color: var(--text-light);
+      /* Overrides Bootstrap's bg-light for dark theme */
+      background-color: #2a2a2a !important; /* Darker background */
+      color: var(--text-light); /* Light text */
     }
 
     #how-to-book .text-muted,
     #how-to-book li,
     #how-to-book p,
     #how-to-book strong.text-light {
-      color: var(--text-light) !important;
+      /* Ensures consistent text color in how-to-book section */
+      color: var(--text-light) !important; /* Light text */
     }
 
     #services .text-muted {
-      color: var(--text-light) !important;
+      /* Ensures consistent text color in services section */
+      color: var(--text-light) !important; /* Light text */
     }
 
     #artists .text-muted {
-      color: var(--text-light) !important;
+      /* Ensures consistent text color in artists section */
+      color: var(--text-light) !important; /* Light text */
     }
 
     #art-services .text-muted {
-      color: var(--text-light) !important;
+      /* Ensures consistent text color in art-services section */
+      color: var(--text-light) !important; /* Light text */
     }
 
     #testimonials .text-muted {
-      color: var(--text-light) !important;
+      /* Ensures consistent text color in testimonials section */
+      color: var(--text-light) !important; /* Light text */
+    }
+
+    .artist-nav {
+      /* Updated: Adds padding below artist navigation buttons */
+      padding-bottom: 30px; /* Increases gap between buttons and artist cards */
     }
 
     @media (min-width: 1200px) {
+      /* Responsive styles for large screens */
       .container {
-        max-width: 1140px;
+        max-width: 1140px; /* Limits container width */
       }
     }
 
     @media (min-width: 1400px) {
+      /* Responsive styles for extra-large screens */
       .container {
-        max-width: 1320px;
+        max-width: 1320px; /* Wider container */
       }
     }
 
     @media (max-width: 767px) {
+      /* Responsive styles for mobile devices */
       .hero {
-        padding: 100px 15px;
+        padding: 100px 15px; /* Reduced padding */
       }
 
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* Smaller heading */
       }
 
       .section {
-        padding: 50px 15px;
+        padding: 50px 15px; /* Reduced section padding */
       }
 
       .section-title {
-        font-size: 2rem;
+        font-size: 2rem; /* Smaller title */
       }
 
       .artist-nav {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stacks nav buttons vertically */
+        align-items: center; /* Centers buttons */
       }
 
       .services-card,
       .artist-card,
       .testimonial-card {
-        padding: 20px;
+        padding: 20px; /* Reduced padding */
       }
 
       .services-card {
-        min-height: 300px;
+        min-height: 300px; /* Smaller minimum height */
       }
 
       .services-card img {
-        height: 120px;
+        height: 120px; /* Smaller image height */
       }
     }
   </style>
 </head>
 <body>
+  <!-- Main content wrapper -->
   <div class="star star1"></div>
+  <!-- First twinkling star positioned at top-left -->
   <div class="star star2"></div>
+  <!-- Second twinkling star positioned at bottom-right -->
   <div class="shooting-star"></div>
+  <!-- Shooting star with animation across the screen -->
 
   <nav class="navbar navbar-expand-lg navbar-dark">
+    <!-- Navigation bar with dark theme -->
     <div class="container">
+      <!-- Container for navbar content -->
       <a class="navbar-brand" href="#">
+        <!-- Brand logo with icon and text -->
         <i class="fas fa-music me-2"></i>Kalaverse
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
         aria-label="Toggle navigation">
+        <!-- Toggler button for mobile navigation -->
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <!-- Collapsible navigation links aligned to the right -->
         <ul class="navbar-nav">
+          <!-- List of navigation links -->
           <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
           <li class="nav-item"><a class="nav-link" href="#how-to-book">How to Book</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
@@ -730,84 +850,126 @@
   </nav>
 
   <section class="hero text-center">
+    <!-- Hero section with background image and call-to-action -->
     <div class="container position-relative">
+      <!-- Container for hero content -->
       <h1>Your Creative Hub <span class="nepali-font">(तपाईंको रचनात्मक केन्द्र)</span></h1>
+      <!-- Main heading with Nepali translation -->
       <p class="lead">Connecting you with Nepal's top creative professionals for all your artistic needs</p>
+      <!-- Subheading describing the platform -->
       <a href="#artists" class="btn btn-primary btn-lg mt-3 me-2">
+        <!-- Button to navigate to artists section -->
         <i class="fas fa-search me-2"></i>Find an Artist
       </a>
       <a href="#contact" class="btn btn-outline-light btn-lg mt-3">
+        <!-- Button to navigate to contact section -->
         <i class="fas fa-calendar-check me-2"></i>Book a Service
       </a>
     </div>
   </section>
 
   <section id="about" class="section">
+    <!-- About section describing Kalaverse -->
     <div class="container">
+      <!-- Container for about content -->
       <h2 class="text-center section-title">About Kalaverse <span class="nepali-font">(हाम्रो बारेमा)</span></h2>
+      <!-- Section title with Nepali translation -->
       <div class="row align-items-center">
+        <!-- Row with aligned content -->
         <div class="col-md-6">
+          <!-- Left column with text -->
           <p class="lead">
             Welcome to <strong class="text-primary">Kalaverse</strong> — Nepal's premier platform connecting clients with talented creative professionals.
           </p>
+          <!-- Introductory paragraph -->
           <p>
             Thank you so much for believing in my idea and becoming a part of this journey. Both of my websites — Nyayverse and Kalaverse — are currently live through my personal domain prastavkoirala.com.np, for testing purposes only.
           </p>
+          <!-- Acknowledgment of testing phase -->
           <p>
             At this stage, only the front end is complete, but the websites are still functional — you can book services, and we do receive those bookings on our side. However, we want to offer a much richer and more complete experience, so we are actively working on building the backend and adding more essential features.
           </p>
+          <!-- Explanation of current functionality and future plans -->
           <div class="d-flex align-items-center mb-3">
+            <!-- Feature item -->
             <i class="fas fa-check-circle me-3 text-primary"></i>
             <span>10+ Expert Artists</span>
           </div>
           <div class="d-flex align-items-center mb-3">
+            <!-- Feature item -->
             <i class="fas fa-check-circle me-3 text-primary"></i>
             <span>10+ Creative Specializations</span>
           </div>
           <div class="d-flex align-items-center">
+            <!-- Feature item -->
             <i class="fas fa-check-circle me-3 text-primary"></i>
             <span>Quality Guaranteed</span>
           </div>
         </div>
         <div class="col-md-6 text-center">
-          <img src="art.jpg" alt="Creative Services" class="img-fluid rounded shadow-lg" />
+          <!-- Right column with image -->
+          <img src="art.png" alt="Creative Services" class="img-fluid rounded shadow-lg" />
+          <!-- Image representing creative services -->
         </div>
       </div>
     </div>
   </section>
 
   <section id="how-to-book" class="section bg-dark">
+    <!-- How to Book section with instructions -->
     <div class="container">
+      <!-- Container for content -->
       <h2 class="text-center section-title">How to Book an Artist <span class="nepali-font">(कसरी कलाकार बुक गर्ने)</span></h2>
+      <!-- Section title with Nepali translation -->
       <div class="row align-items-center">
+        <!-- Row with aligned content -->
         <div class="col-md-6">
+          <!-- Left column with instructions -->
           <h3 class="text-primary">How to Book an Artist on Our Website</h3>
+          <!-- Subsection heading -->
           <p class="text-muted"><strong>Book now. Pay only when you collaborate.</strong></p>
+          <!-- Booking slogan -->
           <p class="text-muted">Whether you need a music composer, scriptwriter, cinematographer, or studio for recording, booking a creative professional through our website is quick and easy. Follow these steps to get started:</p>
+          <!-- Introduction to booking process -->
           <ol class="text-muted">
+            <!-- Ordered list of booking steps -->
             <li class="mb-3"><strong class="text-light">Select the Type of Service You Need</strong><br>
               Choose the category of creative help you require, such as Music Composition, Script Writing, Cinematography, Music Video Direction, Voiceover Services, Studio Recording, or Studio Booking.</li>
+            <!-- Step 1 -->
             <li class="mb-3"><strong class="text-light">Click "Hire Now"</strong><br>
               Find and click the "Hire Now" button to begin the booking process.</li>
+            <!-- Step 2 -->
             <li class="mb-3"><strong class="text-light">Enter Your Details</strong><br>
               Provide your full name, email address, and contact number in the form.</li>
+            <!-- Step 3 -->
             <li class="mb-3"><strong class="text-light">Choose Your Preferred Artist or Service</strong><br>
               - Select a specific artist or choose "No preference" if you're open to any available artist.</li>
+            <!-- Step 4 -->
             <li class="mb-3"><strong class="text-light">Write a Specific Message</strong><br>
               Briefly explain your creative needs (e.g., "I need a voiceover for my advertisement" or "I want to book a studio for song recording").</li>
+            <!-- Step 5 -->
             <li class="mb-3"><strong class="text-light">Submit Your Request</strong><br>
               Click the "Send Request" button to submit your booking. This step is completely free!</li>
+            <!-- Step 6 -->
           </ol>
           <h4 class="text-primary mt-4">What Happens Next?</h4>
+          <!-- Subsection for next steps -->
           <ul class="text-muted">
+            <!-- Unordered list of next steps -->
             <li class="mb-2">Our team will contact you using the phone number you provided.</li>
+            <!-- Next step 1 -->
             <li>They'll discuss your needs and confirm the details of your collaboration.</li>
+            <!-- Next step 2 -->
           </ul>
           <p class="text-muted mt-3"><strong>That's it! Book your creative service today and bring your vision to life with ease.</strong></p>
+          <!-- Closing statement -->
         </div>
         <div class="col-md-6 text-center">
+          <!-- Right column with video -->
           <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg">
+            <!-- Container for responsive video -->
             <iframe src="https://www.youtube.com/embed/Qz0SiMwJh-k" frameborder="0" allowfullscreen></iframe>
+            <!-- Embedded YouTube video -->
           </div>
         </div>
       </div>
@@ -815,88 +977,153 @@
   </section>
 
   <section id="services" class="section">
+    <!-- Services section showcasing available services -->
     <div class="container">
+      <!-- Container for services content -->
       <h2 class="text-center section-title">Our Services <span class="nepali-font">(हाम्रा सेवाहरू)</span></h2>
+      <!-- Section title with Nepali translation -->
       <p class="text-center text-muted mb-5">Discover the creative services we offer to bring your vision to life</p>
+      <!-- Section description -->
       <div class="row">
+        <!-- Row for service cards -->
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Music Composition service card -->
             <i class="fas fa-music"></i>
+            <!-- Icon for music composition -->
             <h5>Music Composition</h5>
+            <!-- Service title -->
             <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Script Writing service card -->
             <i class="fas fa-pen-fancy"></i>
+            <!-- Icon for script writing -->
             <h5>Script Writing</h5>
+            <!-- Service title -->
             <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Cinematography service card -->
             <i class="fas fa-video"></i>
+            <!-- Icon for cinematography -->
             <h5>Cinematography</h5>
+            <!-- Service title -->
             <p>Professional filming for movies, music videos, documentaries, and commercials.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Voiceover Services card -->
             <i class="fas fa-microphone"></i>
+            <!-- Icon for voiceover -->
             <h5>Voiceover Services</h5>
+            <!-- Service title -->
             <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Instrumentalists service card -->
             <i class="fas fa-drum"></i>
+            <!-- Icon for instrumentalists -->
             <h5>Instrumentalists</h5>
+            <!-- Service title -->
             <p>Traditional Nepali instruments like flute, tabla, and sarangi for live or recorded performances.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Lyric Writing service card -->
             <i class="fas fa-edit"></i>
+            <!-- Icon for lyric writing -->
             <h5>Lyric Writing</h5>
+            <!-- Service title -->
             <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Music Video Direction service card -->
             <i class="fas fa-camera"></i>
+            <!-- Icon for music video direction -->
             <h5>Music Video Direction</h5>
+            <!-- Service title -->
             <p>Directing and producing visually stunning music videos tailored to your vision.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Video Services card -->
             <i class="fas fa-film"></i>
+            <!-- Icon for video services -->
             <h5>Video Services</h5>
-            <p>Editing, color grading, and post-production for films, ads, and social media content.</p>
+            <!-- Service title -->
+            <p Guan">Editing, color grading, and post-production for films, ads, and social media content.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Studio Recording Services card -->
             <i class="fas fa-microphone-alt"></i>
+            <!-- Icon for studio recording -->
             <h5>Studio Recording Services</h5>
+            <!-- Service title -->
             <p>Professional recording sessions for songs, voiceovers, or podcasts in top studios.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
         <div class="col-md-4">
+          <!-- Service card column -->
           <div class="services-card">
+            <!-- Studio Booking service card -->
             <i class="fas fa-building"></i>
+            <!-- Icon for studio booking -->
             <h5>Studio Booking</h5>
+            <!-- Service title -->
             <p>Book state-of-the-art studios for song recording, rehearsals, or creative projects.</p>
+            <!-- Service description -->
             <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
+            <!-- Button to book service -->
           </div>
         </div>
       </div>
@@ -904,248 +1131,420 @@
   </section>
 
   <div class="wave-divider">
+    <!-- Wave divider for visual separation -->
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <!-- SVG for wave effect -->
       <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#8e6cff"></path>
+      <!-- First wave layer -->
       <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#8e6cff"></path>
+      <!-- Second wave layer -->
       <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#8e6cff"></path>
+      <!-- Third wave layer -->
     </svg>
   </div>
 
   <section id="artists" class="section bg-primary bg-opacity-10">
+    <!-- Artists section showcasing creative professionals -->
     <div class="container">
+      <!-- Container for artists content -->
       <h2 class="text-center section-title">Our Creative Experts <span class="nepali-font">(हाम्रा रचनात्मक विशेषज्ञहरू)</span></h2>
+      <!-- Section title with Nepali translation -->
       <p class="text-center text-muted mb-5">Connect with Nepal's top creative professionals specialized in various fields</p>
+      <!-- Section description -->
       
       <div class="artist-nav d-flex justify-content-center flex-wrap">
+        <!-- Navigation buttons for filtering artists -->
         <button class="artist-nav-btn active" data-category="all">All Artists</button>
+        <!-- Button to show all artists -->
         <button class="artist-nav-btn" data-category="music">Music Composition</button>
+        <!-- Button to filter music composition artists -->
         <button class="artist-nav-btn" data-category="script">Script Writing</button>
+        <!-- Button to filter script writing artists -->
         <button class="artist-nav-btn" data-category="cinematography">Cinematography</button>
+        <!-- Button to filter cinematography artists -->
         <button class="artist-nav-btn" data-category="voiceover">Voiceover</button>
+        <!-- Button to filter voiceover artists -->
         <button class="artist-nav-btn" data-category="video">Video Services</button>
+        <!-- Button to filter video services artists -->
       </div>
       
       <div class="artist-section active" id="all-artists">
+        <!-- Section for all artists (default active) -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3" data-categories="music,script,voiceover">
+            <!-- Artist card column with category data -->
             <div class="artist-card">
+              <!-- Artist card for Mandira Dhungel -->
               <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Mandira Dhungel</h5>
+              <!-- Artist name -->
               <p class="specialty">Voiceover Artist</p>
+              <!-- Artist specialty -->
               <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+              <!-- Button to view artist's services -->
             </div>
             <div class="art-services-section" id="mandira-services">
+              <!-- Services section for Mandira Dhungel -->
               <div class="row">
+                <!-- Row for service cards -->
                 <div class="col-md-12">
+                  <!-- Service card column -->
                   <div class="services-card">
+                    <!-- Music Composition service -->
                     <i class="fas fa-music"></i>
+                    <!-- Icon -->
                     <h5>Music Composition</h5>
+                    <!-- Service title -->
                     <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
+                    <!-- Service description -->
                     <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                    <!-- Button to book artist -->
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <!-- Service card column -->
                   <div class="services-card">
+                    <!-- Script Writing service -->
                     <i class="fas fa-pen-fancy"></i>
+                    <!-- Icon -->
                     <h5>Script Writing</h5>
+                    <!-- Service title -->
                     <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
+                    <!-- Service description -->
                     <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                    <!-- Button to book artist -->
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <!-- Service card column -->
                   <div class="services-card">
+                    <!-- Voiceover Services -->
                     <i class="fas fa-microphone"></i>
+                    <!-- Icon -->
                     <h5>Voiceover Services</h5>
+                    <!-- Service title -->
                     <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
+                    <!-- Service description -->
                     <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                    <!-- Button to book artist -->
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <!-- Service card column -->
                   <div class="services-card">
+                    <!-- Lyric Writing service -->
                     <i class="fas fa-edit"></i>
+                    <!-- Icon -->
                     <h5>Lyric Writing</h5>
+                    <!-- Service title -->
                     <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
+                    <!-- Service description -->
                     <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                    <!-- Button to book artist -->
                   </div>
                 </div>
                 <div class="col-md-12">
+                  <!-- Service card column -->
                   <div class="services-card">
+                    <!-- Music Production service -->
                     <i class="fas fa-headphones"></i>
+                    <!-- Icon -->
                     <h5>Music Production</h5>
+                    <!-- Service title -->
                     <p>Professional music production and arrangement for modern and traditional music.</p>
+                    <!-- Service description -->
                     <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                    <!-- Button to book artist -->
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-4 col-lg-3" data-categories="cinematography">
+            <!-- Artist card column for Artist 3 -->
             <div class="artist-card">
+              <!-- Artist card -->
               <img src="https://ui-avatars.com/api/?name=Artist+3&background=2563eb&color=fff" alt="Artist 3" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 3</h5>
+              <!-- Artist name -->
               <p class="specialty">Cinematographer</p>
+              <!-- Artist specialty -->
               <p>Expert in filming music videos and commercials.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 3">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3" data-categories="music">
+            <!-- Artist card column for Artist 5 -->
             <div class="artist-card">
+              <!-- Artist card -->
               <img src="https://ui-avatars.com/api/?name=Artist+5&background=dc2626&color=fff" alt="Artist 5" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 5</h5>
+              <!-- Artist name -->
               <p class="specialty">Instrumentalist</p>
+              <!-- Artist specialty -->
               <p>Specialized in traditional Nepali instruments like tabla.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 5">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3" data-categories="cinematography">
+            <!-- Artist card column for Artist 7 -->
             <div class="artist-card">
+              <!-- Artist card -->
               <img src="https://ui-avatars.com/api/?name=Artist+7&background=2563eb&color=fff" alt="Artist 7" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 7</h5>
+              <!-- Artist name -->
               <p class="specialty">Cinematographer</p>
+              <!-- Artist specialty -->
               <p>Specialized in documentaries and feature films.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 7">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3" data-categories="video">
+            <!-- Artist card column for Prastav Koirala -->
             <div class="artist-card">
+              <!-- Artist card -->
               <img src="prastav2.jpeg" alt="Prastav Koirala" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Prastav Koirala</h5>
+              <!-- Artist name -->
               <p class="specialty">Video Editor</p>
+              <!-- Artist specialty -->
               <p>Specialized in video editing and post-production for films and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3" data-categories="voiceover">
+            <!-- Artist card column for Shashanka Ghimire -->
             <div class="artist-card">
+              <!-- Artist card -->
               <img src="shas.jpg" alt="Shashanka Ghimire" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Shashanka Ghimire</h5>
+              <!-- Artist name -->
               <p class="specialty">Voiceover Artist</p>
+              <!-- Artist specialty -->
               <p>3 years of experience providing voiceovers for YouTube videos.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="artist-section" id="music-artists">
+        <!-- Section for music composition artists -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Mandira Dhungel -->
               <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Mandira Dhungel</h5>
+              <!-- Artist name -->
               <p class="specialty">Creative Head</p>
+              <!-- Artist specialty -->
               <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+              <!-- Button to view services -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Artist 5 -->
               <img src="https://ui-avatars.com/api/?name=Artist+5&background=dc2626&color=fff" alt="Artist 5" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 5</h5>
+              <!-- Artist name -->
               <p class="specialty">Instrumentalist</p>
+              <!-- Artist specialty -->
               <p>Specialized in traditional Nepali instruments like tabla.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 5">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="artist-section" id="script-artists">
+        <!-- Section for script writing artists -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Mandira Dhungel -->
               <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Mandira Dhungel</h5>
+              <!-- Artist name -->
               <p class="specialty">Creative Head</p>
+              <!-- Artist specialty -->
               <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+              <!-- Button to view services -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="artist-section" id="cinematography-artists">
+        <!-- Section for cinematography artists -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Artist 3 -->
               <img src="https://ui-avatars.com/api/?name=Artist+3&background=2563eb&color=fff" alt="Artist 3" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 3</h5>
+              <!-- Artist name -->
               <p class="specialty">Cinematographer</p>
+              <!-- Artist specialty -->
               <p>Expert in filming music videos and commercials.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 3">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Artist 7 -->
               <img src="https://ui-avatars.com/api/?name=Artist+7&background=2563eb&color=fff" alt="Artist 7" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Artist 7</h5>
+              <!-- Artist name -->
               <p class="specialty">Cinematographer</p>
+              <!-- Artist specialty -->
               <p>Specialized in documentaries and feature films.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 7">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="artist-section" id="voiceover-artists">
+        <!-- Section for voiceover artists -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Mandira Dhungel -->
               <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Mandira Dhungel</h5>
+              <!-- Artist name -->
               <p class="specialty">Creative Head</p>
+              <!-- Artist specialty -->
               <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+              <!-- Button to view services -->
             </div>
           </div>
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Shashanka Ghimire -->
               <img src="https://ui-avatars.com/api/?name=Shashanka+Ghimire&background=1e40af&color=fff" alt="Shashanka Ghimire" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Shashanka Ghimire</h5>
+              <!-- Artist name -->
               <p class="specialty">Voiceover Artist</p>
+              <!-- Artist specialty -->
               <p>3 years of experience providing voiceovers for YouTube videos.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="artist-section" id="video-artists">
+        <!-- Section for video services artists -->
         <div class="row">
+          <!-- Row for artist cards -->
           <div class="col-md-4 col-lg-3">
+            <!-- Artist card column -->
             <div class="artist-card">
+              <!-- Artist card for Prastav Koirala -->
               <img src="prastav2.jpeg" alt="Prastav Koirala" class="artist-img">
+              <!-- Artist profile image -->
               <h5>Prastav Koirala</h5>
+              <!-- Artist name -->
               <p class="specialty">Video Editor</p>
+              <!-- Artist specialty -->
               <p>Specialized in video editing and post-production for films and ads.</p>
+              <!-- Artist description -->
               <button class="btn btn-outline-light btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
+              <!-- Button to book artist -->
             </div>
           </div>
         </div>
       </div>
       
       <div class="text-center mt-4">
+        <!-- Call-to-action button -->
         <a href="#contact" class="btn btn-outline-light">Hire Now</a>
+        <!-- Button to navigate to contact section -->
       </div>
     </div>
   </section>
 
   <section id="art-services" class="section bg-light">
+    <!-- Art Services section showcasing visual art -->
     <div class="container">
+      <!-- Container for art services content -->
       <h2 class="text-center section-title">Our Art Services <span class="nepali-font">(हाम्रा कला सेवाहरू)</span></h2>
+      <!-- Section title with Nepali translation -->
       <p class="text-center mb-5">Discover the vibrant art creations by our talented artists</p>
+      <!-- Section description -->
       <div class="row justify-content-center">
+        <!-- Row for artist cards, centered -->
         <div class="col-md-4 col-lg-3">
+          <!-- Artist card column for Aditi Jha -->
           <div class="artist-card">
+            <!-- Artist card -->
             <img src="https://ui-avatars.com/api/?name=Aditi+Jha&background=9333ea&color=fff" alt="Aditi Jha" class="artist-img">
+            <!-- Artist profile image -->
             <h5>Aditi Jha</h5>
+            <!-- Artist name -->
             <p class="specialty">Visual Artist</p>
+            <!-- Artist specialty -->
             <p>Specialized in Acrylic, Watercolor, and Digital Art creations.</p>
+            <!-- Artist description -->
             <button class="btn btn-outline-light btn-sm view-services-btn" data-target="aditi-services">View Services</button>
+            <!-- Button to view services -->
           </div>
           <div class="art-services-section" id="aditi-services">
-            <div class="row">
+             <div class="row">
               <div class="col-md-12">
                 <div class="services-card">
                   <img src="image1.jpg" alt="Acrylic Painting" class="img-fluid">
@@ -1530,6 +1929,7 @@
       </div>
       <div class="col-md-3 footer-links">
         <h5>Contact Info</h5>
+         <h5>Contact Info</h5>
         <ul>
           <li><i class="fas fa-map-marker-alt me-2"></i>Kathmandu</li>
           <li><i class="fas fa-phone me-2"></i> +977-9869153208</li>

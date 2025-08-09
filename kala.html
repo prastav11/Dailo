@@ -543,19 +543,20 @@
       color: var(--text-muted); /* Muted text color */
     }
 
-    .toast {
-      /* Styles toast notification */
-      position: fixed; /* Fixed position at bottom-right */
-      bottom: 20px; /* 20px from bottom */
-      right: 20px; /* 20px from right */
-      z-index: 1000; /* High z-index to stay on top */
-      background: var(--card-bg); /* Card background color */
-      color: var(--text-light); /* Light text color */
-      border-left: 4px solid var(--primary); /* Primary color left border */
-      border-radius: 8px; /* Rounded corners */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds shadow */
-      border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
-    }
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--card-bg);
+  color: var(--text-light);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+
+
 
     .artist-nav-btn {
       /* Styles artist navigation buttons */
@@ -912,6 +913,45 @@ body > *:not(#starfield) {
   position: relative;
   z-index: 1;
 }
+.piano {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  height: 200px;
+}
+
+.key {
+  cursor: pointer;
+  user-select: none;
+}
+
+.key.white {
+  width: 60px;
+  height: 200px;
+  background: white;
+  border: 1px solid black;
+  z-index: 1;
+}
+
+.key.black {
+  position: relative;
+  width: 40px;
+  height: 120px;
+  background: black;
+  margin-left: -20px;
+  margin-right: -20px;
+  z-index: 2;
+  border-radius: 0 0 4px 4px;
+}
+
+.key.white:active {
+  background: #ddd;
+}
+
+.key.black:active {
+  background: #333;
+}
 
   </style>
 </head>
@@ -1255,7 +1295,20 @@ body > *:not(#starfield) {
     <div class="container">
       <!-- Container for artists content -->
       <h2 class="text-center section-title">Our Creative Experts <span class="nepali-font">(हाम्रा रचनात्मक विशेषज्ञहरू)</span></h2>
-      <!-- Section title with Nepali translation -->
+      <!-- Section title with Nepali translation -->     
+    <div id="piano" class="piano">
+    <div class="key white" data-sound="sa"></div>
+    <div class="key black" data-sound="re"></div>
+    <div class="key white" data-sound="ga"></div>
+    <div class="key black" data-sound="ma"></div>
+    <div class="key white" data-sound="pa"></div>
+    <div class="key black" data-sound="dha"></div>
+    <div class="key white" data-sound="ni"></div>
+    <div class="key black" data-sound="sha"></div>
+    <div class="key white" data-sound="sa2"></div>
+    </div>
+
+
       <p class="text-center text-muted mb-5">Connect with Nepal's top creative professionals specialized in various fields</p>
       <!-- Section description -->
       
@@ -2003,15 +2056,17 @@ body > *:not(#starfield) {
     </div>
   </section>
 
-  <div class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" id="successToast">
-    <div class="d-flex">
-      <div class="toast-body">
-        <i class="fas fa-check-circle me-2"></i>
-        <span id="toastMessage">Your request has been submitted successfully!</span>
-      </div>
-      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+<!-- Toast -->
+<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" id="requestToast">
+  <div class="d-flex">
+    <div class="toast-body">
+      Your request has been sent successfully!
     </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
   </div>
+</div>
+
+
 <footer>
   <div class="container">
     <div class="row">
@@ -2065,6 +2120,19 @@ body > *:not(#starfield) {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toastEl = document.getElementById('requestToast');
+    const toast = new bootstrap.Toast(toastEl);
+
+    // Change selector if your button is not .book-btn
+    document.querySelectorAll('.book-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        toast.show();
+      });
+    });
+  });
+</script>
 <script>
   // Initialize Toast
   const toastLiveExample = document.getElementById('successToast');
@@ -2273,8 +2341,29 @@ const observer = new IntersectionObserver(entries => {
 
 observer.observe(document.getElementById("art-services"));
 </script>
+<script>
+  const sounds = {
+    sa: 'sa.mp3',
+    re: 're.mp3',
+    ga: 'ga.mp3',
+    ma: 'ma.mp3',
+    pa: 'pa.mp3',
+    dha: 'dha.mp3',
+    ni: 'ni.mp3',
+    sha: 'sha.mp3',
+    sa2: 'sa2.mp3'
+  };
 
-  
+  document.querySelectorAll('.key').forEach(key => {
+    key.addEventListener('click', () => {
+      const note = key.getAttribute('data-sound');
+      if (sounds[note]) {
+        const audio = new Audio(sounds[note]);
+        audio.play();
+      }
+    });
+  });
+</script>
+
 </body>
-</html>
-     
+</html>     

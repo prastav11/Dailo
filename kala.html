@@ -16,7 +16,7 @@
   <!-- Links to Font Awesome 6.4.0 for icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <!-- Imports Montserrat and Playfair Display fonts from Google Fonts for typography -->
-  <link rel="icon" type="image/png" href="logo2.png">
+  <link rel="icon" type="image/png" href="logo21.png">
   <!-- Sets the favicon (browser tab icon) to logo2.png -->
   <style>
     /* Defines CSS styles for the webpage */
@@ -111,7 +111,7 @@
     /* Navbar */
     .navbar {
       /* Styles the navigation bar */
-      background: rgba(18, 18, 18, 0.9); /* Semi-transparent dark background */
+      background: #161717; /* Semi-transparent dark background */
       backdrop-filter: blur(10px); /* Adds blur effect for modern look */
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Adds shadow for depth */
       position: sticky; /* Keeps navbar fixed at the top */
@@ -809,9 +809,114 @@
         height: 120px; /* Smaller image height */
       }
     }
+    .section-title {
+  letter-spacing: 0.5px;
+}
+
+.services-card, .artist-card {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+.services-card:hover, .artist-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 4px 15px rgba(255, 158, 0, 0.3);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  box-shadow: 0 6px 20px rgba(255, 158, 0, 0.4);
+}
+
+.btn-outline-light:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+footer {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.animate-logo {
+  animation: pulse 2s ease-in-out infinite; /* Same animation as old icon */
+}
+.navbar-logo {
+  height: 60px; /* bigger for navbar */
+  width: 60px;
+}
+
+.brand-logo {
+  height: 20px; /* keep footer logo same size */
+  width: 20px;
+}
+.text-primary {
+  color: var(--primary) !important;
+}
+#artist-starfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind everything */
+}
+
+#artists > *:not(#artist-starfield) {
+  position: relative;
+  z-index: 1; /* put content above stars */
+}
+#starfield {
+  position: fixed;
+  top: var(--navbar-height, 70px); /* start just below navbar */
+  left: 0;
+  width: 100%;
+  height: calc(100% - var(--navbar-height, 70px)); /* fill the rest */
+  z-index: 0;
+  background: black;
+}
+
+body > *:not(#starfield) {
+  position: relative;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: black; /* match navbar background */
+}
+#paint-splash-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.splash-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.5s ease-out, opacity 0.8s ease-out;
+}
+#art-services {
+  position: relative;
+}
+#art-services > *:not(#paint-splash-container) {
+  position: relative;
+  z-index: 1;
+}
+
   </style>
 </head>
 <body>
+  <canvas id="starfield"></canvas>
   <!-- Main content wrapper -->
   <div class="star star1"></div>
   <!-- First twinkling star positioned at top-left -->
@@ -826,7 +931,7 @@
       <!-- Container for navbar content -->
       <a class="navbar-brand" href="#">
         <!-- Brand logo with icon and text -->
-        <i class="fas fa-music me-2"></i>Kalaverse
+        <img src="logo21.png" alt="Kalaverse Logo" class="navbar-logo me-2 animate-logo">Kalaverse
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -908,7 +1013,7 @@
         </div>
         <div class="col-md-6 text-center">
           <!-- Right column with image -->
-          <img src="art.jpg" alt="Creative Services" class="img-fluid rounded shadow-lg" />
+          <img src="art.png" alt="Creative Services" class="img-fluid rounded shadow-lg" />
           <!-- Image representing creative services -->
         </div>
       </div>
@@ -977,6 +1082,7 @@
   </section>
 
   <section id="services" class="section">
+   
     <!-- Services section showcasing available services -->
     <div class="container">
       <!-- Container for services content -->
@@ -1143,7 +1249,8 @@
     </svg>
   </div>
 
-  <section id="artists" class="section bg-primary bg-opacity-10">
+  <section id="artists" class="section bg-primary bg-opacity-10 position-relative">
+  <canvas id="artist-starfield"></canvas>
     <!-- Artists section showcasing creative professionals -->
     <div class="container">
       <!-- Container for artists content -->
@@ -1519,6 +1626,13 @@
   </section>
 
   <section id="art-services" class="section bg-light">
+    <div id="paint-splash-container">
+  <img src="splash1.png" class="splash-img">
+  <img src="splash2.png" class="splash-img">
+  <img src="splash3.png" class="splash-img">
+</div>
+
+
     <!-- Art Services section showcasing visual art -->
     <div class="container">
       <!-- Container for art services content -->
@@ -1902,7 +2016,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4 mb-4 mb-md-0">
-        <h5><i class="fas fa-music me-2"></i>Kalaverse</h5>
+        <h5><img src="logo22.png" alt="Kalaverse Footer Logo" class="brand-logo">Kalaverse</h5>
         <p>Nepal's trusted platform connecting clients with talented creative professionals.</p>
       </div>
       <div class="col-md-2 mb-4 mb-md-0 footer-links">
@@ -2037,7 +2151,130 @@
       servicesSection.classList.toggle('active');
     });
   });
+document.querySelectorAll('.book-btn, a[href="#contact"]').forEach(function(button) {
+  button.addEventListener('click', function(e) {
+    e.preventDefault(); // stop default anchor behavior
+    const contactSection = document.querySelector('#contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+(function() {
+  const canvas = document.getElementById('artist-starfield');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let stars = Array(200).fill().map(() => ({
+    x: Math.random() * canvas.width - canvas.width / 2,
+    y: Math.random() * canvas.height - canvas.height / 2,
+    z: Math.random() * canvas.width
+  }));
+
+  function draw() {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = 'white';
+    stars.forEach(star => {
+      let k = 128.0 / star.z;
+      let px = star.x * k + canvas.width / 2;
+      let py = star.y * k + canvas.height / 2;
+      if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+        let size = (1 - star.z / canvas.width) * 2;
+        ctx.fillRect(px, py, size, size);
+      }
+      star.z -= 2;
+      if (star.z <= 0) {
+        star.x = Math.random() * canvas.width - canvas.width / 2;
+        star.y = Math.random() * canvas.height - canvas.height / 2;
+        star.z = canvas.width;
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
 </script>
+<script>
+(function() {
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  let stars = Array(300).fill().map(() => ({
+    x: Math.random() * canvas.width - canvas.width / 2,
+    y: Math.random() * canvas.height - canvas.height / 2,
+    z: Math.random() * canvas.width
+  }));
+
+  function draw() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "white";
+    stars.forEach(star => {
+      let k = 128.0 / star.z;
+      let px = star.x * k + canvas.width / 2;
+      let py = star.y * k + canvas.height / 2;
+
+      if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+        let size = (1 - star.z / canvas.width) * 2;
+        ctx.fillRect(px, py, size, size);
+      }
+
+      star.z -= 2;
+      if (star.z <= 0) {
+        star.x = Math.random() * canvas.width - canvas.width / 2;
+        star.y = Math.random() * canvas.height - canvas.height / 2;
+        star.z = canvas.width;
+      }
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+</script>
+<script>
+const splashes = document.querySelectorAll('#paint-splash-container .splash-img');
+
+function triggerPaintSplash() {
+  splashes.forEach((img, i) => {
+    setTimeout(() => {
+      img.style.transform = `translate(-50%, -50%) scale(1) rotate(${Math.random()*360}deg)`;
+      img.style.opacity = 1;
+    }, i * 150);
+  });
+}
+
+// Trigger when "Our Art Services" is visible
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      triggerPaintSplash();
+    }
+  });
+}, { threshold: 0.5 });
+
+observer.observe(document.getElementById("art-services"));
+</script>
+
+  
 </body>
 </html>
      

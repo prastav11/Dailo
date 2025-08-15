@@ -6,99 +6,140 @@
     <title>Kalaverse – Creative Services</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="logo21.png">
     <style>
-        /* Defines CSS styles for the webpage */
+        /*
+          ** Custom Properties & General Styles (Nyayverse Palette) **
+        */
         :root {
-            /* Defines CSS custom properties (variables) for consistent theming */
-            --primary: #ff9e00; /* Primary color (orange) for buttons and accents */
-            --primary-dark: #6a4dcc; /* Darker primary color (purple) for hover effects */
-            --secondary: #1a1a1a; /* Secondary dark color for backgrounds */
-            --dark-bg: #121212; /* Dark background color for the body */
-            --darker-bg: #0a0a0a; /* Darker background for footer */
-            --card-bg: #1e1e1e; /* Background color for cards */
-            --text-light: #f5f5f5; /* Light text color for readability on dark backgrounds */
-            --text-muted: #e0e0e0; /* Muted text color for secondary text */
-            --text-dark: #1a1a1a; /* Dark text color for light backgrounds */
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Shadow effect for cards */
-            --accent: #ff9e00; /* Accent color (same as primary) for emphasis */
-            --border-color: #444444; /* Dark gray borders */
+            --primary: #121212;
+            --primary-dark: #0a0a0a;
+            --secondary: #121212;
+            --light-bg: #1e1e1e;
+            --dark-bg: #0a0a0a;
+            --text-light: #E0E0E0;
+            --text-muted: #B0B0B0;
+            --text-dark: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            --card-hover-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+            --accent: #f9a825;
+            --border-color: #444444;
         }
-
+        
         body {
-            /* Styles the body element */
-            font-family: 'Montserrat', sans-serif; /* Sets default font to Montserrat */
-            background-color: var(--dark-bg); /* Sets dark background color */
-            color: var(--text-light); /* Sets light text color for contrast */
-            scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
-            overflow-x: hidden; /* Prevents horizontal scrolling */
-            position: relative; /* Allows positioning of absolute elements like stars */
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            position: relative;
         }
 
         .nepali-font {
-            /* Styles text with Nepali font */
-            font-family: 'Playfair Display', serif; /* Uses Playfair Display for Nepali text */
+            font-family: 'Playfair Display', serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
-        /* Twinkling Stars */
-        .star {
-            /* Styles for twinkling star effect */
-            position: absolute; /* Positions stars absolutely on the page */
-            width: 3px; /* Sets star width */
-            height: 3px; /* Sets star height */
-            background: #fff; /* Sets star color to white */
-            border-radius: 50%; /* Makes stars circular */
-            animation: twinkle 2s infinite alternate; /* Applies twinkling animation */
-            z-index: 1; /* Places stars behind other content */
+        /* Nyayverse Button Styles */
+        .btn-primary {
+            background: var(--accent);
+            border: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
-        .star1 {
-            /* Positions first star */
-            top: 20%; /* Places star 20% from the top */
-            left: 15%; /* Places star 15% from the left */
+        .btn-primary:hover {
+            background-color: var(--text-light);
+            color: var(--text-dark);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+        
+        .btn-outline-dark {
+            border-color: var(--accent);
+            color: var(--accent);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
-        .star2 {
-            /* Positions second star */
-            top: 60%; /* Places star 60% from the top */
-            right: 10%; /* Places star 10% from the right */
+        .btn-outline-dark:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+            border-color: var(--accent);
         }
-
-        /* Shooting Star */
+        
+        /*
+          ** Starfield and Shooting Star Animations (Dark Theme) **
+        */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('back.jpg') no-repeat center center/cover;
+            color: var(--text-light);
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .hero-star {
+            position: absolute;
+            background-color: var(--text-light);
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 3s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        .hero-star.small {
+            width: 1px;
+            height: 1px;
+        }
+        
+        .hero-star.medium {
+            width: 2px;
+            height: 2px;
+        }
+        
+        .hero-star.large {
+            width: 3px;
+            height: 3px;
+        }
+        
         .shooting-star {
-            /* Styles for shooting star effect */
-            position: absolute; /* Positions star absolutely */
-            width: 4px; /* Sets star width */
-            height: 4px; /* Sets star height */
-            background: #fff; /* Sets star color to white */
-            border-radius: 50%; /* Makes star circular */
-            animation: shoot 3s infinite; /* Applies shooting animation */
-            z-index: 1; /* Places star behind other content */
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7));
+            transform: rotate(-45deg);
+            animation: shoot 8s linear infinite;
+            z-index: 1;
+            opacity: 0;
         }
-
+    
         @keyframes twinkle {
-            /* Defines twinkling animation for stars */
-            0% { opacity: 0.2; } /* Starts with low opacity */
-            100% { opacity: 1; } /* Ends with full opacity */
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
-
+        
         @keyframes shoot {
-            /* Defines shooting star animation */
-            0% {
-                transform: translateX(100vw) translateY(0); /* Starts off-screen to the right */
-                opacity: 1; /* Fully visible */
-            }
-            50% {
-                opacity: 0.8; /* Slightly fades */
-            }
-            100% {
-                transform: translateX(-100vw) translateY(100vh); /* Moves to bottom-left off-screen */
-                opacity: 0; /* Fades out */
-            }
+            0% { top: -100px; left: 50%; opacity: 0; }
+            1% { opacity: 1; }
+            5% { opacity: 0; }
+            100% { top: 120%; left: -20%; }
         }
-
-        /* --- Navbar (Nyayverse style) --- */
+        
+        /* Navbar */
         .navbar {
             background: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(10px);
@@ -123,16 +164,7 @@
             transform: scale(1.05);
             color: var(--text-light);
         }
-
-        .navbar-brand .logo-text {
-            color: var(--text-light);
-            transition: color 0.3s ease;
-        }
-
-        .navbar-brand:hover .logo-text {
-            color: var(--accent);
-        }
-
+    
         .navbar-brand img {
             height: 40px;
             width: 40px;
@@ -147,7 +179,7 @@
             margin: 0 10px;
             transition: color 0.3s ease;
         }
-
+    
         .nav-link::after {
             content: '';
             position: absolute;
@@ -158,752 +190,380 @@
             left: 0;
             transition: width 0.3s ease;
         }
-
+    
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 100%;
         }
-
+    
         .nav-link:hover {
             color: var(--accent);
         }
-        
-        /* Hero Section */
-        .hero {
-            /* Styles the hero section */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('back.jpg') no-repeat center center/cover; /* Dark overlay with background image */
-            padding: 150px 20px; /* Adds padding for content */
-            text-align: center; /* Centers text */
-            position: relative; /* Allows positioning of child elements */
-            overflow: hidden; /* Prevents content overflow */
-            border-bottom: 1px solid rgba(255, 158, 0, 0.3); /* Subtle bottom border */
+    
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            /* Styles hero section heading */
-            font-family: 'Playfair Display', serif; /* Elegant font */
-            font-weight: 700; /* Bold text */
-            font-size: 3.5rem; /* Large font size */
-            color: var(--text-light); /* Light text color */
-            margin-bottom: 20px; /* Space below heading */
-            animation: float 4s ease-in-out infinite; /* Floating animation */
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5); /* Adds shadow for depth */
+            font-size: 3.5rem;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
         }
-
+    
         .hero .lead {
-            /* Styles hero section subheading */
-            font-size: 1.2rem; /* Moderate font size */
-            font-weight: 300; /* Light font weight */
-            max-width: 700px; /* Limits width for readability */
-            margin: 0 auto 30px; /* Centers and adds spacing */
-            color: var(--text-muted); /* Muted text color */
-        }
-
-        .btn-primary {
-            /* Styles primary buttons */
-            background: var(--primary); /* Primary color background */
-            border: none; /* Removes border */
-            color: var(--text-light); /* Light text color */
-            font-weight: 600; /* Bold text */
-            padding: 12px 24px; /* Padding for size */
-            border-radius: 30px; /* Rounded corners */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            letter-spacing: 0.5px; /* Slight letter spacing */
-        }
-
-        .btn-primary:hover {
-            /* Hover effect for primary buttons */
-            transform: translateY(-3px); /* Slight lift effect */
-            box-shadow: 0 10px 20px rgba(142, 108, 255, 0.3); /* Adds shadow */
-            background: var(--primary-dark); /* Darker background on hover */
-        }
-
-        .btn-outline-light {
-            /* Styles outline buttons */
-            border-color: rgba(255, 255, 255, 0.2); /* Light transparent border */
-            color: var(--text-light); /* Light text color */
-            border-radius: 30px; /* Rounded corners */
-            font-weight: 600; /* Bold text */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-        }
-
-        .btn-outline-light:hover {
-            /* Hover effect for outline buttons */
-            background: var(--primary); /* Primary color background */
-            color: var(--text-light); /* Light text color */
-            border-color: var(--primary); /* Primary color border */
-        }
-
-        .btn-outline-dark {
-            /* Styles dark outline buttons */
-            border-color: rgba(255, 255, 255, 0.3); /* Light transparent border */
-            color: var(--text-light); /* Light text color */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-        }
-
-        .btn-outline-dark:hover {
-            /* Hover effect for dark outline buttons */
-            background: var(--primary); /* Primary color background */
-            color: var(--text-light); /* Light text color */
-            border-color: var(--primary); /* Primary color border */
-        }
-
-        .section {
-            /* Styles all sections */
-            padding: 80px 20px; /* Adds padding for content */
-        }
-
-        .section-title {
-            /* Styles section titles */
-            font-family: 'Playfair Display', serif; /* Elegant font */
-            font-weight: 700; /* Bold text */
-            position: relative; /* Allows positioning of pseudo-elements */
-            margin-bottom: 50px; /* Space below title */
-            padding-bottom: 20px; /* Space for underline */
-            font-size: 2.5rem; /* Large font size */
-            text-align: center; /* Centers text */
-            color: var(--text-light); /* Light text color */
-        }
-
-        .section-title::after {
-            /* Creates underline for section titles */
-            content: ''; /* Empty content for pseudo-element */
-            position: absolute; /* Positions below title */
-            bottom: 0; /* Aligns to bottom */
-            left: 50%; /* Centers horizontally */
-            transform: translateX(-50%); /* Adjusts for centering */
-            width: 80px; /* Underline width */
-            height: 4px; /* Underline thickness */
-            background: var(--primary); /* Primary color underline */
-            border-radius: 2px; /* Slightly rounded edges */
-        }
-
-        .services-card {
-            /* Styles service cards */
-            border: none; /* Removes default border */
-            border-radius: 12px; /* Rounded corners */
-            padding: 20px; /* Internal padding */
-            background: var(--card-bg); /* Card background color */
-            box-shadow: var(--card-shadow); /* Adds shadow for depth */
-            text-align: center; /* Centers content */
-            transition: all 0.4s ease; /* Smooth transition for hover */
-            margin-bottom: 20px; /* Space below card */
-            position: relative; /* Allows positioning of child elements */
-            overflow: hidden; /* Prevents content overflow */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
-            min-height: 350px; /* Minimum height for consistency */
-            display: flex; /* Enables flexbox layout */
-            flex-direction: column; /* Stacks content vertically */
-            justify-content: space-between; /* Distributes content evenly */
-        }
-
-        .services-card:hover {
-            /* Hover effect for service cards */
-            transform: translateY(-10px); /* Lifts card */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4); /* Stronger shadow */
-            border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
-        }
-
-        .services-card i {
-            /* Styles icons in service cards */
-            font-size: 2.5rem; /* Large icon size */
-            color: var(--primary); /* Primary color */
-            margin-bottom: 20px; /* Space below icon */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            animation: bounce 2s ease-in-out infinite; /* Bouncing animation */
-        }
-
-        .services-card:hover i {
-            /* Hover effect for service card icons */
-            transform: scale(1.1); /* Slightly enlarges icon */
-            color: var(--accent); /* Changes to accent color */
-        }
-
-        .services-card h5 {
-            /* Styles service card headings */
-            font-weight: 600; /* Bold text */
-            color: var(--text-light); /* Light text color */
-            margin-bottom: 15px; /* Space below heading */
-        }
-
-        .services-card p {
-            /* Styles service card paragraphs */
-            color: var(--text-muted); /* Muted text color */
-            font-weight: 300; /* Light font weight */
-            margin-bottom: 20px; /* Space below paragraph */
-        }
-
-        .services-card img {
-            /* Styles images in service cards */
-            width: 100%; /* Full width */
-            height: 150px; /* Fixed height */
-            object-fit: cover; /* Ensures image covers area without distortion */
-            border-radius: 8px; /* Rounded corners */
-            margin-bottom: 15px; /* Space below image */
-        }
-
-        footer {
-            /* Styles the footer */
-            background: var(--darker-bg); /* Darker background */
-            color: var(--text-light); /* Light text color */
-            padding: 50px 0 20px; /* Padding for content */
-            text-align: center; /* Centers content */
-            font-weight: 300; /* Light font weight */
-            position: relative; /* Allows positioning of child elements */
-            border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle top border */
-        }
-
-        .footer-links h5 {
-            /* Styles footer link headings */
-            font-weight: 600; /* Bold text */
-            margin-bottom: 20px; /* Space below heading */
-            color: var(--text-light); /* Light text color */
-            letter-spacing: 1px; /* Slight letter spacing */
-        }
-
-        .footer-links ul {
-            /* Styles footer link lists */
-            list-style: none; /* Removes default bullets */
-            padding-left: 0; /* Removes default padding */
-        }
-
-        .footer-links li {
-            /* Styles footer list items */
-            margin-bottom: 10px; /* Space below each item */
-        }
-
-        .footer-links a {
-            /* Styles footer links */
-            color: var(--text-muted); /* Muted text color */
-            text-decoration: none; /* Removes underline */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            font-weight: 300; /* Light font weight */
-        }
-
-        .footer-links a:hover {
-            /* Hover effect for footer links */
-            color: var(--primary); /* Primary color */
-            padding-left: 5px; /* Slight shift for effect */
-        }
-
-        .social-icons a {
-            /* Styles social media icons */
-            color: var(--text-muted); /* Muted color */
-            font-size: 1.2rem; /* Moderate size */
-            margin-right: 15px; /* Space between icons */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-        }
-
-        .social-icons a:hover {
-            /* Hover effect for social icons */
-            color: var(--primary); /* Primary color */
-            transform: translateY(-3px); /* Slight lift effect */
-        }
-
-        .artist-card {
-            /* Styles artist cards */
-            border: none; /* Removes default border */
-            border-radius: 12px; /* Rounded corners */
-            padding: 25px; /* Internal padding */
-            background: var(--card-bg); /* Card background */
-            box-shadow: var(--card-shadow); /* Adds shadow */
-            text-align: center; /* Centers content */
-            transition: all 0.4s ease; /* Smooth transition for hover */
-            margin-bottom: 20px; /* Space below card */
-            position: relative; /* Allows positioning of child elements */
-            overflow: hidden; /* Prevents content overflow */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
-            min-height: 400px; /* Minimum height for consistency */
-            display: flex; /* Enables flexbox layout */
-            flex-direction: column; /* Stacks content vertically */
-            justify-content: space-between; /* Distributes content evenly */
-        }
-
-        .artist-card:hover {
-            /* Hover effect for artist cards */
-            transform: translateY(-10px); /* Lifts card */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4); /* Stronger shadow */
-            border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
-        }
-
-        .artist-img {
-            /* Styles artist profile images */
-            width: 120px; /* Fixed width */
-            height: 120px; /* Fixed height */
-            border-radius: 50%; /* Circular shape */
-            object-fit: cover; /* Ensures image covers area */
-            margin: 0 auto 15px; /* Centers and adds space below */
-            border: 3px solid var(--primary); /* Primary color border */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds shadow */
-        }
-
-        .artist-card:hover .artist-img {
-            /* Hover effect for artist images */
-            border-color: var(--accent); /* Changes border to accent color */
-            transform: scale(1.05); /* Slightly enlarges image */
-        }
-
-        .artist-card h5 {
-            /* Styles artist card headings */
-            font-weight: 600; /* Bold text */
-            color: var(--text-light); /* Light text color */
-            margin-bottom: 5px; /* Minimal space below */
-        }
-
-        .artist-card .specialty {
-            /* Styles artist specialty text */
-            color: var(--primary); /* Primary color */
-            font-weight: 500; /* Medium font weight */
-            font-size: 0.9rem; /* Smaller font size */
-            margin-bottom: 15px; /* Space below */
-            display: block; /* Ensures block-level display */
-        }
-
-        .artist-card p {
-            /* Styles artist card paragraphs */
-            color: var(--text-muted); /* Muted text color */
-            font-weight: 300; /* Light font weight */
-            font-size: 0.9rem; /* Smaller font size */
-        }
-
-        .testimonial-card {
-            /* Styles testimonial cards */
-            border: none; /* Removes default border */
-            border-radius: 12px; /* Rounded corners */
-            padding: 25px; /* Internal padding */
-            background: var(--card-bg); /* Card background */
-            box-shadow: var(--card-shadow); /* Adds shadow */
-            margin-bottom: 20px; /* Space below card */
-            position: relative; /* Allows positioning of child elements */
-            overflow: hidden; /* Prevents content overflow */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
-        }
-
-        .testimonial-card:hover {
-            /* Hover effect for testimonial cards */
-            border-color: rgba(142, 108, 255, 0.3); /* Changes border color */
-        }
-
-        .testimonial-img {
-            /* Styles testimonial profile images */
-            width: 60px; /* Fixed width */
-            height: 60px; /* Fixed height */
-            border-radius: 50%; /* Circular shape */
-            object-fit: cover; /* Ensures image covers area */
-            border: 2px solid var(--primary); /* Primary color border */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-        }
-
-        .testimonial-card:hover .testimonial-img {
-            /* Hover effect for testimonial images */
-            border-color: var(--accent); /* Changes border to accent color */
-        }
-
-        .accordion {
-            /* Styles Bootstrap accordion */
-            --bs-accordion-bg: var(--card-bg); /* Sets accordion background */
-            --bs-accordion-border-color: rgba(255, 255, 255, 0.05); /* Subtle border */
-            --bs-accordion-btn-color: var(--text-light); /* Light text for buttons */
-            --bs-accordion-btn-bg: var(--card-bg); /* Button background */
-            --bs-accordion-active-color: var(--text-light); /* Active text color */
-            --bs-accordion-active-bg: rgba(142, 108, 255, 0.1); /* Active background */
-            --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25); /* Focus shadow */
-        }
-
-        .accordion-button:not(.collapsed) {
-            /* Styles expanded accordion buttons */
-            color: var(--primary); /* Primary color text */
-            background-color: rgba(142, 108, 255, 0.1); /* Light purple background */
-        }
-
-        .accordion-button::after {
-            /* Styles accordion button arrow (collapsed) */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238e6cff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-            /* Custom arrow icon */
-        }
-
-        .accordion-button:not(.collapsed)::after {
-            /* Styles accordion button arrow (expanded) */
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%238e6cff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-            /* Same arrow icon for consistency */
-        }
-
-        .accordion-body {
-            /* Styles accordion content */
-            color: var(--text-muted); /* Muted text color */
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--card-bg);
-            color: var(--text-light);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .artist-nav-btn {
-            /* Styles artist navigation buttons */
-            border: none; /* Removes default border */
-            background: var(--card-bg); /* Card background */
-            padding: 8px 20px; /* Padding for size */
-            margin: 5px; /* Space between buttons */
-            border-radius: 20px; /* Rounded corners */
-            font-weight: 500; /* Medium font weight */
-            color: var(--text-muted); /* Muted text color */
-            transition: all 0.3s ease; /* Smooth transition for hover */
-            border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
-        }
-
-        .artist-nav-btn:hover,
-        .artist-nav-btn.active {
-            /* Hover and active styles for artist nav buttons */
-            background: var(--primary); /* Primary color background */
-            color: var(--text-light); /* Light text color */
-            transform: translateY(-2px); /* Slight lift effect */
-            box-shadow: 0 5px 15px rgba(142, 108, 255, 0.2); /* Adds shadow */
-        }
-
-        .artist-section {
-            /* Styles artist sections */
-            display: none; /* Hidden by default */
-        }
-
-        .artist-section.active {
-            /* Styles active artist section */
-            display: block; /* Shows section */
-            animation: fadeIn 0.5s ease; /* Fade-in animation */
-        }
-
-        #mandira-services.active {
-            /* Styles Mandira's services section when active */
-            display: block; /* Shows section */
-            animation: slideInLeft 0.5s ease forwards; /* Slide-in animation */
-        }
-
-        @keyframes slideInLeft {
-            /* Defines slide-in animation for Mandira's services */
-            from {
-                opacity: 0; /* Starts invisible */
-                transform: translateX(-20px); /* Starts off to the left */
-            }
-            to {
-                opacity: 1; /* Fully visible */
-                transform: translateX(0); /* Moves to original position */
-            }
-        }
-
-        .art-services-section {
-            /* Styles art services sections */
-            display: none; /* Hidden by default */
-            margin-top: 20px; /* Space above section */
-        }
-
-        .art-services-section .row {
-            /* Styles rows in art services */
-            display: flex; /* Enables flexbox */
-            flex-wrap: wrap; /* Allows wrapping */
-            gap: 20px; /* Space between cards */
-        }
-
-        .art-services-section .col-md-12 {
-            /* Styles full-width columns in art services */
-            flex: 1 1 100%; /* Takes full width */
-        }
-
-        .art-services-section.active {
-            /* Styles active art services section */
-            display: block; /* Shows section */
-            animation: fadeIn 0.5s ease; /* Fade-in animation */
-        }
-
-        .view-services-btn {
-            /* Styles view services buttons */
-            border-color: var(--text-light); /* Light border */
-            color: var(--text-light); /* Light text */
-        }
-
-        .view-services-btn:hover {
-            /* Hover effect for view services buttons */
-            background: var(--primary); /* Primary background */
-            color: var(--text-light); /* Light text */
-            border-color: var(--primary); /* Primary border */
-        }
-
-        .form-control,
-        .form-select {
-            /* Styles form inputs and selects */
-            border-radius: 8px; /* Rounded corners */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-            background-color: var(--card-bg); /* Card background */
-            color: var(--text-light); /* Light text */
-            font-weight: 300; /* Light font weight */
-            transition: all 0.3s ease; /* Smooth transition for focus */
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            /* Styles focused form inputs and selects */
-            border-color: var(--primary); /* Primary border */
-            box-shadow: 0 0 0 0.25rem rgba(142, 108, 255, 0.25); /* Focus shadow */
-            background-color: var(--card-bg); /* Maintains background */
-            color: var(--text-light); /* Light text */
-        }
-
-        .form-label {
-            /* Styles form labels */
-            color: var(--text-light); /* Light text */
-            font-weight: 400; /* Regular font weight */
-            margin-bottom: 8px; /* Space below label */
-        }
-
-        .ratio-9x16 {
-            /* Defines custom aspect ratio for iframes */
-            --bs-aspect-ratio: 177.78%; /* 9:16 aspect ratio */
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
         
-        .ratio-16x9 {
-            --bs-aspect-ratio: 56.25%;
+        .section {
+            padding: 80px 20px;
+        }
+        
+        .section-bg-white {
+            background-color: var(--light-bg);
+        }
+        .section-bg-light {
+            background-color: var(--card-bg);
+        }
+    
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            font-size: 2.5rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+    
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        /* Services Card */
+        .services-card, .artist-card, .testimonial-card {
+            border: none;
+            border-radius: 15px;
+            padding: 30px;
+            background: var(--card-bg);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: all 0.4s ease;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px; /* Uniform height */
+        }
+        
+        .services-card:hover, .artist-card:hover, .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+    
+        .services-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .services-card h5 {
+            color: var(--text-light);
+        }
+        
+        .services-card p {
+            color: var(--text-muted);
+        }
+    
+        /* Artist Card */
+        .artist-card {
+            min-height: 400px; /* Uniform height */
+        }
+        .artist-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+            border: 3px solid var(--accent);
+            transition: transform 0.3s ease;
+        }
+        
+        .artist-card:hover .artist-img {
+            transform: scale(1.05);
+        }
+    
+        .artist-card h5 {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+    
+        .artist-card .specialty {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .artist-card p {
+            color: var(--text-muted);
+        }
+        
+        /* Testimonial Card */
+        .testimonial-card {
+            text-align: left;
+        }
+        
+        .testimonial-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+        
+        .testimonial-card h6 {
+            color: var(--text-light);
+        }
+    
+        .testimonial-card small {
+            color: var(--text-muted) !important;
         }
 
-        @keyframes float {
-            /* Defines floating animation for hero text */
-            0% { transform: translateY(0px); } /* Starting position */
-            50% { transform: translateY(-5px); } /* Moves up */
-            100% { transform: translateY(0px); } /* Returns to start */
+        .testimonial-card p {
+            color: var(--text-muted);
+        }
+    
+        /* Accordion */
+        .accordion-item {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: var(--card-shadow);
         }
 
+        .accordion-button {
+            background: var(--card-bg);
+            color: var(--text-light);
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+    
+        .accordion-button:not(.collapsed) {
+            background: var(--secondary);
+            color: var(--text-light);
+            border-color: var(--border-color);
+        }
+        
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f5f5f5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E0E0E0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+    
+        .accordion-body {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+    
+        /* Form Styling */
+        .form-control, .form-select {
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            font-weight: 300;
+            transition: all 0.3s ease;
+            background-color: var(--light-bg);
+            color: var(--text-light);
+        }
+    
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.25rem rgba(249, 168, 37, 0.2);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Artist Navigation */
+        .artist-nav-btn {
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .artist-nav-btn:hover, .artist-nav-btn.active {
+            background: var(--accent);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
+        }
+    
+        .artist-section {
+            display: none;
+        }
+    
+        .artist-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .artist-section .row {
+            margin-top: 30px;
+        }
+    
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50,20 Q80,50 50,80 Q20,50 50,20 Z" fill="none" stroke="%23f9a825" stroke-width="2" opacity="0.1"/></svg>') repeat;
+            background-size: 150px 150px;
+            opacity: 0.2;
+        }
+
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+    
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+    
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+    
+        .social-icons a {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+    
+        .social-icons a:hover {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+        
         @keyframes fadeIn {
-            /* Defines fade-in animation */
-            from { opacity: 0; transform: translateY(10px); } /* Starts invisible and shifted */
-            to { opacity: 1; transform: translateY(0); } /* Fully visible and in place */
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        @keyframes pulse {
-            /* Defines pulsing animation for icons */
-            0% { transform: scale(1); } /* Normal size */
-            50% { transform: scale(1.1); } /* Slightly larger */
-            100% { transform: scale(1); } /* Back to normal */
+        
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .section {
+                padding: 60px 15px;
+            }
         }
-
-        @keyframes bounce {
-            /* Defines bouncing animation for icons */
-            0%, 100% { transform: translateY(0); } /* Normal position */
-            50% { transform: translateY(-10px); } /* Moves up */
+        
+        /* Specific Styles to KEEP from Kalaverse */
+        /* This section maintains the unique look of the "How to Book an Artist" section from Kalaverse */
+        #how-to-book {
+            background: #1a1a1a;
         }
-
-        .wave-divider {
-            /* Styles wave divider between sections */
-            position: relative; /* Allows positioning of SVG */
-            height: 50px; /* Fixed height */
-            overflow: hidden; /* Hides overflow */
-            margin: 40px 0; /* Vertical spacing */
-        }
-
-        .wave-divider svg {
-            /* Styles SVG in wave divider */
-            position: absolute; /* Positions absolutely */
-            bottom: 0; /* Aligns to bottom */
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-        }
-
-        .bg-light {
-            /* Overrides Bootstrap's bg-light for dark theme */
-            background-color: #2a2a2a !important; /* Darker background */
-            color: var(--text-light); /* Light text */
-        }
-
         #how-to-book .text-muted,
         #how-to-book li,
         #how-to-book p,
         #how-to-book strong.text-light {
-            /* Ensures consistent text color in how-to-book section */
-            color: var(--text-light) !important; /* Light text */
+            color: #f5f5f5 !important;
         }
-
-        #services .text-muted {
-            /* Ensures consistent text color in services section */
-            color: var(--text-light) !important; /* Light text */
+        #how-to-book .text-primary {
+            color: #ff9e00 !important;
         }
-
-        #artists .text-muted {
-            /* Ensures consistent text color in artists section */
-            color: var(--text-light) !important; /* Light text */
-        }
-
-        #art-services .text-muted {
-            /* Ensures consistent text color in art-services section */
-            color: var(--text-light) !important; /* Light text */
-        }
-
-        #testimonials .text-muted {
-            /* Ensures consistent text color in testimonials section */
-            color: var(--text-light) !important; /* Light text */
-        }
-
-        .artist-nav {
-            /* Updated: Adds padding below artist navigation buttons */
-            padding-bottom: 30px; /* Increases gap between buttons and artist cards */
-        }
-
-        @media (min-width: 1200px) {
-            /* Responsive styles for large screens */
-            .container {
-                max-width: 1140px; /* Limits container width */
-            }
-        }
-
-        @media (min-width: 1400px) {
-            /* Responsive styles for extra-large screens */
-            .container {
-                max-width: 1320px; /* Wider container */
-            }
-        }
-
-        @media (max-width: 767px) {
-            /* Responsive styles for mobile devices */
-            .hero {
-                padding: 100px 15px; /* Reduced padding */
-            }
-
-            .hero h1 {
-                font-size: 2.5rem; /* Smaller heading */
-            }
-
-            .section {
-                padding: 50px 15px; /* Reduced section padding */
-            }
-
-            .section-title {
-                font-size: 2rem; /* Smaller title */
-            }
-
-            .artist-nav {
-                flex-direction: column; /* Stacks nav buttons vertically */
-                align-items: center; /* Centers buttons */
-            }
-
-            .services-card,
-            .artist-card,
-            .testimonial-card {
-                padding: 20px; /* Reduced padding */
-            }
-
-            .services-card {
-                min-height: 300px; /* Smaller minimum height */
-            }
-
-            .services-card img {
-                height: 120px; /* Smaller image height */
-            }
-        }
-        .section-title {
-            letter-spacing: 0.5px;
-        }
-
-        .services-card, .artist-card {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-        }
-        .services-card:hover, .artist-card:hover {
-            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            box-shadow: 0 4px 15px rgba(255, 158, 0, 0.3);
-        }
-        .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            box-shadow: 0 6px 20px rgba(255, 158, 0, 0.4);
+        
+        .btn-outline-light {
+            border-color: var(--text-light);
+            color: var(--text-light);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn-outline-light:hover {
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+            background: #ff9e00;
+            color: var(--text-light);
+            border-color: #ff9e00;
         }
-
-        footer {
-            font-size: 0.95rem;
-            opacity: 0.95;
+        
+        /* Overrides to ensure text visibility */
+        .text-muted {
+            color: var(--text-muted) !important;
         }
-
-        .animate-logo {
-            animation: pulse 2s ease-in-out infinite; /* Same animation as old icon */
+        #artists .text-muted,
+        #services .text-muted,
+        #art-services .text-muted {
+            color: var(--text-light) !important;
         }
-        .navbar-logo {
-            height: 60px; /* bigger for navbar */
-            width: 60px;
-        }
-
-        .brand-logo {
-            height: 20px; /* keep footer logo same size */
-            width: 20px;
+        
+        /* Override specific Nyayverse styles that would conflict with the preserved section */
+        .section-bg-light, .bg-light {
+            background-color: var(--card-bg) !important;
         }
         .text-primary {
-            color: var(--primary) !important;
+            color: var(--accent) !important;
         }
-        #artist-starfield {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* behind everything */
+        
+        .testimonial-card .text-warning i {
+            color: var(--accent) !important;
         }
-
-        #artists > *:not(#artist-starfield) {
+        
+        /* Styles from Kalaverse to re-add */
+        .wave-divider {
             position: relative;
-            z-index: 1; /* put content above stars */
-        }
-        #starfield {
-            position: fixed;
-            top: var(--navbar-height, 70px); /* start just below navbar */
-            left: 0;
-            width: 100%;
-            height: calc(100% - var(--navbar-height, 70px)); /* fill the rest */
-            z-index: 0;
-            background: black;
-        }
-
-        body > *:not(#starfield) {
-            position: relative;
-        }
-
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: black; /* match navbar background */
-        }
-        #paint-splash-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            height: 50px;
             overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
+            margin: 40px 0;
         }
-
-        .splash-img {
+        .wave-divider svg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 0;
-            transition: transform 0.5s ease-out, opacity 0.8s ease-out;
-        }
-        #art-services {
-            position: relative;
-        }
-        #art-services > *:not(#paint-splash-container) {
-            position: relative;
-            z-index: 1;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
         }
         .piano {
             position: relative;
@@ -945,51 +605,131 @@
             background: #333;
         }
         
+        .art-services-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .art-services-section.active {
+            display: block;
+        }
+        .art-services-section .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .art-services-section .col-md-12 {
+            flex: 1 1 100%;
+        }
+        .services-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        #artist-starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        #artists > *:not(#artist-starfield) {
+            position: relative;
+            z-index: 1;
+        }
+        #paint-splash-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .splash-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.8s ease-out;
+        }
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+        .artist-card-section {
+            display: none;
+        }
+        .artist-card-section.active {
+            display: block;
+        }
+        
+        .footer-logo {
+            height: 20px;
+            width: 20px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
 <canvas id="starfield"></canvas>
-<div class="star star1"></div>
-<div class="star star2"></div>
-<div class="shooting-star"></div>
+
 <nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="logo21.png" alt="Kalaverse Logo" class="navbar-logo me-2">
-      <span class="logo-text">Kalaverse</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="#how-to-book">How to Book</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#artists">Our Artists</a></li>
-        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="logo21.png" alt="Kalaverse Logo" class="navbar-logo me-2">
+            Kalaverse
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#how-to-book">How to Book</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#artists">Our Artists</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
 
-<section class="hero text-center">
-    <div class="container position-relative">
+<section class="hero text-center" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('back.jpg') no-repeat center center/cover;">
+    <div class="hero-star small" style="top: 20%; left: 15%; animation-delay: 1.5s;"></div>
+    <div class="hero-star large" style="top: 40%; left: 80%; animation-delay: 0.8s;"></div>
+    <div class="hero-star medium" style="top: 70%; left: 30%; animation-delay: 2.2s;"></div>
+    <div class="hero-star small" style="top: 10%; left: 55%; animation-delay: 3s;"></div>
+    <div class="hero-star large" style="top: 90%; left: 70%; animation-delay: 0.5s;"></div>
+    <div class="hero-star medium" style="top: 55%; left: 5%; animation-delay: 1.2s;"></div>
+    <div class="hero-star small" style="top: 85%; left: 20%; animation-delay: 2.7s;"></div>
+    <div class="hero-star large" style="top: 30%; left: 40%; animation-delay: 0.2s;"></div>
+    <div class="hero-star medium" style="top: 65%; left: 95%; animation-delay: 1.8s;"></div>
+    <div class="hero-content container position-relative">
         <h1>Your Creative Hub <span class="nepali-font">(तपाईंको रचनात्मक केन्द्र)</span></h1>
         <p class="lead">Connecting you with Nepal's top creative professionals for all your artistic needs</p>
         <a href="#artists" class="btn btn-primary btn-lg mt-3 me-2">
             <i class="fas fa-search me-2"></i>Find an Artist
         </a>
-        <a href="#contact" class="btn btn-outline-light btn-lg mt-3">
+        <a href="#contact" class="btn btn-primary btn-lg mt-3 me-2">
             <i class="fas fa-calendar-check me-2"></i>Book a Service
         </a>
     </div>
 </section>
 
-<section id="about" class="section">
+<section id="about" class="section section-bg-light">
     <div class="container">
         <h2 class="text-center section-title">About Kalaverse <span class="nepali-font">(हाम्रो बारेमा)</span></h2>
         <div class="row align-items-center">
@@ -1017,8 +757,8 @@
                 </div>
             </div>
             <div class="col-md-6 text-center">
-                <img src="art.jpg" alt="Creative Services" class="img-fluid rounded shadow-lg" />
-                </div>
+                <img src="art.jpg" alt="Creative Services" class="img-fluid rounded-3 shadow-lg" />
+            </div>
         </div>
     </div>
 </section>
@@ -1044,108 +784,107 @@
                         Briefly explain your creative needs (e.g., "I need a voiceover for my advertisement" or "I want to book a studio for song recording").</li>
                     <li class="mb-3"><strong class="text-light">Submit Your Request</strong><br>
                         Click the "Send Request" button to submit your booking. This step is completely free!</li>
-                    </ol>
+                </ol>
                 <h4 class="text-primary mt-4">What Happens Next?</h4>
                 <ul class="text-muted">
                     <li class="mb-2">Our team will contact you using the phone number you provided.</li>
                     <li>They'll discuss your needs and confirm the details of your collaboration.</li>
-                    </ul>
+                </ul>
                 <p class="text-muted mt-3"><strong>That's it! Book your creative service today and bring your vision to life with ease.</strong></p>
-                </div>
+            </div>
             <div class="col-md-6 text-center">
                 <div class="ratio ratio-16x9 rounded overflow-hidden shadow-lg">
                     <iframe src="https://www.youtube.com/embed/Qz0SiMwJh-k" frameborder="0" allowfullscreen></iframe>
-                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="services" class="section">
-
+<section id="services" class="section section-bg-light">
     <div class="container">
         <h2 class="text-center section-title">Our Services <span class="nepali-font">(हाम्रा सेवाहरू)</span></h2>
-        <p class="text-center text-muted mb-5">Discover the creative services we offer to bring your vision to life</p>
+        <p class="text-center text-light mb-5">Discover the creative services we offer to bring your vision to life</p>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-music"></i>
                     <h5>Music Composition</h5>
                     <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-pen-fancy"></i>
                     <h5>Script Writing</h5>
                     <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-video"></i>
                     <h5>Cinematography</h5>
                     <p>Professional filming for movies, music videos, documentaries, and commercials.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-microphone"></i>
                     <h5>Voiceover Services</h5>
                     <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-drum"></i>
                     <h5>Instrumentalists</h5>
                     <p>Traditional Nepali instruments like flute, tabla, and sarangi for live or recorded performances.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-edit"></i>
                     <h5>Lyric Writing</h5>
                     <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-camera"></i>
                     <h5>Music Video Direction</h5>
                     <p>Directing and producing visually stunning music videos tailored to your vision.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-film"></i>
                     <h5>Video Services</h5>
                     <p>Editing, color grading, and post-production for films, ads, and social media content.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-microphone-alt"></i>
                     <h5>Studio Recording Services</h5>
                     <p>Professional recording sessions for songs, voiceovers, or podcasts in top studios.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="services-card">
                     <i class="fas fa-building"></i>
                     <h5>Studio Booking</h5>
                     <p>Book state-of-the-art studios for song recording, rehearsals, or creative projects.</p>
-                    <a href="#contact" class="btn btn-sm btn-outline-light">Hire Now</a>
-                    </div>
+                    <a href="#contact" class="btn btn-sm btn-outline-dark">Hire Now</a>
+                </div>
             </div>
         </div>
     </div>
@@ -1153,13 +892,13 @@
 
 <div class="wave-divider">
     <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#8e6cff"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#8e6cff"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#8e6cff"></path>
-        </svg>
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="#f9a825"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="#f9a825"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="#f9a825"></path>
+    </svg>
 </div>
 
-<section id="artists" class="section bg-primary bg-opacity-10 position-relative">
+<section id="artists" class="section section-bg-light position-relative">
     <canvas id="artist-starfield"></canvas>
     <div class="container">
         <h2 class="text-center section-title">Our Creative Experts <span class="nepali-font">(हाम्रा रचनात्मक विशेषज्ञहरू)</span></h2>
@@ -1175,27 +914,26 @@
             <div class="key white" data-sound="sa2"></div>
         </div>
 
-
-        <p class="text-center text-muted mb-5">Connect with Nepal's top creative professionals specialized in various fields</p>
-        <div class="artist-nav d-flex justify-content-center flex-wrap">
+        <p class="text-center text-light mb-5">Connect with Nepal's top creative professionals specialized in various fields</p>
+        <div class="artist-nav d-flex justify-content-center flex-wrap mb-4">
             <button class="artist-nav-btn active" data-category="all">All Artists</button>
             <button class="artist-nav-btn" data-category="music">Music Composition</button>
             <button class="artist-nav-btn" data-category="script">Script Writing</button>
             <button class="artist-nav-btn" data-category="cinematography">Cinematography</button>
             <button class="artist-nav-btn" data-category="voiceover">Voiceover</button>
             <button class="artist-nav-btn" data-category="video">Video Services</button>
-            </div>
-
+        </div>
+        
         <div class="artist-section active" id="all-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3" data-categories="music,script,voiceover">
                     <div class="artist-card">
                         <img src="aunty.jpg" alt="Mandira Dhungel" class="artist-img">
                         <h5>Mandira Dhungel</h5>
-                        <p class="specialty">Voiceover Artist</p>
+                        <p class="specialty">Creative Head</p>
                         <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
-                        <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+                    </div>
                     <div class="art-services-section" id="mandira-services">
                         <div class="row">
                             <div class="col-md-12">
@@ -1203,40 +941,40 @@
                                     <i class="fas fa-music"></i>
                                     <h5>Music Composition</h5>
                                     <p>Original music for films, advertisements, or personal projects, including Nepali folk and modern genres.</p>
-                                    <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
-                                    </div>
+                                    <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="services-card">
                                     <i class="fas fa-pen-fancy"></i>
                                     <h5>Script Writing</h5>
                                     <p>Scripts for films, TV serials, advertisements, or short-form content like TikTok.</p>
-                                    <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
-                                    </div>
+                                    <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="services-card">
                                     <i class="fas fa-microphone"></i>
                                     <h5>Voiceover Services</h5>
                                     <p>Voiceovers for advertisements, animations, audiobooks, and corporate videos.</p>
-                                    <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
-                                    </div>
+                                    <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="services-card">
                                     <i class="fas fa-edit"></i>
                                     <h5>Lyric Writing</h5>
                                     <p>Custom lyrics for songs, jingles, or cultural performances in various languages.</p>
-                                    <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
-                                    </div>
+                                    <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="services-card">
                                     <i class="fas fa-headphones"></i>
                                     <h5>Music Production</h5>
                                     <p>Professional music production and arrangement for modern and traditional music.</p>
-                                    <button class="btn btn-sm btn-outline-light book-btn" data-artist="Mandira Dhungel">Book Now</button>
-                                    </div>
+                                    <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Mandira Dhungel">Book Now</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1247,8 +985,8 @@
                         <h5>Artist 3</h5>
                         <p class="specialty">Cinematographer</p>
                         <p>Expert in filming music videos and commercials.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 3">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 3">Book Now</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3" data-categories="music">
                     <div class="artist-card">
@@ -1256,8 +994,8 @@
                         <h5>Artist 5</h5>
                         <p class="specialty">Instrumentalist</p>
                         <p>Specialized in traditional Nepali instruments like tabla.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 5">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 5">Book Now</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3" data-categories="cinematography">
                     <div class="artist-card">
@@ -1265,8 +1003,8 @@
                         <h5>Artist 7</h5>
                         <p class="specialty">Cinematographer</p>
                         <p>Specialized in documentaries and feature films.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 7">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 7">Book Now</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3" data-categories="video">
                     <div class="artist-card">
@@ -1274,8 +1012,8 @@
                         <h5>Prastav Koirala</h5>
                         <p class="specialty">Video Editor</p>
                         <p>Specialized in video editing and post-production for films and ads.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3" data-categories="voiceover">
                     <div class="artist-card">
@@ -1283,12 +1021,12 @@
                         <h5>Shashanka Ghimire</h5>
                         <p class="specialty">Voiceover Artist</p>
                         <p>3 years of experience providing voiceovers for YouTube videos.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="artist-section" id="music-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
@@ -1297,8 +1035,8 @@
                         <h5>Mandira Dhungel</h5>
                         <p class="specialty">Creative Head</p>
                         <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
-                        <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
                     <div class="artist-card">
@@ -1306,12 +1044,12 @@
                         <h5>Artist 5</h5>
                         <p class="specialty">Instrumentalist</p>
                         <p>Specialized in traditional Nepali instruments like tabla.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 5">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 5">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="artist-section" id="script-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
@@ -1320,12 +1058,12 @@
                         <h5>Mandira Dhungel</h5>
                         <p class="specialty">Creative Head</p>
                         <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
-                        <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="artist-section" id="cinematography-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
@@ -1334,8 +1072,8 @@
                         <h5>Artist 3</h5>
                         <p class="specialty">Cinematographer</p>
                         <p>Expert in filming music videos and commercials.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 3">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 3">Book Now</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
                     <div class="artist-card">
@@ -1343,12 +1081,12 @@
                         <h5>Artist 7</h5>
                         <p class="specialty">Cinematographer</p>
                         <p>Specialized in documentaries and feature films.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Artist 7">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Artist 7">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="artist-section" id="voiceover-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
@@ -1357,8 +1095,8 @@
                         <h5>Mandira Dhungel</h5>
                         <p class="specialty">Creative Head</p>
                         <p>25+ years in music industry as a radio presenter, lyricist, music producer, and creative head for Music Nepal, also writes scripts for movies and ads.</p>
-                        <button class="btn btn-outline-light btn-sm view-services-btn" data-target="mandira-services">View Services</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="mandira-services">View Services</button>
+                    </div>
                 </div>
                 <div class="col-md-4 col-lg-3">
                     <div class="artist-card">
@@ -1366,12 +1104,12 @@
                         <h5>Shashanka Ghimire</h5>
                         <p class="specialty">Voiceover Artist</p>
                         <p>3 years of experience providing voiceovers for YouTube videos.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Shashanka Ghimire">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="artist-section" id="video-artists">
             <div class="row g-4">
                 <div class="col-md-4 col-lg-3">
@@ -1380,29 +1118,28 @@
                         <h5>Prastav Koirala</h5>
                         <p class="specialty">Video Editor</p>
                         <p>Specialized in video editing and post-production for films and ads.</p>
-                        <button class="btn btn-outline-light btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
-                        </div>
+                        <button class="btn btn-outline-dark btn-sm book-btn" data-artist="Prastav Koirala">Book Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="text-center mt-4">
-            <a href="#contact" class="btn btn-outline-light">Hire Now</a>
-            </div>
+            <a href="#contact" class="btn btn-primary">Can't Find a Specific Artist? Consult Now</a>
+        </div>
     </div>
 </section>
 
-<section id="art-services" class="section bg-light">
-    <div id="paint-splash-container">
+<section id="art-services" class="section section-bg-light position-relative">
+    <div id="paint-splash-container" style="z-index: 0; position: absolute; top:0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;">
         <img src="splash1.png" class="splash-img">
         <img src="splash2.png" class="splash-img">
         <img src="splash3.png" class="splash-img">
     </div>
 
-
-    <div class="container">
+    <div class="container" style="position:relative; z-index: 1;">
         <h2 class="text-center section-title">Our Art Services <span class="nepali-font">(हाम्रा कला सेवाहरू)</span></h2>
-        <p class="text-center mb-5">Discover the vibrant art creations by our talented artists</p>
+        <p class="text-center text-light mb-5">Discover the vibrant art creations by our talented artists</p>
         <div class="row justify-content-center g-4">
             <div class="col-md-4 col-lg-3">
                 <div class="artist-card">
@@ -1410,8 +1147,8 @@
                     <h5>Aditi Jha</h5>
                     <p class="specialty">Visual Artist</p>
                     <p>Specialized in Acrylic, Watercolor, and Digital Art creations.</p>
-                    <button class="btn btn-outline-light btn-sm view-services-btn" data-target="aditi-services">View Services</button>
-                    </div>
+                    <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="aditi-services">View Services</button>
+                </div>
                 <div class="art-services-section" id="aditi-services">
                     <div class="row">
                         <div class="col-md-12">
@@ -1419,7 +1156,7 @@
                                 <img src="image1.jpg" alt="Acrylic Painting" class="img-fluid">
                                 <h5>Acrylic Painting</h5>
                                 <p>Vivid and expressive acrylic artworks for personal or commercial projects.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Aditi Jha">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1427,7 +1164,7 @@
                                 <img src="image2.jpg" alt="Watercolor Painting" class="img-fluid">
                                 <h5>Watercolor Painting</h5>
                                 <p>Delicate and vibrant watercolor pieces inspired by Nepali culture and nature.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Aditi Jha">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1435,7 +1172,7 @@
                                 <img src="image3.jpg" alt="Digital Art" class="img-fluid">
                                 <h5>Digital Art</h5>
                                 <p>Modern digital illustrations for branding, media, and personal use.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Aditi Jha">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Aditi Jha">Book Now</button>
                             </div>
                         </div>
                     </div>
@@ -1447,7 +1184,7 @@
                     <h5>Neelanjana Phuyal</h5>
                     <p class="specialty">Visual Artist</p>
                     <p>Expert in Oil Painting, Mixed Media, Sketch, Oil Pastel, and Digital Art artworks.</p>
-                    <button class="btn btn-outline-light btn-sm view-services-btn" data-target="neelanjana-services">View Services</button>
+                    <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="neelanjana-services">View Services</button>
                 </div>
                 <div class="art-services-section" id="neelanjana-services">
                     <div class="row">
@@ -1456,7 +1193,7 @@
                                 <img src="g1.jpeg" alt="Oil Painting" class="img-fluid">
                                 <h5>Oil Painting</h5>
                                 <p>Rich and textured oil paintings for galleries or personal collections.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1464,7 +1201,7 @@
                                 <img src="g2.jpeg" alt="Mixed Media" class="img-fluid">
                                 <h5>Mixed Media</h5>
                                 <p>Innovative artworks combining various materials and techniques.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1472,7 +1209,7 @@
                                 <img src="g6.jpg" alt="Sketch" class="img-fluid">
                                 <h5>Sketch</h5>
                                 <p>Detailed and expressive sketches for various artistic projects.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1480,7 +1217,7 @@
                                 <img src="g4.jpeg" alt="Oil Pastel" class="img-fluid">
                                 <h5>Oil Pastel</h5>
                                 <p>Vibrant and textured oil pastel artworks for personal or commercial use.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1488,7 +1225,7 @@
                                 <img src="g5.jpg" alt="Digital Art" class="img-fluid">
                                 <h5>Digital Art</h5>
                                 <p>Modern digital illustrations for branding, media, and personal use.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Neelanjana Phuyal">Book Now</button>
                             </div>
                         </div>
                     </div>
@@ -1500,7 +1237,7 @@
                     <h5>Artist 2</h5>
                     <p class="specialty">Visual Artist</p>
                     <p>Specialized in Charcoal Sketches and Digital Illustrations.</p>
-                    <button class="btn btn-outline-light btn-sm view-services-btn" data-target="artist2-services">View Services</button>
+                    <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="artist2-services">View Services</button>
                 </div>
                 <div class="art-services-section" id="artist2-services">
                     <div class="row">
@@ -1509,7 +1246,7 @@
                                 <img src="https://via.placeholder.com/300x150?text=Charcoal+Sketches" alt="Charcoal Sketches" class="img-fluid">
                                 <h5>Charcoal Sketches</h5>
                                 <p>Detailed and expressive charcoal drawings for various projects.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Artist 2">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -1517,7 +1254,7 @@
                                 <img src="https://via.placeholder.com/300x150?text=Digital+Illustrations" alt="Digital Illustrations" class="img-fluid">
                                 <h5>Digital Illustrations</h5>
                                 <p>Creative digital illustrations for media and commercial use.</p>
-                                <button class="btn btn-sm btn-outline-light book-btn" data-artist="Artist 2">Book Now</button>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Artist 2">Book Now</button>
                             </div>
                         </div>
                     </div>
@@ -1527,9 +1264,10 @@
     </div>
 </section>
 
-<section id="testimonials" class="section bg-light">
+<section id="testimonials" class="section section-bg-light">
     <div class="container">
-        <h2 class="text-center section-title">Client Testimonials (This is a sample testimonial added for testing purposes only. Not a real client review.) <span class="nepali-font">(ग्राहकहरूको प्रतिक्रिया)</span></h2>
+        <h2 class="text-center section-title">Client Testimonials <span class="nepali-font">(ग्राहकहरूको प्रतिक्रिया)</span></h2>
+        <p class="text-center text-muted mb-5">(This is a sample testimonial added for testing purposes only. Not a real client review.)</p>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="testimonial-card">
@@ -1592,13 +1330,13 @@
     </div>
 </section>
 
-<section id="faq" class="section">
+<section id="faq" class="section section-bg-light">
     <div class="container">
         <h2 class="text-center section-title">Frequently Asked Questions <span class="nepali-font">(प्राय सोधिने प्रश्नहरू)</span></h2>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item mb-3 border">
+                    <div class="accordion-item mb-3">
                         <h3 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
                                 How do I book a creative professional?
@@ -1610,7 +1348,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item mb-3 border">
+                    <div class="accordion-item mb-3">
                         <h3 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
                                 How are service fees determined?
@@ -1622,7 +1360,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item mb-3 border">
+                    <div class="accordion-item mb-3">
                         <h3 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
                                 Can I get creative services remotely?
@@ -1634,7 +1372,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item mb-3 border">
+                    <div class="accordion-item mb-3">
                         <h3 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
                                 How do you ensure the quality of creative work?
@@ -1655,31 +1393,31 @@
 <section id="contact" class="section">
     <div class="container">
         <h2 class="text-center section-title">Contact Us <span class="nepali-font">(हामीलाई सम्पर्क गर्नुहोस्)</span></h2>
-        <div class="row">
+        <div class="row g-5">
             <div class="col-md-5 mb-4 mb-md-0">
                 <h5>Get in Touch</h5>
                 <p>Have questions or need creative assistance? Reach out to us through any of these channels:</p>
                 <div class="mb-3">
-                    <i class="fas fa-map-marker-alt me-2"></i>
+                    <i class="fas fa-map-marker-alt me-2 text-primary"></i>
                     <span>Kathmandu, Nepal</span>
                 </div>
                 <div class="mb-3">
-                    <i class="fas fa-phone me-2"></i>
+                    <i class="fas fa-phone me-2 text-primary"></i>
                     <span>+977-9869153208</span>
                 </div>
                 <div class="mb-3">
-                    <i class="fas fa-envelope me-2"></i>
+                    <i class="fas fa-envelope me-2 text-primary"></i>
                     <span>kalaverse@gmail.com</span>
                 </div>
                 <div class="mb-3">
-                    <i class="fas fa-clock me-2"></i>
+                    <i class="fas fa-clock me-2 text-primary"></i>
                     <span>Sunday-Friday: 9:00 AM - 5:00 PM</span>
                 </div>
                 <div class="social-icons mt-4">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f text-primary"></i></a>
+                    <a href="#"><i class="fab fa-twitter text-primary"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in text-primary"></i></a>
+                    <a href="#"><i class="fab fa-instagram text-primary"></i></a>
                 </div>
             </div>
             <div class="col-md-7">
@@ -1688,7 +1426,7 @@
                     <input type="hidden" name="subject" value="New Service Request from Kalaverse">
                     <input type="hidden" name="from_name" value="Kalaverse">
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
+                    
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name" class="form-label">Full Name *</label>
@@ -1740,9 +1478,6 @@
                             <option value="Artist 7">Artist 7 - Cinematographer</option>
                             <option value="Prastav Koirala">Prastav Koirala - Video Editor</option>
                             <option value="Shashanka Ghimire">Shashanka Ghimire - Voiceover Artist</option>
-                            <option value="Aditi Jha">Aditi Jha - Visual Artist</option>
-                            <option value="Neelanjana Phuyal">Neelanjana Phuyal - Visual Artist</option>
-                            <option value="Artist 2">Artist 2 - Visual Artist</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -1758,26 +1493,26 @@
     </div>
 </section>
 
-<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" id="requestToast">
+<div class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true" id="successToast">
     <div class="d-flex">
         <div class="toast-body">
-            Your request has been sent successfully!
+            <i class="fas fa-check-circle me-2"></i>
+            <span id="toastMessage">Your request has been submitted successfully!</span>
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 </div>
 
-
 <footer>
     <div class="container">
-        <div class="row">
+        <div class="row g-4">
             <div class="col-md-4 mb-4 mb-md-0">
-                <h5><img src="logo22.png" alt="Kalaverse Footer Logo" class="brand-logo">Kalaverse</h5>
+                <h5><img src="logo22.png" alt="Kalaverse Footer Logo" class="footer-logo">Kalaverse</h5>
                 <p>Nepal's trusted platform connecting clients with talented creative professionals.</p>
             </div>
             <div class="col-md-2 mb-4 mb-md-0 footer-links">
                 <h5>Quick Links</h5>
-                <ul>
+                <ul class="list-unstyled">
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#how-to-book">How to Book</a></li>
                     <li><a href="#services">Services</a></li>
@@ -1788,7 +1523,7 @@
             </div>
             <div class="col-md-3 mb-4 mb-md-0 footer-links">
                 <h5>Services</h5>
-                <ul>
+                <ul class="list-unstyled">
                     <li><a href="#services">Music Composition</a></li>
                     <li><a href="#services">Script Writing</a></li>
                     <li><a href="#services">Cinematography</a></li>
@@ -1799,15 +1534,14 @@
             </div>
             <div class="col-md-3 footer-links">
                 <h5>Contact Info</h5>
-                <h5>Contact Info</h5>
-                <ul>
+                <ul class="list-unstyled">
                     <li><i class="fas fa-map-marker-alt me-2"></i>Kathmandu</li>
                     <li><i class="fas fa-phone me-2"></i> +977-9869153208</li>
                     <li><i class="fas fa-envelope me-2"></i> kalaverse@gmail.com</li>
                 </ul>
             </div>
         </div>
-        <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+        <hr class="my-4" style="border-color: var(--border-color);">
         <div class="row">
             <div class="col-md-6 text-center text-md-start">
                 <p class="mb-0">© 2025 Kalaverse. All rights reserved.</p>
@@ -1822,19 +1556,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toastEl = document.getElementById('requestToast');
-        const toast = new bootstrap.Toast(toastEl);
-
-        // Change selector if your button is not .book-btn
-        document.querySelectorAll('.book-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                toast.show();
-            });
-        });
-    });
-</script>
-<script>
     // Initialize Toast
     const toastLiveExample = document.getElementById('successToast');
     const toastMessage = document.getElementById('toastMessage');
@@ -1845,7 +1566,7 @@
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-
+        
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
@@ -1854,7 +1575,7 @@
                     'Accept': 'application/json'
                 }
             });
-
+            
             const result = await response.json();
             if (result.success) {
                 const artistName = form.querySelector('#artist').value || 'No preference';
@@ -1874,34 +1595,37 @@
     // Artist Navigation Functionality
     const artistNavBtns = document.querySelectorAll('.artist-nav-btn');
     const artistSections = document.querySelectorAll('.artist-section');
-
+    
     artistNavBtns.forEach(btn => {
         btn.addEventListener('click', function() {
+            // Remove 'active' from all buttons and sections
             artistNavBtns.forEach(b => b.classList.remove('active'));
+            artistSections.forEach(s => s.classList.remove('active'));
+            
+            // Add 'active' to the clicked button and corresponding section
             this.classList.add('active');
-
             const category = this.getAttribute('data-category');
-            artistSections.forEach(section => {
-                section.classList.remove('active');
-            });
-
             document.getElementById(`${category}-artists`).classList.add('active');
         });
     });
 
-    // Book Artist Button Functionality
+    // Book Consultation Button Functionality
     const bookButtons = document.querySelectorAll('.book-btn');
     const artistSelect = document.getElementById('artist');
-
+    
     bookButtons.forEach(button => {
         button.addEventListener('click', function() {
             const artistName = this.getAttribute('data-artist');
             window.location.hash = '#contact';
             artistSelect.value = artistName;
+            
+            // Smooth scroll to contact section
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-
-    // View Services Button Functionality
+    
     const viewServicesButtons = document.querySelectorAll('.view-services-btn');
 
     viewServicesButtons.forEach(button => {
@@ -1920,15 +1644,64 @@
             servicesSection.classList.toggle('active');
         });
     });
+
     document.querySelectorAll('.book-btn, a[href="#contact"]').forEach(function(button) {
         button.addEventListener('click', function(e) {
-            e.preventDefault(); // stop default anchor behavior
+            e.preventDefault();
             const contactSection = document.querySelector('#contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
+
+    // Starfield Animation - Hero Section
+    (function() {
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        let stars = Array(300).fill().map(() => ({
+            x: Math.random() * canvas.width - canvas.width / 2,
+            y: Math.random() * canvas.height - canvas.height / 2,
+            z: Math.random() * canvas.width
+        }));
+
+        function draw() {
+            ctx.fillStyle = "transparent";
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Use clearRect for transparent bg
+
+            ctx.fillStyle = "white";
+            stars.forEach(star => {
+                let k = 128.0 / star.z;
+                let px = star.x * k + canvas.width / 2;
+                let py = star.y * k + canvas.height / 2;
+
+                if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+                    let size = (1 - star.z / canvas.width) * 2;
+                    ctx.fillRect(px, py, size, size);
+                }
+
+                star.z -= 2;
+                if (star.z <= 0) {
+                    star.x = Math.random() * canvas.width - canvas.width / 2;
+                    star.y = Math.random() * canvas.height - canvas.height / 2;
+                    star.z = canvas.width;
+                }
+            });
+
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+
+    // Starfield Animation - Artist Section
     (function() {
         const canvas = document.getElementById('artist-starfield');
         const ctx = canvas.getContext('2d');
@@ -1971,78 +1744,8 @@
 
         draw();
     })();
-</script>
-<script>
-    (function() {
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas.getContext('2d');
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        let stars = Array(300).fill().map(() => ({
-            x: Math.random() * canvas.width - canvas.width / 2,
-            y: Math.random() * canvas.height - canvas.height / 2,
-            z: Math.random() * canvas.width
-        }));
-
-        function draw() {
-            ctx.fillStyle = "black";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = "white";
-            stars.forEach(star => {
-                let k = 128.0 / star.z;
-                let px = star.x * k + canvas.width / 2;
-                let py = star.y * k + canvas.height / 2;
-
-                if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
-                    let size = (1 - star.z / canvas.width) * 2;
-                    ctx.fillRect(px, py, size, size);
-                }
-
-                star.z -= 2;
-                if (star.z <= 0) {
-                    star.x = Math.random() * canvas.width - canvas.width / 2;
-                    star.y = Math.random() * canvas.height - canvas.height / 2;
-                    star.z = canvas.width;
-                }
-            });
-
-            requestAnimationFrame(draw);
-        }
-
-        draw();
-    })();
-</script>
-<script>
-    const splashes = document.querySelectorAll('#paint-splash-container .splash-img');
-
-    function triggerPaintSplash() {
-        splashes.forEach((img, i) => {
-            setTimeout(() => {
-                img.style.transform = `translate(-50%, -50%) scale(1) rotate(${Math.random()*360}deg)`;
-                img.style.opacity = 1;
-            }, i * 150);
-        });
-    }
-
-    // Trigger when "Our Art Services" is visible
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                triggerPaintSplash();
-            }
-        });
-    }, { threshold: 0.5 });
-
-    observer.observe(document.getElementById("art-services"));
-</script>
-<script>
+    // Piano Sound Functionality
     const sounds = {
         sa: 'sa.mp3',
         re: 're.mp3',
@@ -2061,9 +1764,32 @@
             if (sounds[note]) {
                 const audio = new Audio(sounds[note]);
                 audio.play();
+            } else {
+                console.warn(`Sound file not found for note: ${note}`);
             }
         });
     });
+
+    // Paint Splash Animation
+    const splashes = document.querySelectorAll('#paint-splash-container .splash-img');
+    function triggerPaintSplash() {
+        splashes.forEach((img, i) => {
+            setTimeout(() => {
+                img.style.transform = `translate(-50%, -50%) scale(1) rotate(${Math.random()*360}deg)`;
+                img.style.opacity = 1;
+            }, i * 150);
+        });
+    }
+
+    // Trigger when "Our Art Services" is visible
+    const splashObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                triggerPaintSplash();
+            }
+        });
+    }, { threshold: 0.5 });
+    splashObserver.observe(document.getElementById("art-services"));
 </script>
 </body>
 </html>

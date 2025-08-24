@@ -1268,6 +1268,75 @@
     </div>
 </section>
 
+<section id="classes" class="section section-bg-light">
+    <div class="container">
+        <h2 class="text-center section-title">Our Schools & Institutes <span class="nepali-font">(हाम्रा विद्यालय र संस्थानहरू)</span></h2>
+        <p class="text-center text-light mb-5">Ignite your passion and learn from the best with our specialized classes</p>
+        <div class="row justify-content-center g-4">
+            <div class="col-md-4 col-lg-3">
+                <div class="artist-card">
+                    <img src="naad.jpg" alt="Naad Sangeet Pathshala" class="artist-img">
+                    <h5>Naad Sangeet Pathshala</h5>
+                    <p class="specialty">Music & Art School</p>
+                    <p>Nurturing the next generation of musicians and artists with expert instruction in various instruments.</p>
+                    <button class="btn btn-outline-dark btn-sm view-services-btn" data-target="naad-classes">View Classes</button>
+                </div>
+                <div class="art-services-section" id="naad-classes">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-drum"></i>
+                                <h5>Tabla Class</h5>
+                                <p>Learn the rhythmic intricacies of the tabla from experienced instructors.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Tabla Class">Book Now</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-violin"></i>
+                                <h5>Violin Class</h5>
+                                <p>Explore the beautiful sound of the violin with personalized lessons.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Violin Class">Book Now</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-flute"></i>
+                                <h5>Flute Class</h5>
+                                <p>Learn to play the flute and create enchanting melodies.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Flute Class">Book Now</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-microphone-alt"></i>
+                                <h5>Vocal Class</h5>
+                                <p>Develop your singing technique, range, and stage presence with expert guidance.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Vocal Class">Book Now</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-keyboard"></i>
+                                <h5>Harmonium Class</h5>
+                                <p>Learn to play the harmonium for classical and folk music.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Harmonium Class">Book Now</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="services-card">
+                                <i class="fas fa-shoe-prints"></i>
+                                <h5>Dance Class</h5>
+                                <p>Express yourself through movement with our dance lessons, including traditional and modern styles.</p>
+                                <button class="btn btn-sm btn-outline-dark book-btn" data-artist="Naad Sangeet Pathshala" data-service="Dance Class">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="testimonials" class="section section-bg-light">
     <div class="container">
         <h2 class="text-center section-title">Client Testimonials <span class="nepali-font">(ग्राहकहरूको प्रतिक्रिया)</span></h2>
@@ -1469,11 +1538,17 @@
                             <option value="Music Production">Music Production</option>
                             <option value="Sketch">Sketch</option>
                             <option value="Oil Pastel">Oil Pastel</option>
+                            <option value="Tabla Class">Tabla Class</option>
+                            <option value="Violin Class">Violin Class</option>
+                            <option value="Flute Class">Flute Class</option>
+                            <option value="Vocal Class">Vocal Class</option>
+                            <option value="Harmonium Class">Harmonium Class</option>
+                            <option value="Dance Class">Dance Class</option>
                             <option value="Other">Other Creative Service</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="artist" class="form-label">Preferred Artist (Optional)</label>
+                        <label for="artist" class="form-label">Preferred Artist/School (Optional)</label>
                         <select class="form-select" id="artist" name="artist">
                             <option value="">No preference</option>
                             <option value="Mandira Dhungel">Mandira Dhungel - Creative Head</option>
@@ -1482,6 +1557,7 @@
                             <option value="Artist 7">Artist 7 - Cinematographer</option>
                             <option value="Prastav Koirala">Prastav Koirala - Video Editor</option>
                             <option value="Shashanka Ghimire">Shashanka Ghimire - Voiceover Artist</option>
+                            <option value="Naad Sangeet Pathshala">Naad Sangeet Pathshala - School</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -1616,13 +1692,22 @@
     // Book Consultation Button Functionality
     const bookButtons = document.querySelectorAll('.book-btn');
     const artistSelect = document.getElementById('artist');
+    const serviceSelect = document.getElementById('service');
     
     bookButtons.forEach(button => {
         button.addEventListener('click', function() {
             const artistName = this.getAttribute('data-artist');
+            const serviceName = this.getAttribute('data-service');
             window.location.hash = '#contact';
-            artistSelect.value = artistName;
             
+            if (artistName) {
+                artistSelect.value = artistName;
+            }
+            
+            if (serviceName) {
+                serviceSelect.value = serviceName;
+            }
+
             // Smooth scroll to contact section
             document.getElementById('contact').scrollIntoView({
                 behavior: 'smooth'

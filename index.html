@@ -2683,6 +2683,257 @@ footer p{
         margin-top:22px;
     }
 }
+
+/* =========================================================
+   BLOG — STORYBLOK ADDITION ONLY
+   ========================================================= */
+
+.blog-section{
+    position:relative;
+    overflow:hidden;
+}
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.blog-card{
+    padding:32px;
+    min-height:270px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,.08);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(111,29,156,.08),
+            rgba(255,255,255,.02)
+        );
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.45s ease;
+}
+
+.blog-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-90px;
+    top:-90px;
+    border-radius:50%;
+    background:rgba(181,108,255,.08);
+    filter:blur(8px);
+    transition:.45s ease;
+}
+
+.blog-card:hover{
+    transform:translateY(-9px);
+    border-color:rgba(181,108,255,.38);
+    box-shadow:0 25px 65px rgba(0,0,0,.22);
+}
+
+.blog-card:hover::before{
+    transform:scale(1.25);
+}
+
+.blog-date{
+    display:inline-block;
+    color:var(--purple-light);
+    font-size:.62rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:28px;
+}
+
+.blog-card h3{
+    position:relative;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.55rem;
+    line-height:1.08;
+    margin-bottom:15px;
+}
+
+.blog-card p{
+    position:relative;
+    font-size:.82rem;
+    line-height:1.75;
+}
+
+.blog-read{
+    position:relative;
+    display:inline-block;
+    margin-top:22px;
+    color:var(--purple-light);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.5px;
+}
+
+.blog-empty,
+.blog-error{
+    grid-column:1/-1;
+    text-align:center;
+    padding:45px 25px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.018);
+    color:#777181;
+    font-size:.8rem;
+}
+
+/* Full article overlay */
+.blog-modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    background:rgba(2,1,7,.82);
+    backdrop-filter:blur(18px);
+}
+
+.blog-modal.active{
+    display:flex;
+}
+
+.blog-modal-box{
+    width:min(900px,100%);
+    max-height:88vh;
+    overflow:auto;
+    padding:50px;
+    border-radius:30px;
+    border:1px solid rgba(181,108,255,.18);
+    background:
+        radial-gradient(circle at 85% 10%,rgba(111,29,156,.13),transparent 35%),
+        #090510;
+    box-shadow:0 35px 100px rgba(0,0,0,.45);
+    position:relative;
+}
+
+.blog-modal-close{
+    position:absolute;
+    top:18px;
+    right:22px;
+    width:38px;
+    height:38px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:50%;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    cursor:pointer;
+    font-size:1.1rem;
+}
+
+.blog-modal-date{
+    color:var(--purple-light);
+    font-size:.62rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+}
+
+.blog-modal h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(2.3rem,5vw,4.5rem);
+    line-height:.95;
+    letter-spacing:-3px;
+    margin-bottom:22px;
+}
+
+.blog-modal-description{
+    font-size:1rem;
+    margin-bottom:35px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.blog-article{
+    color:#c8c3d0;
+    font-size:.94rem;
+    line-height:1.9;
+}
+
+.blog-article p{
+    margin:0 0 20px;
+}
+
+.blog-article h1,
+.blog-article h2,
+.blog-article h3,
+.blog-article h4{
+    font-family:'Space Grotesk',sans-serif;
+    color:#fff;
+    line-height:1.15;
+    margin:34px 0 15px;
+}
+
+.blog-article strong{
+    color:#fff;
+}
+
+.blog-article em{
+    color:#d7a8ff;
+}
+
+.blog-article a{
+    color:var(--purple-light);
+    text-decoration:underline;
+}
+
+.blog-article blockquote{
+    margin:25px 0;
+    padding:8px 0 8px 20px;
+    border-left:2px solid var(--red);
+    color:#d8d2df;
+}
+
+.blog-article ul,
+.blog-article ol{
+    margin:0 0 22px 22px;
+}
+
+.blog-article li{
+    margin:7px 0;
+}
+
+.blog-article pre{
+    overflow:auto;
+    padding:18px;
+    border-radius:12px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.07);
+}
+
+.blog-article code{
+    font-family:monospace;
+}
+
+@media(max-width:1000px){
+    .blog-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:700px){
+    .blog-grid{
+        grid-template-columns:1fr;
+    }
+
+    .blog-modal{
+        padding:15px;
+    }
+
+    .blog-modal-box{
+        padding:35px 24px;
+        max-height:92vh;
+    }
+}
+
 </style>
 
 </head>
@@ -2795,6 +3046,8 @@ PR<span>.</span>K
 <a href="#music">Music</a>
 
 <a href="#projects">Work</a>
+
+        <a href="#blog">Blog</a>
 
 <a href="#contact">Contact</a>
 
@@ -4311,6 +4564,56 @@ interaction and visual hierarchy.
      CONTACT
 ===================================================== -->
 
+
+<!-- =====================================================
+     BLOG — STORYBLOK
+===================================================== -->
+
+<section id="blog" class="blog-section">
+
+    <div class="container">
+
+        <div class="kicker">
+            07 // BLOG
+        </div>
+
+        <h2 class="section-title">
+            Thoughts &amp; Ideas
+        </h2>
+
+        <div id="blog-grid" class="blog-grid">
+            <div class="blog-empty">Loading articles...</div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BLOG ARTICLE MODAL -->
+
+<div id="blog-modal" class="blog-modal" aria-hidden="true">
+
+    <div class="blog-modal-box">
+
+        <button
+            id="blog-modal-close"
+            class="blog-modal-close"
+            aria-label="Close article"
+        >×</button>
+
+        <div id="blog-modal-date" class="blog-modal-date"></div>
+
+        <h2 id="blog-modal-title"></h2>
+
+        <p id="blog-modal-description" class="blog-modal-description"></p>
+
+        <article id="blog-modal-content" class="blog-article"></article>
+
+    </div>
+
+</div>
+
+
 <section id="contact"
 class="contact-section">
 
@@ -4569,6 +4872,260 @@ form.addEventListener('submit', async function(e){
 
 </script>
 
+
+
+<script>
+/* =========================================================
+   STORYBLOK BLOG LOADER — ADDITION ONLY
+========================================================= */
+
+(function(){
+
+    const STORYBLOK_TOKEN = "ZJThqK5sx3MVUaC2809SVgtt";
+    const STORYBLOK_API =
+        "https://api.storyblok.com/v2/cdn/stories";
+
+    const grid = document.getElementById("blog-grid");
+    const modal = document.getElementById("blog-modal");
+    const modalClose = document.getElementById("blog-modal-close");
+    const modalDate = document.getElementById("blog-modal-date");
+    const modalTitle = document.getElementById("blog-modal-title");
+    const modalDescription = document.getElementById("blog-modal-description");
+    const modalContent = document.getElementById("blog-modal-content");
+
+    if(!grid) return;
+
+    function escapeHTML(value){
+        return String(value ?? "")
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+    }
+
+    function formatDate(value){
+        if(!value) return "";
+        const d = new Date(value);
+        if(Number.isNaN(d.getTime())) return escapeHTML(value);
+
+        return d.toLocaleDateString("en-US",{
+            year:"numeric",
+            month:"long",
+            day:"numeric"
+        });
+    }
+
+    function renderInline(node){
+        if(!node) return "";
+
+        if(node.type === "text"){
+            let value = escapeHTML(node.text || "");
+
+            if(node.marks){
+                node.marks.forEach(mark => {
+                    if(mark.type === "bold") value = "<strong>"+value+"</strong>";
+                    if(mark.type === "italic") value = "<em>"+value+"</em>";
+                    if(mark.type === "strike") value = "<del>"+value+"</del>";
+                    if(mark.type === "code") value = "<code>"+value+"</code>";
+                });
+            }
+
+            return value;
+        }
+
+        if(node.type === "link"){
+            const href = node.attrs && node.attrs.href ? node.attrs.href : "#";
+            const safeHref = /^(https?:|mailto:)/i.test(href) ? href : "#";
+            return '<a href="' + escapeHTML(safeHref) +
+                   '" target="_blank" rel="noopener noreferrer">' +
+                   renderInlineChildren(node) + '</a>';
+        }
+
+        return renderInlineChildren(node);
+    }
+
+    function renderInlineChildren(node){
+        return (node.content || []).map(renderInline).join("");
+    }
+
+    function renderRichText(node){
+        if(!node) return "";
+
+        if(Array.isArray(node)){
+            return node.map(renderRichText).join("");
+        }
+
+        const children = (node.content || []).map(renderRichText).join("");
+
+        switch(node.type){
+            case "doc":
+                return children;
+
+            case "paragraph":
+                return "<p>" + children + "</p>";
+
+            case "heading":
+                const level = Math.min(
+                    Math.max(parseInt(node.attrs?.level || 2,10),1),
+                    6
+                );
+                return "<h" + level + ">" + children + "</h" + level + ">";
+
+            case "bullet_list":
+                return "<ul>" + children + "</ul>";
+
+            case "ordered_list":
+                return "<ol>" + children + "</ol>";
+
+            case "list_item":
+                return "<li>" + children + "</li>";
+
+            case "blockquote":
+                return "<blockquote>" + children + "</blockquote>";
+
+            case "code_block":
+                return "<pre><code>" + escapeHTML(
+                    (node.content || [])
+                        .map(n => n.text || "")
+                        .join("")
+                ) + "</code></pre>";
+
+            case "hard_break":
+                return "<br>";
+
+            case "horizontal_rule":
+                return "<hr>";
+
+            case "text":
+                return renderInline(node);
+
+            default:
+                return children;
+        }
+    }
+
+    function openArticle(story){
+        const c = story.content || {};
+
+        modalDate.textContent = formatDate(c.date);
+        modalTitle.textContent = c.title || story.name || "Untitled";
+        modalDescription.textContent = c.short_description || "";
+        modalContent.innerHTML = renderRichText(c.content);
+
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden","false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeArticle(){
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden","true");
+        document.body.style.overflow = "";
+    }
+
+    function createCard(story){
+        const c = story.content || {};
+        const card = document.createElement("article");
+
+        card.className = "blog-card";
+        card.setAttribute("tabindex","0");
+        card.innerHTML =
+            '<div class="blog-date">' +
+                formatDate(c.date) +
+            '</div>' +
+            '<h3>' +
+                escapeHTML(c.title || story.name || "Untitled") +
+            '</h3>' +
+            '<p>' +
+                escapeHTML(
+                    c.short_description ||
+                    "Read the full article."
+                ) +
+            '</p>' +
+            '<span class="blog-read">READ ARTICLE →</span>';
+
+        card.addEventListener("click",function(){
+            openArticle(story);
+        });
+
+        card.addEventListener("keydown",function(event){
+            if(event.key === "Enter" || event.key === " "){
+                event.preventDefault();
+                openArticle(story);
+            }
+        });
+
+        return card;
+    }
+
+    async function loadBlog(){
+
+        try{
+
+            const url =
+                STORYBLOK_API +
+                "?token=" + encodeURIComponent(STORYBLOK_TOKEN) +
+                "&version=published" +
+                "&cv=" + Date.now();
+
+            const response = await fetch(url);
+
+            if(!response.ok){
+                throw new Error("Storyblok API request failed: " + response.status);
+            }
+
+            const data = await response.json();
+
+            const stories = (data.stories || [])
+                .filter(story =>
+                    story.content &&
+                    story.content.component === "blog_post"
+                )
+                .sort((a,b) =>
+                    new Date(b.content.date || b.created_at) -
+                    new Date(a.content.date || a.created_at)
+                );
+
+            grid.innerHTML = "";
+
+            if(!stories.length){
+                grid.innerHTML =
+                    '<div class="blog-empty">' +
+                    'No published articles yet.' +
+                    '</div>';
+                return;
+            }
+
+            stories.forEach(story => {
+                grid.appendChild(createCard(story));
+            });
+
+        }catch(error){
+
+            console.error("Storyblok Blog:", error);
+
+            grid.innerHTML =
+                '<div class="blog-error">' +
+                'Unable to load the blog right now.' +
+                '</div>';
+        }
+    }
+
+    modalClose.addEventListener("click",closeArticle);
+
+    modal.addEventListener("click",function(event){
+        if(event.target === modal) closeArticle();
+    });
+
+    document.addEventListener("keydown",function(event){
+        if(event.key === "Escape") closeArticle();
+    });
+
+    loadBlog();
+
+})();
+</script>
 
 </body>
 

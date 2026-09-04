@@ -889,19 +889,19 @@ section{
         radial-gradient(
             circle,
             #ffffff 0%,
-            #d7a8ff 8%,
-            #b56cff 18%,
-            #6f1d9c 38%,
+            #fff7b0 8%,
+            #ffd21a 18%,
+            #ff9d00 38%,
             transparent 72%
         );
 
     box-shadow:
 
         0 0 35px
-        rgba(181,108,255,.75),
+        rgba(255,210,26,.85),
 
         0 0 100px
-        rgba(111,29,156,.45);
+        rgba(255,157,0,.55);
 
     animation:
         corePulse
@@ -2616,6 +2616,73 @@ footer p{
 
 }
 
+
+/* =========================================================
+   INSPIRATION PHOTOS — ADDITION ONLY
+   ========================================================= */
+
+.inspiration-photo{
+    position:absolute;
+    z-index:2;
+    pointer-events:none;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 0 35px rgba(181,108,255,.16);
+    filter:grayscale(.15) contrast(1.05) saturate(.9);
+}
+
+/* Kept away from the existing E = mc² background artwork. */
+.einstein-photo{
+    width:135px;
+    height:170px;
+    right:35px;
+    bottom:35px;
+    border-radius:16px;
+    opacity:.9;
+}
+
+/* Slightly enlarged while remaining inside the existing Hawking grid. */
+.hawking-photo{
+    width:125px;
+    height:145px;
+    margin-top:28px;
+    display:block;
+    border-radius:16px;
+    opacity:.9;
+    object-fit:cover;
+}
+
+/* Slightly enlarged without covering the Feynman content. */
+.feynman-photo{
+    width:135px;
+    height:165px;
+    right:35px;
+    top:30px;
+    border-radius:16px;
+    opacity:.9;
+}
+
+@media(max-width:700px){
+    .einstein-photo{
+        width:100px;
+        height:125px;
+        right:20px;
+        bottom:20px;
+    }
+
+    .feynman-photo{
+        width:100px;
+        height:125px;
+        right:20px;
+        top:20px;
+    }
+
+    .hawking-photo{
+        width:105px;
+        height:125px;
+        margin-top:22px;
+    }
+}
 </style>
 
 </head>
@@ -3082,6 +3149,10 @@ People Who Changed How I Think
 
 <div class="einstein-feature">
 
+<img class="inspiration-photo einstein-photo"
+src="https://upload.wikimedia.org/wikipedia/commons/1/10/Albert_Einstein_photo_1920.jpg"
+alt="Albert Einstein">
+
 
 <div class="einstein-year">
 
@@ -3143,6 +3214,10 @@ there is hope."
 
 </div>
 
+<img class="hawking-photo"
+src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Stephen_hawking_2008_nasa_cropped.jpg"
+alt="Stephen Hawking">
+
 
 </div>
 
@@ -3169,6 +3244,10 @@ person carrying it.
 <!-- FEYNMAN -->
 
 <div class="feynman-feature">
+
+<img class="inspiration-photo feynman-photo"
+src="https://upload.wikimedia.org/wikipedia/commons/9/92/Richard_Feynman_1974.png"
+alt="Richard P. Feynman">
 
 
 <div class="feynman-label">

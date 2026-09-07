@@ -2663,24 +2663,35 @@ footer p{
 }
 
 @media(max-width:700px){
-    .einstein-photo{
-        width:100px;
-        height:125px;
-        right:20px;
-        bottom:20px;
+    /* Mobile scientist-photo layout fix:
+       keep every portrait in normal visual flow, centered,
+       and reserve space so no image can overlap text. */
+    .einstein-feature,
+    .feynman-feature{
+        padding-top:180px;
     }
 
+    .einstein-photo,
     .feynman-photo{
         width:100px;
         height:125px;
-        right:20px;
-        top:20px;
+        left:50%;
+        right:auto;
+        top:25px;
+        bottom:auto;
+        margin:0;
+        transform:translateX(-50%);
+    }
+
+    .hawking-feature{
+        grid-template-columns:1fr;
     }
 
     .hawking-photo{
         width:105px;
         height:125px;
-        margin-top:22px;
+        margin:25px auto 0;
+        object-fit:cover;
     }
 }
 

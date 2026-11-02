@@ -1250,7 +1250,7 @@ section{
 
     display:grid;
 
-    grid-template-columns:1fr;
+    grid-template-columns:.8fr 1.2fr;
 
     gap:80px;
 
@@ -1900,6 +1900,55 @@ section{
 /* =========================================================
    EXPERIENCE
 ========================================================= */
+
+/* CERTIFICATIONS */
+.cert-intro{
+    max-width:700px;
+    margin:-35px auto 40px;
+    text-align:center;
+    font-size:.9rem;
+}
+.cert-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+.cert-card{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-height:190px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    background:rgba(255,255,255,.025);
+    transition:transform .3s,border-color .3s,background .3s;
+}
+.cert-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(181,108,255,.45);
+    background:rgba(181,108,255,.045);
+}
+.cert-index{
+    margin-bottom:22px;
+    color:var(--purple-light);
+    font-size:.62rem;
+    letter-spacing:2px;
+}
+.cert-card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:1.15rem;
+    line-height:1.4;
+    margin-bottom:22px;
+}
+.cert-action{
+    margin-top:auto;
+    color:var(--purple-light);
+    font-size:.78rem;
+    font-weight:600;
+}
+.document-button{margin-top:18px;}
+@media(max-width:700px){.cert-grid{grid-template-columns:1fr;}}
 
 .timeline{
 
@@ -2695,6 +2744,9 @@ footer p{
     }
 }
 
+
+/* Temporarily hidden; section retained for future restoration. */
+#inspiration{display:none!important;}
 </style>
 
 </head>
@@ -2797,15 +2849,8 @@ PR<span>.</span>K
 <div class="nav-links">
 
 <a href="#about">About</a>
-
-<a href="#universe">Universe</a>
-
-<a href="#inspiration">Inspiration</a>
-
 <a href="#security">Skills</a>
-
-<a href="#music">Music</a>
-
+<a href="#certifications">Certifications</a>
 <a href="#projects">Work</a>
 
 <a href="#contact">Contact</a>
@@ -2923,123 +2968,6 @@ Download CV
 </section>
 
 
-<!-- =====================================================
-     UNIVERSE
-===================================================== -->
-
-<section id="universe"
-class="universe-section">
-
-<div class="container">
-
-
-<div class="kicker">
-
-01 // THE UNIVERSE
-
-</div>
-
-
-<h2 class="section-title">
-
-The Question That Never Ends
-
-</h2>
-
-
-<div class="universe-text">
-
-
-<h3 class="universe-title">
-
-The universe is
-
-<br>
-
-<span>
-expanding.
-</span>
-
-</h3>
-
-
-<p>
-
-I've always been fascinated by the universe — not simply
-by what we can see, but by what might exist beyond what
-we can observe.
-
-</p>
-
-
-<p>
-
-Space.
-
-Time.
-
-Matter.
-
-Energy.
-
-The beginning.
-
-And whether there is truly an edge to any of it.
-
-</p>
-
-
-<p>
-
-The more I learn, the more fascinating the questions become.
-
-A good question does not always lead immediately to an answer.
-
-Sometimes it opens an entirely new universe of questions.
-
-</p>
-
-
-</div>
-
-
-<div class="cosmic-field">
-
-<div class="wave wave-one"></div>
-
-<div class="wave wave-two"></div>
-
-<div class="wave wave-three"></div>
-
-<div class="particle p1"></div>
-
-<div class="particle p2"></div>
-
-<div class="particle p3"></div>
-
-<div class="particle p4"></div>
-
-<div class="particle p5"></div>
-
-<div class="particle p6"></div>
-
-<div class="particle p7"></div>
-
-<div class="particle p8"></div>
-
-</div>
-
-
-<div class="cosmic-caption">
-
-SPACE • TIME • MATTER • ENERGY • CURIOSITY
-
-</div>
-
-
-</div>
-
-</section>
 
 
 <!-- =====================================================
@@ -3053,7 +2981,7 @@ SPACE • TIME • MATTER • ENERGY • CURIOSITY
 
 <div class="kicker">
 
-02 // ABOUT
+ABOUT
 
 </div>
 
@@ -3066,6 +2994,10 @@ A Little About Me
 
 
 <div class="about">
+
+<div class="about-image">
+<img src="profile.jpg" alt="Prastav Koirala profile photo">
+</div>
 
 <div class="about-content">
 
@@ -3125,6 +3057,7 @@ To me, they are different ways of observing patterns.
 </section>
 
 
+<!-- INSPIRATION SECTION SAVED FOR FUTURE USE (currently hidden)
 <!-- =====================================================
      INSPIRATION
 ===================================================== -->
@@ -3313,151 +3246,7 @@ Keep going beyond what is already known.
 </section>
 
 
-<!-- =====================================================
-     PHILOSOPHY
-===================================================== -->
 
-<section>
-
-<div class="container philosophy">
-
-
-<div class="kicker">
-
-04 // PHILOSOPHY
-
-</div>
-
-
-<div class="philosophy-main">
-
-You dream once.
-
-<br>
-
-You live once.
-
-<br>
-
-<span>
-
-So explore.
-
-</span>
-
-</div>
-
-
-<p class="philosophy-sub">
-
-I don't want curiosity to have a boundary.
-
-There are questions worth asking, things worth creating,
-ideas worth exploring and places worth seeing.
-
-One life is not enough to answer everything.
-
-But it is enough to begin.
-
-</p>
-
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     LEARNING
-===================================================== -->
-
-<section class="learning-section">
-
-<div class="container">
-
-
-<div class="kicker">
-
-05 // THE MIND
-
-</div>
-
-
-<h2 class="section-title">
-
-Use It.
-
-</h2>
-
-
-<div class="learning-box">
-
-
-<div class="learning-big">
-
-I love <span>learning.</span>
-
-<br>
-
-I love <span>thinking.</span>
-
-</div>
-
-
-<p>
-
-I want to learn everything I can.
-
-Not because I expect to know everything,
-but because every answer seems to reveal
-another question.
-
-</p>
-
-
-<p>
-
-Every moment gives the brain something to observe,
-connect, question or understand.
-
-And the brain is perhaps the most extraordinary
-instrument we carry with us.
-
-So why not use it?
-
-</p>
-
-
-<p>
-
-Stephen Hawking reminds me of the enormous distance
-an idea can travel.
-
-Through his books, his explanations and his way of
-thinking about the universe, he helped people like me
-see a little further than we might have seen alone.
-
-</p>
-
-
-<div class="learning-emphasis">
-
-Learn.
-
-Think.
-
-Question.
-
-Repeat.
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
 
 
 <!-- =====================================================
@@ -3471,7 +3260,7 @@ Repeat.
 
 <div class="kicker">
 
-06 // TECHNICAL SKILLS
+TECHNICAL SKILLS
 
 </div>
 
@@ -3798,6 +3587,46 @@ Blue Team • SIEM • Incident Analysis
 
 
 <!-- =====================================================
+     PROFESSIONAL CERTIFICATIONS
+===================================================== -->
+
+<section id="certifications">
+<div class="container">
+    <div class="kicker">PROFESSIONAL CERTIFICATIONS</div>
+    <h2 class="section-title">Cybersecurity Certifications</h2>
+    <p class="cert-intro">Certificates in security operations, alert investigation, digital forensics and security fundamentals.</p>
+    <div class="cert-grid">
+        <a class="cert-card" href="Certificate-Digital-Forensics-&-Incident-Response-(DFIR).pdf" target="_blank" rel="noopener noreferrer">
+            <span class="cert-index">01 / DFIR</span>
+            <h3>Digital Forensics &amp; Incident Response (DFIR)</h3>
+            <span class="cert-action">View Certificate ↗</span>
+        </a>
+        <a class="cert-card" href="Certificate-SOC-Analyst-Level-1.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="cert-index">02 / SOC</span>
+            <h3>SOC Analyst Level 1</h3>
+            <span class="cert-action">View Certificate ↗</span>
+        </a>
+        <a class="cert-card" href="Certificate-Security-Operations-Basics.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="cert-index">03 / SECURITY OPERATIONS</span>
+            <h3>Security Operations Basics</h3>
+            <span class="cert-action">View Certificate ↗</span>
+        </a>
+        <a class="cert-card" href="Certificate-Alert-Investigation-Specialist.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="cert-index">04 / INVESTIGATION</span>
+            <h3>Alert Investigation Specialist</h3>
+            <span class="cert-action">View Certificate ↗</span>
+        </a>
+        <a class="cert-card" href="Certificate-Pre-Security-Fundamentals.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="cert-index">05 / FUNDAMENTALS</span>
+            <h3>Pre-Security Fundamentals</h3>
+            <span class="cert-action">View Certificate ↗</span>
+        </a>
+    </div>
+</div>
+</section>
+
+
+<!-- =====================================================
      EXPERIENCE
 ===================================================== -->
 
@@ -3808,7 +3637,7 @@ Blue Team • SIEM • Incident Analysis
 
 <div class="kicker">
 
-07 // EXPERIENCE
+EXPERIENCE
 
 </div>
 
@@ -3858,6 +3687,7 @@ rules, digital forensics and penetration testing.
 
 </p>
 
+<a class="btn secondary document-button" href="siem.pdf" target="_blank" rel="noopener noreferrer">View Document ↗</a>
 
 </div>
 
@@ -3896,6 +3726,7 @@ SQL, systems and organizational technology environments.
 
 </p>
 
+<a class="btn secondary document-button" href="it.pdf" target="_blank" rel="noopener noreferrer">View Document ↗</a>
 
 </div>
 
@@ -3907,105 +3738,6 @@ SQL, systems and organizational technology environments.
 </section>
 
 
-<!-- =====================================================
-     MUSIC
-===================================================== -->
-
-<section id="music">
-
-<div class="container">
-
-
-<div class="kicker">
-
-08 // MUSIC & COSMOS
-
-</div>
-
-
-<h2 class="section-title">
-
-Everything Begins Somewhere
-
-</h2>
-
-
-<div class="music-cosmos">
-
-
-<div class="music-statement">
-
-Every piece of music begins
-with something remarkably small
-
-</div>
-
-
-<div class="music-line"></div>
-
-
-<p>
-
-A note can be understood through frequency, harmonics
-and overtones.
-
-Look closer and patterns emerge.
-
-Look closer still and those patterns can be described
-through smaller structures, oscillations and relationships.
-
-</p>
-
-
-<p>
-
-It makes me wonder about the universe.
-
-If we keep looking deeper and deeper — from patterns,
-to fragments, to smaller structures — how far can we go?
-
-At some point we arrive at something unimaginably small.
-
-And from that beginning came a universe containing
-everything we know.
-
-</p>
-
-
-<div class="music-question">
-
-Isn't that fascinating?
-
-</div>
-
-
-<p>
-
-Perhaps that is why music and physics fascinate me
-in completely different — yet strangely connected —
-ways.
-
-Both invite us to look at something beautiful and ask:
-
-</p>
-
-
-<div class="music-final">
-
-<strong>
-
-"What is it really made of?"
-
-</strong>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
 
 
 <!-- =====================================================
@@ -4019,7 +3751,7 @@ Both invite us to look at something beautiful and ask:
 
 <div class="kicker">
 
-09 // SELECTED WORK
+SELECTED WORK
 
 </div>
 
@@ -4198,7 +3930,7 @@ More About Me →
 
 <div class="kicker">
 
-10 // CREATIVE WORK
+CREATIVE WORK
 
 </div>
 
@@ -4323,7 +4055,7 @@ class="contact-section">
 
 <div class="kicker">
 
-11 // TRANSMISSION
+CONTACT
 
 </div>
 
